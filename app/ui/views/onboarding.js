@@ -90,6 +90,8 @@ export function onboardingView({ languages, uiLanguage, askUiLanguage, askName, 
     const names = t("language_names");
     return [
       askUiLanguage ? uiBar() : null,
+      // P25.7: beim ersten Start in einem Satz, was diese App ist und was als Nächstes passiert
+      askUiLanguage ? h("p", { class: "onboarding-intro" }, t("app_intro")) : null,
       h("h1", { tabindex: "-1" }, t("learn_title")),
       h("p", { class: "muted" }, t("learn_lead")),
       options("learn-language", languages.map((l) => ({

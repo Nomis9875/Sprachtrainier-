@@ -3,7 +3,7 @@
  "format_version": 1,
  "pattern_syntax": 1,
  "target": "production",
- "content_version": "7efe788485c1bb93",
+ "content_version": "50689451ce402b69",
  "language": {
   "id": "es",
   "germanism_explanation_de": "Deutsche Wörter im spanischen Text: {words}. Formuliere diese Stelle auf Spanisch.",
@@ -14062,7 +14062,7 @@
    "prompt_de": "Antworte kurz auf Spanisch: Du magst Bücher sehr gern.",
    "estimated_seconds": 40,
    "prompt_es": "",
-   "source_text_es": "¿Qué te gusta hacer?",
+   "source_text_es": "¿Qué cosas te gustan?",
    "instruction_de": "Mehrere Dinge: me gustan …",
    "communication_goal_de": "",
    "learning_goal_de": "",
@@ -15293,8 +15293,8 @@
      "error_id": null
     },
     {
-     "text": "Su hermano me llamo Jonas.",
-     "feedback_de": "Über deinen Bruder: Mi hermano se llama …",
+     "text": "Su hermano se llama Jonas.",
+     "feedback_de": "su = sein/ihr bzw. Ihr (usted). Über deinen eigenen Bruder: mi hermano.",
      "error_id": null
     }
    ],
@@ -15303,7 +15303,7 @@
    "options": [
     "Mi hermano se llama Jonas.",
     "Tu hermano se llama Jonas.",
-    "Su hermano me llamo Jonas."
+    "Su hermano se llama Jonas."
    ],
    "text_id": "",
    "listening": null,
@@ -16041,7 +16041,7 @@
    "prompt_de": "Antworte kurz auf Spanisch: Du bist Ingenieur bzw. Ingenieurin.",
    "estimated_seconds": 40,
    "prompt_es": "",
-   "source_text_es": "¿Y tú? ¿Qué haces?",
+   "source_text_es": "¿Y tú? ¿A qué te dedicas?",
    "instruction_de": "Beruf mit ser: Soy …",
    "communication_goal_de": "",
    "learning_goal_de": "",
@@ -16396,19 +16396,19 @@
    "good_phrases": [],
    "accepted_answers": [
     {
-     "text": "El tren, es más rápido que el autobús.",
+     "text": "El tren, porque es más rápido que el autobús.",
      "is_model_answer": true,
      "note_de": ""
     }
    ],
    "wrong_answers": [
     {
-     "text": "El tren, es más rápido como el autobús.",
+     "text": "El tren, porque es más rápido como el autobús.",
      "feedback_de": "más … que.",
      "error_id": null
     },
     {
-     "text": "El tren, es más bueno que el autobús.",
+     "text": "El tren, porque es más bueno que el autobús.",
      "feedback_de": "Statt más bueno sagt man mejor.",
      "error_id": null
     }
@@ -16416,9 +16416,9 @@
    "conversation": null,
    "difficulty": 2.05,
    "options": [
-    "El tren, es más rápido que el autobús.",
-    "El tren, es más rápido como el autobús.",
-    "El tren, es más bueno que el autobús."
+    "El tren, porque es más rápido que el autobús.",
+    "El tren, porque es más rápido como el autobús.",
+    "El tren, porque es más bueno que el autobús."
    ],
    "text_id": "",
    "listening": null,
@@ -16466,11 +16466,6 @@
     },
     {
      "text": "Mi hermano. Es mayor que yo.",
-     "is_model_answer": false,
-     "note_de": ""
-    },
-    {
-     "text": "Mi hermano es más mayor que yo.",
      "is_model_answer": false,
      "note_de": ""
     }
@@ -16601,8 +16596,8 @@
      "error_id": null
     },
     {
-     "text": "Porque estuve enferma mientras.",
-     "feedback_de": "Ein Zustand als Hintergrund: estaba enferma.",
+     "text": "Porque estaré enferma.",
+     "feedback_de": "Es geht um die Vergangenheit (no viniste): Porque estaba enferma.",
      "error_id": null
     }
    ],
@@ -16611,7 +16606,7 @@
    "options": [
     "Porque estaba enferma.",
     "Porque estoy enferma ayer.",
-    "Porque estuve enferma mientras."
+    "Porque estaré enferma."
    ],
    "text_id": "",
    "listening": null,
@@ -17418,7 +17413,7 @@
    "topics": [
     "grammar.imperative"
    ],
-   "prompt_de": "Antworte kurz auf Spanisch: Er soll das Fenster aufmachen.",
+   "prompt_de": "Antworte kurz auf Spanisch: Fordere ihn auf, das Fenster aufzumachen.",
    "estimated_seconds": 40,
    "prompt_es": "",
    "source_text_es": "Hace mucho calor aquí, ¿no?",
@@ -17491,7 +17486,7 @@
    "prompt_de": "Wähle die passende Form.",
    "estimated_seconds": 20,
    "prompt_es": "",
-   "source_text_es": "Si tienes frío, ___ la ventana.",
+   "source_text_es": "Tengo frío. ¡___ la ventana, por favor!",
    "instruction_de": "",
    "communication_goal_de": "",
    "learning_goal_de": "",
@@ -17509,19 +17504,19 @@
    "good_phrases": [],
    "accepted_answers": [
     {
-     "text": "cierra",
+     "text": "Cierra",
      "is_model_answer": true,
      "note_de": ""
     }
    ],
    "wrong_answers": [
     {
-     "text": "cierras",
+     "text": "Cierras",
      "feedback_de": "Aufforderung an tú: cierra (ohne -s).",
      "error_id": null
     },
     {
-     "text": "cerrar",
+     "text": "Cerrar",
      "feedback_de": "Aufforderung: Imperativ, cierra.",
      "error_id": null
     }
@@ -17529,9 +17524,9 @@
    "conversation": null,
    "difficulty": 2.05,
    "options": [
-    "cierra",
-    "cierras",
-    "cerrar"
+    "Cierra",
+    "Cierras",
+    "Cerrar"
    ],
    "text_id": "",
    "listening": null,
@@ -18858,6 +18853,594 @@
    "category": "multiple_choice"
   },
   {
+   "id": "beg-err-al-del",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.prepositions.basics"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Adónde vas?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "prepositions_basic",
+     "is_target": false
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "contraction_al_del"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Voy al supermercado.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Voy a el supermercado.",
+     "feedback_de": "a + el wird immer zu al: voy al supermercado.",
+     "error_id": "contraction_al_del"
+    },
+    {
+     "text": "Voy en el supermercado.",
+     "feedback_de": "Richtung (wohin?): a. Voy al supermercado.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Voy al supermercado.",
+    "Voy a el supermercado.",
+    "Voy en el supermercado."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-err-estar-frio",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "interference.german"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Abro la ventana?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [],
+   "common_errors": [
+    "estar_cold_hot"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "No, por favor, tengo frío.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "No, por favor, estoy fría.",
+     "feedback_de": "Mir ist kalt = tengo frío. „Estoy fría“ heißt: Ich bin kalt (zum Anfassen).",
+     "error_id": "estar_cold_hot"
+    },
+    {
+     "text": "No, por favor, soy frío.",
+     "feedback_de": "„Soy frío“ heißt: Ich bin ein kühler Mensch. Mir ist kalt = tengo frío.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "No, por favor, tengo frío.",
+    "No, por favor, estoy fría.",
+    "No, por favor, soy frío."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-err-genero",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.nouns"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Enseñas fotos de tus vacaciones.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "articles_gender",
+     "is_target": false
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "irregular_gender"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mira, esta foto es de Sevilla.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Mira, este foto es de Sevilla.",
+     "feedback_de": "foto ist feminin (la foto, kurz für la fotografía): esta foto.",
+     "error_id": "irregular_gender"
+    },
+    {
+     "text": "Mira, esto foto es de Sevilla.",
+     "feedback_de": "Vor einem Nomen: esta (feminin), nicht esto.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Mira, esta foto es de Sevilla.",
+    "Mira, este foto es de Sevilla.",
+    "Mira, esto foto es de Sevilla."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-err-gustar-plural",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.gustar"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué fruta te gusta?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "gustar_structure",
+     "is_target": false
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "gustar_agreement"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Me gustan las fresas.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Me gusta las fresas.",
+     "feedback_de": "Mehrere Dinge (las fresas): gustan.",
+     "error_id": "gustar_agreement"
+    },
+    {
+     "text": "Me gustas las fresas.",
+     "feedback_de": "Die Form richtet sich nach den Dingen (las fresas): gustan.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Me gustan las fresas.",
+    "Me gusta las fresas.",
+    "Me gustas las fresas."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-err-hay-articulo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar",
+    "interference.german"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de tu barrio.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "hay_existence",
+     "is_target": false
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "hay_definite_article"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "En mi barrio hay un cine.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "En mi barrio hay el cine.",
+     "feedback_de": "Nach hay kein bestimmter Artikel: hay un cine.",
+     "error_id": "hay_definite_article"
+    },
+    {
+     "text": "En mi barrio está un cine.",
+     "feedback_de": "Dass es etwas gibt: hay un cine.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "En mi barrio hay un cine.",
+    "En mi barrio hay el cine.",
+    "En mi barrio está un cine."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-err-ser-age",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "interference.german"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Cuántos años tienes?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [],
+   "common_errors": [
+    "ser_age"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Tengo treinta años.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Soy treinta años.",
+     "feedback_de": "Das Alter drückt man mit tener aus: Tengo treinta años.",
+     "error_id": "ser_age"
+    },
+    {
+     "text": "Estoy treinta años.",
+     "feedback_de": "Das Alter drückt man mit tener aus: Tengo treinta años.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Tengo treinta años.",
+    "Soy treinta años.",
+    "Estoy treinta años."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-err-ser-estado",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar",
+    "interference.german"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué tal? Pareces cansado.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_location_state",
+     "is_target": false
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "ser_state"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, estoy muy cansado.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, soy muy cansado.",
+     "feedback_de": "Ein Zustand im Moment: estar. Estoy muy cansado.",
+     "error_id": "ser_state"
+    },
+    {
+     "text": "Sí, tengo muy cansado.",
+     "feedback_de": "Müde sein: estar cansado.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Sí, estoy muy cansado.",
+    "Sí, soy muy cansado.",
+    "Sí, tengo muy cansado."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-err-ser-lugar",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar",
+    "interference.german"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Dónde estás?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_location_state",
+     "is_target": false
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "ser_location"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Estoy en la oficina.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Soy en la oficina.",
+     "feedback_de": "Wo jemand ist: estar. Estoy en la oficina.",
+     "error_id": "ser_location"
+    },
+    {
+     "text": "Hay en la oficina.",
+     "feedback_de": "Wo du bist: estoy en la oficina.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Estoy en la oficina.",
+    "Soy en la oficina.",
+    "Hay en la oficina."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-err-yo-gusto",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.gustar",
+    "interference.german"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Te gusta bailar salsa?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "gustar_structure",
+     "is_target": false
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "yo_gusto"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, me encanta, me gusta muchísimo.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, yo gusto muchísimo.",
+     "feedback_de": "Ich mag … = me gusta (wörtlich: es gefällt mir).",
+     "error_id": "yo_gusto"
+    },
+    {
+     "text": "Sí, yo gusta muchísimo.",
+     "feedback_de": "Die Person steht als Pronomen vor gusta: me gusta.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Sí, me encanta, me gusta muchísimo.",
+    "Sí, yo gusto muchísimo.",
+    "Sí, yo gusta muchísimo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
    "id": "beg-voc-a1_barato",
    "type": "multiple_choice",
    "mode": "training",
@@ -18992,7 +19575,7 @@
    "prompt_de": "Welches Wort passt?",
    "estimated_seconds": 20,
    "prompt_es": "",
-   "source_text_es": "Por la mañana tomo café y tostadas con el ___.",
+   "source_text_es": "En el ___ tomo café con leche y tostadas.",
    "instruction_de": "",
    "communication_goal_de": "",
    "learning_goal_de": "",
@@ -517619,6 +518202,7 @@
    ],
    "common_error:contraction_al_del": [
     "a1-prep-del-trabajo",
+    "beg-err-al-del",
     "ec-a-el"
    ],
    "common_error:depender_en": [
@@ -517654,6 +518238,7 @@
     "tr-enamorarse-de"
    ],
    "common_error:estar_cold_hot": [
+    "beg-err-estar-frio",
     "ec-estoy-frio"
    ],
    "common_error:feminine_ma_nouns": [
@@ -517685,6 +518270,7 @@
     "a1-gustar-videojuegos",
     "beg-a1-gustar-plural",
     "beg-a1-gustar-responder",
+    "beg-err-gustar-plural",
     "ec-gustar-plural",
     "guided-gustar-tiempo-libre",
     "prod-a1-presentarse"
@@ -517699,6 +518285,7 @@
     "voc-mc-tomar-una-decision"
    ],
    "common_error:hay_definite_article": [
+    "beg-err-hay-articulo",
     "ec-hay-el",
     "guided-estar-hay-piso",
     "prod-a1-mi-barrio"
@@ -517745,6 +518332,7 @@
    "common_error:irregular_gender": [
     "a1-articulo-mano",
     "beg-a1-articulo-dia",
+    "beg-err-genero",
     "ec-la-dia",
     "guided-genero-articulos"
    ],
@@ -517811,6 +518399,7 @@
     "tr-responsable-de"
    ],
    "common_error:ser_age": [
+    "beg-err-ser-age",
     "ec-soy-anos",
     "prod-a1-presentarse"
    ],
@@ -517821,12 +518410,14 @@
     "mc-estar-de-acuerdo-con"
    ],
    "common_error:ser_location": [
+    "beg-err-ser-lugar",
     "ec-ser-location",
     "guided-estar-hay-piso",
     "prod-a1-mi-barrio"
    ],
    "common_error:ser_state": [
     "a1-estar-cansada",
+    "beg-err-ser-estado",
     "ec-ser-state",
     "guided-estar-hay-piso"
    ],
@@ -517854,6 +518445,7 @@
    "common_error:yo_gusto": [
     "a1-gustar-yo",
     "beg-a1-gustar-responder",
+    "beg-err-yo-gusto",
     "ec-yo-gusto",
     "guided-gustar-tiempo-libre",
     "prod-a1-presentarse"
@@ -517863,6 +518455,7 @@
     "a1-articulo-problema",
     "beg-a1-articulo-dia",
     "beg-a1-articulo-satz",
+    "beg-err-genero",
     "ec-la-dia",
     "guided-genero-articulos"
    ],
@@ -518410,6 +519003,8 @@
     "beg-a1-estar-dialogo",
     "beg-a1-estar-responder",
     "beg-a1-estar-satz",
+    "beg-err-ser-estado",
+    "beg-err-ser-lugar",
     "ec-ser-location",
     "ec-ser-state",
     "guided-estar-hay-piso",
@@ -518538,6 +519133,8 @@
     "beg-a1-gustar-dialogo",
     "beg-a1-gustar-plural",
     "beg-a1-gustar-responder",
+    "beg-err-gustar-plural",
+    "beg-err-yo-gusto",
     "ec-gustar-plural",
     "ec-yo-gusto",
     "guided-gustar-tiempo-libre",
@@ -518706,6 +519303,7 @@
     "beg-a1-hay-dialogo",
     "beg-a1-hay-responder",
     "beg-a1-hay-satz",
+    "beg-err-hay-articulo",
     "ec-hay-el",
     "guided-estar-hay-piso",
     "prod-a1-mi-barrio",
@@ -519692,6 +520290,7 @@
     "beg-a1-prep-con",
     "beg-a1-prep-dialogo",
     "beg-a1-prep-satz",
+    "beg-err-al-del",
     "ec-a-el"
    ],
    "grammar_structure:present_irregular": [
@@ -524992,6 +525591,8 @@
     "beg-a1-gustar-dialogo",
     "beg-a1-gustar-plural",
     "beg-a1-gustar-responder",
+    "beg-err-gustar-plural",
+    "beg-err-yo-gusto",
     "ec-gustar-plural",
     "ec-yo-gusto",
     "guided-gustar-tiempo-libre",
@@ -525188,6 +525789,7 @@
     "beg-a1-articulo-satz",
     "beg-a1-plural-ciudad",
     "beg-a1-plural-satz",
+    "beg-err-genero",
     "ec-la-dia",
     "guided-genero-articulos"
    ],
@@ -525678,6 +526280,7 @@
     "beg-a1-prep-con",
     "beg-a1-prep-dialogo",
     "beg-a1-prep-satz",
+    "beg-err-al-del",
     "ec-a-el",
     "ec-importante-de"
    ],
@@ -528132,6 +528735,9 @@
     "beg-a1-ser-satz",
     "beg-a2-ser-estar-dialogo",
     "beg-a2-ser-estar-satz",
+    "beg-err-hay-articulo",
+    "beg-err-ser-estado",
+    "beg-err-ser-lugar",
     "ec-hay-el",
     "ec-ser-de-acuerdo",
     "ec-ser-location",
@@ -530256,6 +530862,12 @@
     "text/slr-vem_03397_00552783543/dictado"
    ],
    "interference.german": [
+    "beg-err-estar-frio",
+    "beg-err-hay-articulo",
+    "beg-err-ser-age",
+    "beg-err-ser-estado",
+    "beg-err-ser-lugar",
+    "beg-err-yo-gusto",
     "ec-aprender-examen",
     "ec-con-el-tren",
     "ec-estoy-frio",

@@ -3,7 +3,7 @@
  "format_version": 1,
  "pattern_syntax": 1,
  "target": "production",
- "content_version": "c2138b0c102ff317",
+ "content_version": "2edec67af24bde76",
  "language": {
   "id": "de",
   "germanism_explanation_de": "",
@@ -1206,6 +1206,474 @@
   }
  ],
  "lexical_items": [
+  {
+   "id": "a1_billig",
+   "kind": "word",
+   "text_es": "billig / teuer",
+   "meaning_de": "kostet wenig / kostet viel",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.shopping",
+   "detector": {
+    "patterns": [
+     "\\bbillig(?:e|en|er|es|em)?\\b",
+     "\\bteu(?:er|re|ren|rer|res|rem)\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Das Hemd ist sehr billig.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_das_fruehstueck",
+   "kind": "word",
+   "text_es": "das Frühstück",
+   "meaning_de": "die erste Mahlzeit am Morgen",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bfrühstück\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Das Frühstück ist um sieben Uhr.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_das_geld",
+   "kind": "word",
+   "text_es": "das Geld",
+   "meaning_de": "Münzen und Scheine zum Bezahlen",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.shopping",
+   "detector": {
+    "patterns": [
+     "\\bgeld\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Ich habe kein Geld dabei.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_das_wochenende",
+   "kind": "word",
+   "text_es": "das Wochenende",
+   "meaning_de": "Samstag und Sonntag",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bwochenenden?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Am Wochenende besuche ich meine Eltern.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_das_zimmer",
+   "kind": "word",
+   "text_es": "das Zimmer",
+   "meaning_de": "Raum in einer Wohnung",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.housing",
+   "detector": {
+    "patterns": [
+     "\\bzimmern?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Mein Zimmer hat ein großes Fenster.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_der_bahnhof",
+   "kind": "word",
+   "text_es": "der Bahnhof",
+   "meaning_de": "Ort, an dem Züge halten",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.travel",
+   "detector": {
+    "patterns": [
+     "\\bbahnh(?:o|ö)fe?n?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Der Bahnhof ist im Zentrum.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_der_supermarkt",
+   "kind": "word",
+   "text_es": "der Supermarkt",
+   "meaning_de": "großes Geschäft für Lebensmittel",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.shopping",
+   "detector": {
+    "patterns": [
+     "\\bsupermärkten?\\b",
+     "\\bsupermarkts?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Der Supermarkt ist bis 22 Uhr offen.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_die_arbeit",
+   "kind": "word",
+   "text_es": "die Arbeit",
+   "meaning_de": "der Beruf; der Arbeitsplatz",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.work",
+   "detector": {
+    "patterns": [
+     "\\b(?:die|der|zur|meine|meiner|deine|deiner|seine|seiner|ihre|ihrer|neue|neuen) arbeit\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Die Arbeit macht mir Spaß.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_die_eltern",
+   "kind": "word",
+   "text_es": "die Eltern",
+   "meaning_de": "Mutter und Vater",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\beltern\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Meine Eltern wohnen in Sevilla.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_die_freizeit",
+   "kind": "word",
+   "text_es": "die Freizeit",
+   "meaning_de": "Zeit ohne Arbeit",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bfreizeit\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "In meiner Freizeit lese ich gern.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_die_kleidung",
+   "kind": "word",
+   "text_es": "die Kleidung",
+   "meaning_de": "Hosen, Hemden, Jacken usw.",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.shopping",
+   "detector": {
+    "patterns": [
+     "\\bkleidung\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Im Sommer trage ich leichte Kleidung.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_die_kueche",
+   "kind": "word",
+   "text_es": "die Küche",
+   "meaning_de": "Raum zum Kochen",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.housing",
+   "detector": {
+    "patterns": [
+     "\\bküchen?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Die Küche ist klein, aber hell.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_die_strasse",
+   "kind": "word",
+   "text_es": "die Straße",
+   "meaning_de": "Weg in der Stadt für Autos und Menschen",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.housing",
+   "detector": {
+    "patterns": [
+     "\\bstraßen?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Meine Straße ist sehr ruhig.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_die_woche",
+   "kind": "word",
+   "text_es": "die Woche",
+   "meaning_de": "sieben Tage",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bwochen?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Ich arbeite fünf Tage in der Woche.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_es_ist_kalt",
+   "kind": "expression",
+   "text_es": "es ist kalt / es ist warm",
+   "meaning_de": "Wetter: niedrige / hohe Temperatur",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bes ist (?:sehr |so |zu |ziemlich )?(?:kalt|warm|heiß)\\b",
+     "\\bist es (?:sehr |so |zu |ziemlich )?(?:kalt|warm|heiß)\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Im Winter ist es sehr kalt.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_frueh",
+   "kind": "word",
+   "text_es": "früh / spät",
+   "meaning_de": "am Anfang des Tages / am Ende",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bfrüh\\b",
+     "\\bspät\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Ich stehe jeden Tag früh auf.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
   {
    "id": "abhaengen_von",
    "kind": "pattern",
@@ -6104,7 +6572,7 @@
    "prompt_de": "Wähle die richtige Form.",
    "estimated_seconds": 20,
    "prompt_es": "",
-   "source_text_es": "Du ___ sehr gut Deutsch.",
+   "source_text_es": "Du ___ in Berlin, oder?",
    "instruction_de": "",
    "communication_goal_de": "",
    "learning_goal_de": "",
@@ -6122,29 +6590,29 @@
    "good_phrases": [],
    "accepted_answers": [
     {
-     "text": "sprichst",
+     "text": "wohnst",
      "is_model_answer": true,
      "note_de": ""
     }
    ],
    "wrong_answers": [
     {
-     "text": "spreche",
-     "feedback_de": "„spreche“ gehört zu „ich“. Zu „du“: sprichst.",
+     "text": "wohne",
+     "feedback_de": "„wohne“ gehört zu „ich“. Zu „du“: wohnst.",
      "error_id": null
     },
     {
-     "text": "sprecht",
-     "feedback_de": "„sprecht“ gehört zu „ihr“. Zu „du“: sprichst.",
+     "text": "wohnt",
+     "feedback_de": "„wohnt“ gehört zu er/sie/es oder ihr. Zu „du“: wohnst.",
      "error_id": null
     }
    ],
    "conversation": null,
    "difficulty": 1.05,
    "options": [
-    "sprichst",
-    "spreche",
-    "sprecht"
+    "wohnst",
+    "wohne",
+    "wohnt"
    ],
    "text_id": "",
    "listening": null,
@@ -6609,6 +7077,2545 @@
    "difficulty_source": "derived",
    "sublevel": "A1.1",
    "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-dativ-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Du wohnst bei deiner Schwester.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Wo wohnst du im Moment?",
+   "instruction_de": "bei + Dativ: bei meiner Schwester",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "dative_prepositions",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich wohne bei meiner Schwester.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Im Moment wohne ich bei meiner Schwester.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Bei meiner Schwester.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich wohne bei meine Schwester.",
+     "feedback_de": "Nach „bei“ steht der Dativ: bei meiner Schwester.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a2-dativ-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Woher kommst du gerade?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "dative_prepositions",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich komme gerade vom Arzt.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich komme gerade von den Arzt.",
+     "feedback_de": "Nach „von“ steht der Dativ: vom (von dem) Arzt.",
+     "error_id": null
+    },
+    {
+     "text": "Ich komme gerade zu dem Arzt.",
+     "feedback_de": "Woher? → von. Wohin? → zu.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Ich komme gerade vom Arzt.",
+    "Ich komme gerade von den Arzt.",
+    "Ich komme gerade zu dem Arzt."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-dativ-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Wähle den passenden Artikel.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich fahre mit ___ Bus zur Arbeit.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "dative_prepositions",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "dem",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "den",
+     "feedback_de": "Nach „mit“ steht immer der Dativ: mit dem Bus.",
+     "error_id": null
+    },
+    {
+     "text": "der",
+     "feedback_de": "„der Bus“ ist maskulin; Dativ: mit dem Bus.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "dem",
+    "den",
+    "der"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a2-perfekt-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.past"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Du hast einen Film gesehen.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Was hast du gestern Abend gemacht?",
+   "instruction_de": "Perfekt: habe … gesehen",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "perfect_tense",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich habe einen Film gesehen.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Gestern Abend habe ich einen Film gesehen.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ich habe gestern einen Film gesehen.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich bin einen Film gesehen.",
+     "feedback_de": "„sehen“ bildet das Perfekt mit „haben“: Ich habe … gesehen.",
+     "error_id": null
+    },
+    {
+     "text": "Ich habe einen Film gesieht.",
+     "feedback_de": "Das Partizip von „sehen“ ist „gesehen“.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a2-perfekt-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.past"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Was hast du am Wochenende gemacht?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "perfect_tense",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich habe meine Freunde getroffen.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich bin meine Freunde getroffen.",
+     "feedback_de": "„treffen“ bildet das Perfekt mit „haben“: Ich habe … getroffen.",
+     "error_id": null
+    },
+    {
+     "text": "Ich habe meine Freunde treffen.",
+     "feedback_de": "Im Perfekt steht am Ende das Partizip: getroffen.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Ich habe meine Freunde getroffen.",
+    "Ich bin meine Freunde getroffen.",
+    "Ich habe meine Freunde treffen."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-perfekt-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.past"
+   ],
+   "prompt_de": "Wähle das richtige Hilfsverb.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Gestern ___ ich mit dem Zug nach Hamburg gefahren.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "perfect_tense",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "bin",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "habe",
+     "feedback_de": "Bewegung von A nach B (fahren): Perfekt mit „sein“, ich bin gefahren.",
+     "error_id": null
+    },
+    {
+     "text": "hat",
+     "feedback_de": "Zu „ich“ gehört „bin“: ich bin gefahren.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "bin",
+    "habe",
+    "hat"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a2-praeteritum-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.past"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Du warst krank.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Wo warst du letzte Woche?",
+   "instruction_de": "sein in der Vergangenheit: ich war",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterite_sein_haben",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich war krank.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Ich war krank und zu Hause.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Letzte Woche war ich krank.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich bin krank letzte Woche.",
+     "feedback_de": "Vergangenheit: ich war krank.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a2-praeteritum-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.past"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Warum bist du gestern nicht gekommen?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterite_sein_haben",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich hatte keine Zeit.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich habe keine Zeit gestern.",
+     "feedback_de": "Gestern: Vergangenheit, ich hatte.",
+     "error_id": null
+    },
+    {
+     "text": "Ich war keine Zeit.",
+     "feedback_de": "Zeit haben → ich hatte keine Zeit.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Ich hatte keine Zeit.",
+    "Ich habe keine Zeit gestern.",
+    "Ich war keine Zeit."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-praeteritum-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.past"
+   ],
+   "prompt_de": "Wähle die richtige Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Letztes Jahr ___ ich in Berlin.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterite_sein_haben",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "war",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "bin",
+     "feedback_de": "Letztes Jahr = Vergangenheit: ich war.",
+     "error_id": null
+    },
+    {
+     "text": "hatte",
+     "feedback_de": "„in Berlin sein“ → Vergangenheit: ich war.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "war",
+    "bin",
+    "hatte"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a2-reflexiv-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.reflexive"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Deine Freundin interessiert sich für Musik.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Wofür interessiert sich deine Freundin?",
+   "instruction_de": "sich interessieren für: sie interessiert sich für …",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "reflexive_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sie interessiert sich für Musik.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Meine Freundin interessiert sich für Musik.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Sie interessiert sich sehr für Musik.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sie interessiert für Musik.",
+     "feedback_de": "sich interessieren ist reflexiv: sie interessiert sich für Musik.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a2-reflexiv-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.reflexive"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Warum ist Lena nicht hier?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "reflexive_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sie zieht sich gerade um.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sie zieht gerade um sich.",
+     "feedback_de": "„sich“ steht nach dem Verb, „um“ am Ende: Sie zieht sich gerade um.",
+     "error_id": null
+    },
+    {
+     "text": "Sie zieht mich gerade um.",
+     "feedback_de": "Zu „sie“ gehört „sich“.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Sie zieht sich gerade um.",
+    "Sie zieht gerade um sich.",
+    "Sie zieht mich gerade um."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-reflexiv-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.reflexive"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du sprichst über deinen Bruder.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "reflexive_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mein Bruder freut sich auf die Ferien.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Mein Bruder freut auf die Ferien.",
+     "feedback_de": "sich freuen ist reflexiv: er freut sich.",
+     "error_id": null
+    },
+    {
+     "text": "Mein Bruder freut mich auf die Ferien.",
+     "feedback_de": "Zu er/sie gehört „sich“: er freut sich.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Mein Bruder freut sich auf die Ferien.",
+    "Mein Bruder freut auf die Ferien.",
+    "Mein Bruder freut mich auf die Ferien."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-trennbar-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.verbs",
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Du kaufst am Samstag ein.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Wann kaufst du ein?",
+   "instruction_de": "einkaufen: ich kaufe … ein",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "separable_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich kaufe am Samstag ein.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Am Samstag kaufe ich ein.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ich kaufe immer am Samstag ein.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich einkaufe am Samstag.",
+     "feedback_de": "einkaufen ist trennbar: ich kaufe am Samstag ein.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a2-trennbar-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs",
+    "grammar.word_order"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Kannst du mich heute anrufen?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "separable_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ja, ich rufe dich um sechs an.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ja, ich anrufe dich um sechs.",
+     "feedback_de": "anrufen ist trennbar: ich rufe … an.",
+     "error_id": null
+    },
+    {
+     "text": "Ja, ich rufe an dich um sechs.",
+     "feedback_de": "Der Teil „an“ steht am Satzende: ich rufe dich um sechs an.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Ja, ich rufe dich um sechs an.",
+    "Ja, ich anrufe dich um sechs.",
+    "Ja, ich rufe an dich um sechs."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-trennbar-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs",
+    "grammar.word_order"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du erzählst von deinem Morgen.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "separable_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich stehe um sieben Uhr auf.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich aufstehe um sieben Uhr.",
+     "feedback_de": "Trennbares Verb: der Teil „auf“ steht am Ende. Ich stehe … auf.",
+     "error_id": null
+    },
+    {
+     "text": "Ich stehe auf um sieben Uhr auf.",
+     "feedback_de": "„auf“ steht nur einmal, am Satzende.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Ich stehe um sieben Uhr auf.",
+    "Ich aufstehe um sieben Uhr.",
+    "Ich stehe auf um sieben Uhr auf."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-vergleich-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Deine Schwester ist älter als du.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Wer ist älter, du oder deine Schwester?",
+   "instruction_de": "Komparativ + als",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "comparison",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Meine Schwester ist älter als ich.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Meine Schwester. Sie ist älter als ich.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Sie ist älter als ich.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Meine Schwester ist älter wie ich.",
+     "feedback_de": "Nach dem Komparativ: als.",
+     "error_id": "komparativ_wie"
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a2-vergleich-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Fährst du lieber mit dem Bus oder mit dem Fahrrad?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "comparison",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mit dem Fahrrad, das ist schneller als der Bus.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Mit dem Fahrrad, das ist schneller wie der Bus.",
+     "feedback_de": "Nach dem Komparativ: als.",
+     "error_id": "komparativ_wie"
+    },
+    {
+     "text": "Mit dem Fahrrad, das ist mehr schnell als der Bus.",
+     "feedback_de": "Komparativ mit -er: schneller.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Mit dem Fahrrad, das ist schneller als der Bus.",
+    "Mit dem Fahrrad, das ist schneller wie der Bus.",
+    "Mit dem Fahrrad, das ist mehr schnell als der Bus."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-vergleich-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du vergleichst zwei Städte.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "comparison",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "komparativ_wie"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Berlin ist größer als München.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Berlin ist größer wie München.",
+     "feedback_de": "Nach dem Komparativ steht „als“: größer als.",
+     "error_id": "komparativ_wie"
+    },
+    {
+     "text": "Berlin ist mehr groß als München.",
+     "feedback_de": "Komparativ mit -er: größer (nicht „mehr groß“).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Berlin ist größer als München.",
+    "Berlin ist größer wie München.",
+    "Berlin ist mehr groß als München."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-wechsel-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Du gehst in den Park.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Wohin gehst du?",
+   "instruction_de": "Wohin? → in + Akkusativ",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "two_way_prepositions",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich gehe in den Park.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "In den Park.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ich gehe jetzt in den Park.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich gehe in dem Park.",
+     "feedback_de": "Wohin? → Akkusativ: in den Park.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a2-wechsel-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Wo ist mein Handy?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "two_way_prepositions",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Es liegt auf dem Sofa.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Es liegt auf das Sofa.",
+     "feedback_de": "Wo? (liegen) → Dativ: auf dem Sofa.",
+     "error_id": null
+    },
+    {
+     "text": "Es liegt in den Sofa.",
+     "feedback_de": "Wo? → Dativ, und „das Sofa“ ist neutral: auf dem Sofa.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Es liegt auf dem Sofa.",
+    "Es liegt auf das Sofa.",
+    "Es liegt in den Sofa."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-wechsel-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Wohin oder wo? Wähle den Artikel.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich stelle die Tasche unter ___ Stuhl.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "two_way_prepositions",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "den",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "dem",
+     "feedback_de": "Wohin? (stellen) → Akkusativ: unter den Stuhl.",
+     "error_id": null
+    },
+    {
+     "text": "der",
+     "feedback_de": "„der Stuhl“ ist maskulin; wohin? → unter den Stuhl.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "den",
+    "dem",
+    "der"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a2-weil-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.subordinate",
+    "grammar.word_order"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch mit „weil“: Du hast keine Zeit.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Warum kommst du nicht mit?",
+   "instruction_de": "weil … Verb am Ende",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "subordinate_weil_dass",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "weil_verb_second"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Weil ich keine Zeit habe.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Ich komme nicht mit, weil ich keine Zeit habe.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Weil ich leider keine Zeit habe.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Weil ich habe keine Zeit.",
+     "feedback_de": "Nach „weil“ steht das Verb am Ende: weil ich keine Zeit habe.",
+     "error_id": "weil_verb_second"
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a2-weil-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.subordinate",
+    "grammar.word_order"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 25,
+   "prompt_es": "",
+   "source_text_es": "Warum lernst du Deutsch?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "subordinate_weil_dass",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "weil_verb_second"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Weil ich in Deutschland arbeiten möchte.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Weil ich möchte in Deutschland arbeiten.",
+     "feedback_de": "Nach „weil“ steht das konjugierte Verb am Ende: … arbeiten möchte.",
+     "error_id": "weil_verb_second"
+    },
+    {
+     "text": "Weil möchte ich in Deutschland arbeiten.",
+     "feedback_de": "Nach „weil“ steht das konjugierte Verb am Ende: weil ich … arbeiten möchte.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Weil ich in Deutschland arbeiten möchte.",
+    "Weil ich möchte in Deutschland arbeiten.",
+    "Weil möchte ich in Deutschland arbeiten."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a2-weil-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.subordinate",
+    "grammar.word_order"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 25,
+   "prompt_es": "",
+   "source_text_es": "Du sagst, warum du zu Hause bleibst.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "subordinate_weil_dass",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "weil_verb_second"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich bleibe zu Hause, weil ich krank bin.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich bleibe zu Hause, weil ich bin krank.",
+     "feedback_de": "Nach „weil“ steht das Verb am Ende: weil ich krank bin.",
+     "error_id": "weil_verb_second"
+    },
+    {
+     "text": "Ich bleibe zu Hause, weil bin ich krank.",
+     "feedback_de": "Nach „weil“: Subjekt, dann am Ende das Verb (weil ich krank bin).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Ich bleibe zu Hause, weil ich krank bin.",
+    "Ich bleibe zu Hause, weil ich bin krank.",
+    "Ich bleibe zu Hause, weil bin ich krank."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-voc-a1_billig",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Das kostet nur einen Euro. Das ist ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_billig"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "billig",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "teuer",
+     "feedback_de": "„teuer“ heißt: kostet viel. Ein Euro ist wenig: billig.",
+     "error_id": null
+    },
+    {
+     "text": "groß",
+     "feedback_de": "„groß“ beschreibt die Größe.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "billig",
+    "teuer",
+    "groß"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_das_fruehstueck",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Am Morgen esse ich Brot zum ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_das_fruehstueck"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Frühstück",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Abendessen",
+     "feedback_de": "Das Abendessen isst man am Abend.",
+     "error_id": null
+    },
+    {
+     "text": "Wochenende",
+     "feedback_de": "Das Wochenende sind Samstag und Sonntag.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Frühstück",
+    "Abendessen",
+    "Wochenende"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_das_geld",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich bezahle mit dem ___ aus meinem Portemonnaie.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_das_geld"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Geld",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Frühstück",
+     "feedback_de": "Das Frühstück ist eine Mahlzeit.",
+     "error_id": null
+    },
+    {
+     "text": "Zimmer",
+     "feedback_de": "Ein Zimmer ist ein Raum.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Geld",
+    "Frühstück",
+    "Zimmer"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_das_wochenende",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Samstag und Sonntag sind das ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_das_wochenende"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Wochenende",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Frühstück",
+     "feedback_de": "Das Frühstück ist eine Mahlzeit.",
+     "error_id": null
+    },
+    {
+     "text": "Zimmer",
+     "feedback_de": "Ein Zimmer ist ein Raum.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Wochenende",
+    "Frühstück",
+    "Zimmer"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_das_zimmer",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "In der Nacht schlafe ich in meinem ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_das_zimmer"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Zimmer",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Bahnhof",
+     "feedback_de": "Am Bahnhof fahren Züge ab.",
+     "error_id": null
+    },
+    {
+     "text": "Geld",
+     "feedback_de": "Mit Geld bezahlt man.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Zimmer",
+    "Bahnhof",
+    "Geld"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_der_bahnhof",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.travel"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Der Zug fährt um acht Uhr vom ___ ab.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_der_bahnhof"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Bahnhof",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Bäcker",
+     "feedback_de": "Beim Bäcker kauft man Brot. Züge fahren vom Bahnhof.",
+     "error_id": null
+    },
+    {
+     "text": "Garten",
+     "feedback_de": "Der Garten gehört zum Haus.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Bahnhof",
+    "Bäcker",
+    "Garten"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_der_supermarkt",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Milch und Brot kaufe ich im ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_der_supermarkt"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Supermarkt",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Bahnhof",
+     "feedback_de": "Am Bahnhof fahren Züge ab.",
+     "error_id": null
+    },
+    {
+     "text": "Zimmer",
+     "feedback_de": "Ein Zimmer ist ein Raum.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Supermarkt",
+    "Bahnhof",
+    "Zimmer"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_die_arbeit",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.work"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich fahre jeden Morgen mit dem Bus zur ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_die_arbeit"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Arbeit",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Küche",
+     "feedback_de": "Die Küche ist ein Raum in der Wohnung.",
+     "error_id": null
+    },
+    {
+     "text": "Woche",
+     "feedback_de": "Die Woche hat sieben Tage.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Arbeit",
+    "Küche",
+    "Woche"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_die_eltern",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Meine Mutter und mein Vater sind meine ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_die_eltern"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Eltern",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Geschwister",
+     "feedback_de": "Geschwister sind Bruder und Schwester.",
+     "error_id": null
+    },
+    {
+     "text": "Kinder",
+     "feedback_de": "Kinder sind Sohn und Tochter.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Eltern",
+    "Geschwister",
+    "Kinder"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_die_freizeit",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Nach der Arbeit habe ich ___ und spiele Gitarre.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_die_freizeit"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Freizeit",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Frühstück",
+     "feedback_de": "Das Frühstück ist eine Mahlzeit.",
+     "error_id": null
+    },
+    {
+     "text": "Küche",
+     "feedback_de": "Die Küche ist ein Raum.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Freizeit",
+    "Frühstück",
+    "Küche"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_die_kleidung",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hosen, Hemden und Jacken sind ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_die_kleidung"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Kleidung",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Essen",
+     "feedback_de": "Brot und Käse sind Essen.",
+     "error_id": null
+    },
+    {
+     "text": "Geld",
+     "feedback_de": "Mit Geld bezahlt man.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Kleidung",
+    "Essen",
+    "Geld"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_die_kueche",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich koche das Essen in der ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_die_kueche"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Küche",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Straße",
+     "feedback_de": "Auf der Straße fahren Autos.",
+     "error_id": null
+    },
+    {
+     "text": "Woche",
+     "feedback_de": "Die Woche hat sieben Tage.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Küche",
+    "Straße",
+    "Woche"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_die_strasse",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich wohne in einer ruhigen ___ im Zentrum.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_die_strasse"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Straße",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Woche",
+     "feedback_de": "Die Woche hat sieben Tage.",
+     "error_id": null
+    },
+    {
+     "text": "Freizeit",
+     "feedback_de": "Freizeit ist Zeit ohne Arbeit.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Straße",
+    "Woche",
+    "Freizeit"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_die_woche",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Montag, Dienstag, Mittwoch … sind Tage der ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_die_woche"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Woche",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Küche",
+     "feedback_de": "Die Küche ist ein Raum.",
+     "error_id": null
+    },
+    {
+     "text": "Straße",
+     "feedback_de": "Auf der Straße fahren Autos.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Woche",
+    "Küche",
+    "Straße"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_es_ist_kalt",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Heute ___ es sehr kalt.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_es_ist_kalt"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "ist",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "macht",
+     "feedback_de": "Wetter auf Deutsch mit „sein“: Es ist kalt (nicht „es macht kalt“ wie hace frío).",
+     "error_id": null
+    },
+    {
+     "text": "hat",
+     "feedback_de": "Wetter auf Deutsch mit „sein“: Es ist kalt.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "ist",
+    "macht",
+    "hat"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-voc-a1_frueh",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich stehe um fünf Uhr auf, sehr ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_frueh"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "früh",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "teuer",
+     "feedback_de": "„teuer“ heißt: kostet viel.",
+     "error_id": null
+    },
+    {
+     "text": "weit",
+     "feedback_de": "„weit“ beschreibt eine Entfernung.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "früh",
+    "teuer",
+    "weit"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
   },
   {
    "id": "ec-dativ-kinder",
@@ -37241,6 +40248,134 @@
    "label": "zwar … aber (Einräumung)"
   },
   {
+   "id": "lexical_item:a1_billig",
+   "type": "lexical_item",
+   "ref_id": "a1_billig",
+   "topic_id": "vocabulary.everyday.shopping",
+   "level": "A1",
+   "label": "billig / teuer"
+  },
+  {
+   "id": "lexical_item:a1_das_fruehstueck",
+   "type": "lexical_item",
+   "ref_id": "a1_das_fruehstueck",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "das Frühstück"
+  },
+  {
+   "id": "lexical_item:a1_das_geld",
+   "type": "lexical_item",
+   "ref_id": "a1_das_geld",
+   "topic_id": "vocabulary.everyday.shopping",
+   "level": "A1",
+   "label": "das Geld"
+  },
+  {
+   "id": "lexical_item:a1_das_wochenende",
+   "type": "lexical_item",
+   "ref_id": "a1_das_wochenende",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "das Wochenende"
+  },
+  {
+   "id": "lexical_item:a1_das_zimmer",
+   "type": "lexical_item",
+   "ref_id": "a1_das_zimmer",
+   "topic_id": "vocabulary.everyday.housing",
+   "level": "A1",
+   "label": "das Zimmer"
+  },
+  {
+   "id": "lexical_item:a1_der_bahnhof",
+   "type": "lexical_item",
+   "ref_id": "a1_der_bahnhof",
+   "topic_id": "vocabulary.everyday.travel",
+   "level": "A1",
+   "label": "der Bahnhof"
+  },
+  {
+   "id": "lexical_item:a1_der_supermarkt",
+   "type": "lexical_item",
+   "ref_id": "a1_der_supermarkt",
+   "topic_id": "vocabulary.everyday.shopping",
+   "level": "A1",
+   "label": "der Supermarkt"
+  },
+  {
+   "id": "lexical_item:a1_die_arbeit",
+   "type": "lexical_item",
+   "ref_id": "a1_die_arbeit",
+   "topic_id": "vocabulary.everyday.work",
+   "level": "A1",
+   "label": "die Arbeit"
+  },
+  {
+   "id": "lexical_item:a1_die_eltern",
+   "type": "lexical_item",
+   "ref_id": "a1_die_eltern",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "die Eltern"
+  },
+  {
+   "id": "lexical_item:a1_die_freizeit",
+   "type": "lexical_item",
+   "ref_id": "a1_die_freizeit",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "die Freizeit"
+  },
+  {
+   "id": "lexical_item:a1_die_kleidung",
+   "type": "lexical_item",
+   "ref_id": "a1_die_kleidung",
+   "topic_id": "vocabulary.everyday.shopping",
+   "level": "A1",
+   "label": "die Kleidung"
+  },
+  {
+   "id": "lexical_item:a1_die_kueche",
+   "type": "lexical_item",
+   "ref_id": "a1_die_kueche",
+   "topic_id": "vocabulary.everyday.housing",
+   "level": "A1",
+   "label": "die Küche"
+  },
+  {
+   "id": "lexical_item:a1_die_strasse",
+   "type": "lexical_item",
+   "ref_id": "a1_die_strasse",
+   "topic_id": "vocabulary.everyday.housing",
+   "level": "A1",
+   "label": "die Straße"
+  },
+  {
+   "id": "lexical_item:a1_die_woche",
+   "type": "lexical_item",
+   "ref_id": "a1_die_woche",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "die Woche"
+  },
+  {
+   "id": "lexical_item:a1_es_ist_kalt",
+   "type": "lexical_item",
+   "ref_id": "a1_es_ist_kalt",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "es ist kalt / es ist warm"
+  },
+  {
+   "id": "lexical_item:a1_frueh",
+   "type": "lexical_item",
+   "ref_id": "a1_frueh",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "früh / spät"
+  },
+  {
    "id": "lexical_item:abhaengen_von",
    "type": "lexical_item",
    "ref_id": "abhaengen_von",
@@ -37581,6 +40716,7 @@
    ],
    "common_error:komparativ_wie": [
     "a2-vergleich-als",
+    "beg-de-a2-vergleich-satz",
     "ec-groesser-wie"
    ],
    "common_error:mehr_komparativ": [
@@ -37593,6 +40729,9 @@
    ],
    "common_error:weil_verb_second": [
     "a2-weil-wortstellung",
+    "beg-de-a2-weil-antworten",
+    "beg-de-a2-weil-dialog",
+    "beg-de-a2-weil-satz",
     "ec-weil-verb",
     "prod-a2-absage"
    ],
@@ -37614,6 +40753,9 @@
    "grammar_structure:comparison": [
     "a2-vergleich-als",
     "a2-vergleich-so-wie",
+    "beg-de-a2-vergleich-antworten",
+    "beg-de-a2-vergleich-dialog",
+    "beg-de-a2-vergleich-satz",
     "ec-groesser-wie",
     "ec-mehr-besser",
     "p21-komparativ-schneller"
@@ -37621,6 +40763,9 @@
    "grammar_structure:dative_prepositions": [
     "a2-dativ-bus",
     "a2-dativ-plural-freunden",
+    "beg-de-a2-dativ-antworten",
+    "beg-de-a2-dativ-dialog",
+    "beg-de-a2-dativ-luecke",
     "ec-dativ-kinder"
    ],
    "grammar_structure:genitive_prepositions": [
@@ -37756,6 +40901,9 @@
     "a2-perfekt-gemacht",
     "a2-perfekt-gesehen",
     "a2-perfekt-sind",
+    "beg-de-a2-perfekt-antworten",
+    "beg-de-a2-perfekt-dialog",
+    "beg-de-a2-perfekt-luecke",
     "prod-b1-wochenende",
     "text/tatoeba-695081/dictado",
     "text/tatoeba-695391/dictado",
@@ -37808,6 +40956,9 @@
    "grammar_structure:preterite_sein_haben": [
     "a2-praeteritum-hatte",
     "a2-praeteritum-war",
+    "beg-de-a2-praeteritum-antworten",
+    "beg-de-a2-praeteritum-dialog",
+    "beg-de-a2-praeteritum-luecke",
     "prod-b1-wochenende",
     "text/lv-kafka-verwandlung-ung01kafka-05133/forma-2",
     "text/lv-kafka-verwandlung-ung02kafka-03138/forma-2",
@@ -37834,6 +40985,9 @@
    ],
    "grammar_structure:reflexive_verbs": [
     "a2-reflexiv-freuen",
+    "beg-de-a2-reflexiv-antworten",
+    "beg-de-a2-reflexiv-dialog",
+    "beg-de-a2-reflexiv-satz",
     "p21-reflexiv-waschen",
     "text/tatoeba-745573/dictado",
     "text/tatoeba-745787/dictado",
@@ -37852,6 +41006,9 @@
     "beg-de-a1-sein-satz"
    ],
    "grammar_structure:separable_verbs": [
+    "beg-de-a2-trennbar-antworten",
+    "beg-de-a2-trennbar-dialog",
+    "beg-de-a2-trennbar-satz",
     "p21-trennbar-anrufen",
     "p21-trennbar-aufstehen",
     "p21-trennbar-einladen"
@@ -37860,6 +41017,9 @@
     "a2-weil-krank",
     "a2-weil-verbinden",
     "a2-weil-wortstellung",
+    "beg-de-a2-weil-antworten",
+    "beg-de-a2-weil-dialog",
+    "beg-de-a2-weil-satz",
     "ec-weil-verb",
     "prod-a2-absage",
     "prod-b1-auto-stadt",
@@ -37872,7 +41032,10 @@
    ],
    "grammar_structure:two_way_prepositions": [
     "a2-wechsel-lege",
-    "a2-wechsel-liegt"
+    "a2-wechsel-liegt",
+    "beg-de-a2-wechsel-antworten",
+    "beg-de-a2-wechsel-dialog",
+    "beg-de-a2-wechsel-luecke"
    ],
    "grammar_structure:um_zu_infinitive": [
     "b1-umzu-kaufen",
@@ -37888,6 +41051,54 @@
    "grammar_structure:zwar_aber": [
     "b2-zwar-aber",
     "prod-b2-homeoffice"
+   ],
+   "lexical_item:a1_billig": [
+    "beg-de-voc-a1_billig"
+   ],
+   "lexical_item:a1_das_fruehstueck": [
+    "beg-de-voc-a1_das_fruehstueck"
+   ],
+   "lexical_item:a1_das_geld": [
+    "beg-de-voc-a1_das_geld"
+   ],
+   "lexical_item:a1_das_wochenende": [
+    "beg-de-voc-a1_das_wochenende"
+   ],
+   "lexical_item:a1_das_zimmer": [
+    "beg-de-voc-a1_das_zimmer"
+   ],
+   "lexical_item:a1_der_bahnhof": [
+    "beg-de-voc-a1_der_bahnhof"
+   ],
+   "lexical_item:a1_der_supermarkt": [
+    "beg-de-voc-a1_der_supermarkt"
+   ],
+   "lexical_item:a1_die_arbeit": [
+    "beg-de-voc-a1_die_arbeit"
+   ],
+   "lexical_item:a1_die_eltern": [
+    "beg-de-voc-a1_die_eltern"
+   ],
+   "lexical_item:a1_die_freizeit": [
+    "beg-de-voc-a1_die_freizeit"
+   ],
+   "lexical_item:a1_die_kleidung": [
+    "beg-de-voc-a1_die_kleidung"
+   ],
+   "lexical_item:a1_die_kueche": [
+    "beg-de-voc-a1_die_kueche"
+   ],
+   "lexical_item:a1_die_strasse": [
+    "beg-de-voc-a1_die_strasse"
+   ],
+   "lexical_item:a1_die_woche": [
+    "beg-de-voc-a1_die_woche"
+   ],
+   "lexical_item:a1_es_ist_kalt": [
+    "beg-de-voc-a1_es_ist_kalt"
+   ],
+   "lexical_item:a1_frueh": [
+    "beg-de-voc-a1_frueh"
    ],
    "lexical_item:abhaengen_von": [
     "voc-abhaengen-vom"
@@ -38048,6 +41259,15 @@
     "beg-de-a1-possessiv-antworten",
     "beg-de-a1-possessiv-dialog",
     "beg-de-a1-possessiv-luecke",
+    "beg-de-a2-dativ-antworten",
+    "beg-de-a2-dativ-dialog",
+    "beg-de-a2-dativ-luecke",
+    "beg-de-a2-vergleich-antworten",
+    "beg-de-a2-vergleich-dialog",
+    "beg-de-a2-vergleich-satz",
+    "beg-de-a2-wechsel-antworten",
+    "beg-de-a2-wechsel-dialog",
+    "beg-de-a2-wechsel-luecke",
     "ec-dativ-kinder",
     "ec-groesser-wie",
     "ec-mehr-besser",
@@ -38167,6 +41387,12 @@
     "a2-praeteritum-war",
     "b1-plusquam-angefangen",
     "b1-plusquam-nachdem",
+    "beg-de-a2-perfekt-antworten",
+    "beg-de-a2-perfekt-dialog",
+    "beg-de-a2-perfekt-luecke",
+    "beg-de-a2-praeteritum-antworten",
+    "beg-de-a2-praeteritum-dialog",
+    "beg-de-a2-praeteritum-luecke",
     "prod-b1-wochenende",
     "text/lv-kafka-verwandlung-ung01kafka-00375/dictado-3",
     "text/lv-kafka-verwandlung-ung01kafka-00375/forma-1",
@@ -38225,6 +41451,9 @@
    ],
    "grammar.reflexive": [
     "a2-reflexiv-freuen",
+    "beg-de-a2-reflexiv-antworten",
+    "beg-de-a2-reflexiv-dialog",
+    "beg-de-a2-reflexiv-satz",
     "p21-reflexiv-waschen",
     "text/lv-kafka-verwandlung-ung02kafka-03138/forma-1",
     "text/lv-kafka-verwandlung-ung02kafka-03138/forma-2",
@@ -38246,6 +41475,9 @@
     "b1-immer-wenn",
     "b1-relativ-dem",
     "b1-relativ-die",
+    "beg-de-a2-weil-antworten",
+    "beg-de-a2-weil-dialog",
+    "beg-de-a2-weil-satz",
     "prod-a2-absage",
     "text/tatoeba-694824/dictado",
     "text/tatoeba-745306/dictado",
@@ -38270,6 +41502,9 @@
     "beg-de-a1-sein-antworten",
     "beg-de-a1-sein-dialog",
     "beg-de-a1-sein-satz",
+    "beg-de-a2-trennbar-antworten",
+    "beg-de-a2-trennbar-dialog",
+    "beg-de-a2-trennbar-satz",
     "p21-praesens-arbeitet",
     "p21-praesens-wohnst",
     "p21-prod-a1-vorstellen",
@@ -38324,6 +41559,11 @@
     "beg-de-a1-verbzweit-antworten",
     "beg-de-a1-verbzweit-dialog",
     "beg-de-a1-verbzweit-satz",
+    "beg-de-a2-trennbar-dialog",
+    "beg-de-a2-trennbar-satz",
+    "beg-de-a2-weil-antworten",
+    "beg-de-a2-weil-dialog",
+    "beg-de-a2-weil-satz",
     "ec-weil-verb",
     "p21-trennbar-anrufen",
     "p21-trennbar-aufstehen"
@@ -38346,6 +41586,13 @@
     "voc-zur-verfuegung"
    ],
    "vocabulary.everyday": [
+    "beg-de-voc-a1_das_fruehstueck",
+    "beg-de-voc-a1_das_wochenende",
+    "beg-de-voc-a1_die_eltern",
+    "beg-de-voc-a1_die_freizeit",
+    "beg-de-voc-a1_die_woche",
+    "beg-de-voc-a1_es_ist_kalt",
+    "beg-de-voc-a1_frueh",
     "voc-bescheid-sagen"
    ],
    "vocabulary.everyday.health": [
@@ -38355,6 +41602,9 @@
    "vocabulary.everyday.housing": [
     "beg-de-a1-kein-antworten",
     "beg-de-a1-praesens-dialog",
+    "beg-de-voc-a1_das_zimmer",
+    "beg-de-voc-a1_die_kueche",
+    "beg-de-voc-a1_die_strasse",
     "p21-prod-a1-vorstellen",
     "p21-voc-miete",
     "p21-voc-wohnung",
@@ -38365,14 +41615,21 @@
    "vocabulary.everyday.shopping": [
     "beg-de-a1-artikel-dialog",
     "beg-de-a1-modal-antworten",
+    "beg-de-a2-trennbar-antworten",
+    "beg-de-voc-a1_billig",
+    "beg-de-voc-a1_das_geld",
+    "beg-de-voc-a1_der_supermarkt",
+    "beg-de-voc-a1_die_kleidung",
     "p21-voc-einkaufen",
     "p21-voc-rechnung"
    ],
    "vocabulary.everyday.travel": [
+    "beg-de-voc-a1_der_bahnhof",
     "p21-voc-fahrkarte",
     "p21-voc-umsteigen"
    ],
    "vocabulary.everyday.work": [
+    "beg-de-voc-a1_die_arbeit",
     "p21-voc-bewerben",
     "p21-voc-feierabend",
     "p21-voc-krankgeschrieben",

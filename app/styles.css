@@ -813,3 +813,58 @@ input[type="text"]:hover, textarea:hover, select:hover { border-color: color-mix
 .coach-tip-ok { grid-column: 2; justify-self: start; padding: 0; min-height: 0; }
 .summary .coach-tip { margin-top: 1.25rem; }
 @media (prefers-reduced-motion: reduce) { .coach-tip { animation: none !important; } }
+
+/* ================================================================ P25.7 Premium-UX-Pass
+ * Klare Hierarchie: eine Hauptaktion je Ansicht, ruhige Nebenaktionen, Information zurückhaltend.
+ */
+.lead { font-size: 1.05rem; line-height: 1.5; margin: 0 0 0.75rem; }
+.onboarding-intro { margin: 0.25rem 0 0; color: var(--muted); line-height: 1.5; }
+
+/* Session-Ende: die Kernaussage groß, darunter ein Satz */
+.summary-score { font-family: var(--font-display); font-size: 1.35rem; font-weight: 750; letter-spacing: -0.01em; margin: 0.25rem 0 0; }
+.summary-actions { margin-top: 1.25rem; }
+.summary-actions .btn-link { align-self: center; }
+
+/* Nebenaktionen: leise, aber gut tippbar */
+.btn-quiet { background: var(--surface-2); color: var(--text); border: 1px solid transparent; font-weight: 600; min-height: 44px;
+  padding: 0.5rem 0.9rem; border-radius: 999px; }
+.btn-quiet:hover { border-color: var(--border); }
+.btn-muted { color: var(--muted); font-weight: 600; }
+
+/* Hören: Hauptaktion, Hilfe als ruhiger Block, Ausweg ganz unten */
+.listening-controls { gap: 0.6rem; }
+.listening-controls .btn-secondary { min-height: 50px; }
+.listening-status { display: block; margin-top: -0.15rem; }
+.listening-help { display: grid; gap: 0.5rem; padding: 0.75rem; border-radius: var(--radius-sm); background: var(--bg); border: 1px solid var(--border); }
+.listening-help-label { display: block; }
+.listening-help-buttons { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.listening-noanswer { display: flex; flex-wrap: wrap; gap: 0.25rem 1rem; padding-top: 0.5rem; border-top: 1px solid var(--border); }
+.listening-noanswer .btn { padding-left: 0; padding-right: 0; }
+.source-details { margin-top: 0.5rem; }
+.source-details summary, details.more > summary { cursor: pointer; list-style: none; font-weight: 600; }
+.source-details summary::-webkit-details-marker, details.more > summary::-webkit-details-marker { display: none; }
+.source-details summary::after, details.more > summary::after { content: "›"; margin-left: 0.35rem; display: inline-block; transition: transform 160ms ease; }
+.source-details[open] summary::after, details.more[open] > summary::after { transform: rotate(90deg); }
+
+/* Üben: drei Einstiege oben, aufklappbare Listen */
+.practice-jump { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: 1.5rem; }
+.practice-jump .tile { min-height: 96px; }
+.practice .texts, .practice .conversations, .practice .topics { scroll-margin-top: 1rem; margin-bottom: 1.75rem; }
+.practice .topics > h2, .practice .conversations > h2 { margin-bottom: 0.5rem; }
+details.more { margin-top: 0.5rem; }
+details.more > summary { color: var(--accent); min-height: 44px; display: flex; align-items: center; }
+details.more > .list { margin-top: 0.25rem; }
+.card.topic h3 { margin: 0; font-size: 1.05rem; }
+.card.topic h3 a { color: inherit; text-decoration: none; }
+
+@media (max-width: 380px) {
+  .practice-jump { grid-template-columns: 1fr; }
+  .practice-jump .tile { min-height: 64px; flex-direction: row; align-items: center; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .source-details summary::after, details.more > summary::after { transition: none; }
+}
+.summary-open { font-family: var(--font); font-size: 0.95rem; font-weight: 500; }
+.meter-two { display: flex; }
+.meter-two .meter-fill { border-radius: 999px 0 0 999px; }
+.meter-two .meter-working { height: 100%; background: color-mix(in srgb, var(--accent) 28%, var(--surface-3)); }

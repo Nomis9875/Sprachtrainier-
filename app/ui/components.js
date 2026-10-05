@@ -133,7 +133,7 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
   const revealed = h("div", { class: "listening-support", "aria-live": "polite" });
   const supportNote = h("p", { class: "muted small", hidden: true }, t("l.help_note"));
   const supportButtons = listening.supports.map((s) => {
-    const button = h("button", { type: "button", class: "btn btn-link", "data-support": s.level }, s.label);
+    const button = h("button", { type: "button", class: "btn btn-quiet", "data-support": s.level }, s.label);
     button.addEventListener("click", () => {
       support = strongerSupport(support, s.level);
       button.disabled = true;
@@ -144,8 +144,8 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
     return button;
   });
   const noAnswer = onNoAnswer ? [
-    h("button", { type: "button", class: "btn btn-ghost", "data-action": "dont-know" }, t("l.dont_know")),
-    allowSkip ? h("button", { type: "button", class: "btn btn-ghost", "data-action": "skip-listening" }, t("l.skip")) : null,
+    h("button", { type: "button", class: "btn btn-link btn-muted", "data-action": "dont-know" }, t("l.dont_know")),
+    allowSkip ? h("button", { type: "button", class: "btn btn-link btn-muted", "data-action": "skip-listening" }, t("l.skip")) : null,
   ].filter(Boolean) : [];
   for (const button of noAnswer) {
     button.addEventListener("click", () => {
@@ -159,10 +159,13 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
       context.title ? h("h3", { class: "group-title", lang: targetLang() }, "🎧 ", context.title) : null,
       h("p", { class: "muted small" }, [listening.mode_label, context.length_label, context.speaker_count > 1 ? t("l.speakers", context.speaker_count) : "",
         context.progress].filter(Boolean).join(" · "))) : null,
-    h("div", { class: "listening-controls" }, play, replay, status),
+    // P25.7: Hauptaktion (Anhören, noch einmal), darunter ruhig die Hilfe, ganz unten der Ausweg
+    h("div", { class: "listening-controls" }, play, replay),
+    status,
     segmentButtons.length ? h("div", { class: "listening-segments" }, h("span", { class: "muted small" }, t("l.refers")), segmentButtons) : null,
     audio,
-    supportButtons.length ? h("div", { class: "listening-help" }, h("span", { class: "muted small" }, t("l.help")), supportButtons) : null,
+    supportButtons.length ? h("div", { class: "listening-help" }, h("span", { class: "muted small listening-help-label" }, t("l.help")),
+      h("div", { class: "listening-help-buttons" }, supportButtons)) : null,
     supportNote,
     revealed,
     noAnswer.length ? h("div", { class: "listening-noanswer" }, noAnswer) : null,
@@ -450,7 +453,9 @@ function listeningFeedbackBlock(listening, labels) {
     listening.transcript ? h("details", { class: "more", open: true },
       h("summary", {}, labels.transcript),
       h("p", { lang: targetLang(), class: "transcript" }, listening.transcript),
-      listening.source ? h("p", { class: "muted small" }, listening.source) : null) : null);
+      // P25.7: Quellenangabe aufklappbar statt als langer Text mitten in der Rückmeldung
+      listening.source ? h("details", { class: "source-details" }, h("summary", { class: "muted small" }, t("l.source")),
+        h("p", { class: "muted small" }, listening.source)) : null) : null);
 }
 
 function findingItem(item, labels) {

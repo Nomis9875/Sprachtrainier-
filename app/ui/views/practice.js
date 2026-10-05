@@ -5,22 +5,63 @@ import { h, icon } from "../dom.js";
 import { t } from "../../model/i18n.js";
 import { answerForm, emptyState, feedbackPanel, listeningPlayer, taskCard } from "../components.js";
 
+/** Sichtbare Unterthemen je Thema; der Rest ist aufklappbar (lange Listen überfordern auf dem Handy). */
+const VISIBLE_SUBTOPICS = 6;
+/** So viele Gespräche stehen direkt da (die zur eigenen Stufe passendsten zuerst); der Rest ist aufklappbar. */
+const VISIBLE_CONVERSATIONS = 4;
+const CEFR = ["A1", "A2", "B1", "B2", "C1", "C2"];
+
+/**
+ * P25.7: Üben mit drei klaren Einstiegen (Hören und Lesen, Sprechen, nach Thema); oben die Sprungmarken, darunter die
+ * Bereiche in dieser Reihenfolge. Nur Darstellung: Inhalt und Reihenfolge im Inhaltspaket bleiben unverändert.
+ */
 export async function practiceView(ctx) {
   ctx.setTitle(t("nav.practice"));
   const topics = ctx.app.practiceTopics();
-  const conversations = await ctx.app.conversationList();
-  return h("div", { class: "page" },
+  const [conversations, profile] = await Promise.all([ctx.app.conversationList(), ctx.app.languageProfile()]);
+  const texts = textsSection(ctx);
+  const jump = (target, iconName, label) => {
+    const button = h("button", { type: "button", class: "tile", "data-jump": target },
+      h("span", { class: "tile-icon", "aria-hidden": "true" }, icon(iconName, { size: 20 })), h("span", {}, label));
+    button.addEventListener("click", () => {
+      const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+      document.getElementById(target)?.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    });
+    return button;
+  };
+  return h("div", { class: "page practice" },
     h("header", { class: "page-head" }, h("h1", {}, t("nav.practice")),
       h("p", { class: "muted" }, t("practice.lead"))),
-    conversations.length ? conversationsSection(conversations) : null,
-    textsSection(ctx),
+    h("nav", { class: "tiles practice-jump", "aria-label": t("nav.practice") },
+      texts ? jump("texts-title", "headphones", t("practice.jump_texts")) : null,
+      conversations.length ? jump("conv-list-title", "chat", t("practice.jump_speak")) : null,
+      topics.length ? jump("topics-title", "pencil", t("practice.jump_topics")) : null),
+    texts,
+    conversations.length ? conversationsSection(sortByLevel(conversations, profile?.overall)) : null,
     topics.length
-      ? h("div", { class: "grid" }, topics.map((topic) => h("section", { class: "card topic", "aria-labelledby": `t-${topic.id}` },
-        h("h2", { id: `t-${topic.id}` }, h("a", { href: `#/ueben/${encodeURIComponent(topic.id)}` }, topic.name)),
-        h("p", { class: "muted small" }, t("common.exercises", topic.count)),
-        topic.subtopics.length ? h("ul", { class: "chips" }, topic.subtopics.map((s) =>
-          h("li", {}, h("a", { class: "chip", href: `#/ueben/${encodeURIComponent(s.id)}` }, s.name, h("span", { class: "chip-count" }, String(s.count)))))) : null)))
+      ? h("section", { class: "topics", "aria-labelledby": "topics-title" },
+        h("h2", { id: "topics-title" }, t("practice.topics")),
+        h("div", { class: "grid" }, topics.map((topic) => topicCard(topic))))
       : emptyState({ title: t("practice.none"), text: t("practice.none_text") }));
+}
+
+function topicCard(topic) {
+  const chip = (s) => h("li", {}, h("a", { class: "chip", href: `#/ueben/${encodeURIComponent(s.id)}` }, s.name, h("span", { class: "chip-count" }, String(s.count))));
+  const shown = topic.subtopics.slice(0, VISIBLE_SUBTOPICS);
+  const rest = topic.subtopics.slice(VISIBLE_SUBTOPICS);
+  return h("section", { class: "card topic", "aria-labelledby": `t-${topic.id}` },
+    h("h3", { id: `t-${topic.id}` }, h("a", { href: `#/ueben/${encodeURIComponent(topic.id)}` }, topic.name)),
+    h("p", { class: "muted small" }, t("common.exercises", topic.count)),
+    shown.length ? h("ul", { class: "chips" }, shown.map(chip)) : null,
+    rest.length ? h("details", { class: "more" }, h("summary", {}, t("practice.more_topics", rest.length)), h("ul", { class: "chips" }, rest.map(chip))) : null);
+}
+
+/** Gespräche nach Nähe zur eigenen Gesamtstufe (ohne Schätzung: aufsteigend nach Stufe). Nur die Anzeige. */
+function sortByLevel(conversations, overall) {
+  const own = overall?.status === "estimated" ? CEFR.indexOf(String(overall.text ?? "").match(/[ABC][12]/)?.[0]) : -1;
+  const distance = (c) => (own >= 0 ? Math.abs(CEFR.indexOf(c.level) - own) : CEFR.indexOf(c.level));
+  return [...conversations].sort((a, b) => Number(Boolean(b.open_status)) - Number(Boolean(a.open_status)) || distance(a) - distance(b)
+    || CEFR.indexOf(a.level) - CEFR.indexOf(b.level));
 }
 
 /** P24: Hören und Lesen: der nächste passende, noch nicht geübte Text mit einem Tipp (statt langer Listen). */
@@ -50,15 +91,19 @@ function textsSection(ctx) {
 
 /** Gespräche über mehrere Runden (P11A). */
 function conversationsSection(conversations) {
+  const item = (c) => h("li", {},
+    h("a", { class: "list-item", href: `#/gespraech/${encodeURIComponent(c.id)}`, "data-scenario": c.id },
+      h("span", { class: "list-main" }, h("strong", {}, c.title),
+        h("span", { class: "muted small" }, `${c.goal_label} · ${c.level}${c.completed_count ? ` · ${t("practice.done_n", c.completed_count)}` : ""}`)),
+      c.open_status ? h("span", { class: "badge badge-accent" }, c.open_status === "paused" ? t("practice.paused") : t("practice.running")) : null,
+      icon("arrow", { size: 18 })));
+  const rest = conversations.slice(VISIBLE_CONVERSATIONS);
   return h("section", { class: "conversations", "aria-labelledby": "conv-list-title" },
     h("h2", { id: "conv-list-title" }, t("practice.conversations")),
     h("p", { class: "muted small" }, t("practice.conv_text")),
-    h("ul", { class: "list" }, conversations.map((c) => h("li", {},
-      h("a", { class: "list-item", href: `#/gespraech/${encodeURIComponent(c.id)}`, "data-scenario": c.id },
-        h("span", { class: "list-main" }, h("strong", {}, c.title),
-          h("span", { class: "muted small" }, `${c.goal_label} · ${c.level}${c.completed_count ? ` · ${t("practice.done_n", c.completed_count)}` : ""}`)),
-        c.open_status ? h("span", { class: "badge badge-accent" }, c.open_status === "paused" ? t("practice.paused") : t("practice.running")) : null,
-        icon("arrow", { size: 18 }))))));
+    h("ul", { class: "list" }, conversations.slice(0, VISIBLE_CONVERSATIONS).map(item)),
+    rest.length ? h("details", { class: "more" }, h("summary", {}, t("practice.all_conversations", conversations.length)),
+      h("ul", { class: "list" }, rest.map(item))) : null);
 }
 
 export async function topicView(ctx, { topicId }) {

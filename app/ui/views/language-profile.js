@@ -1,7 +1,7 @@
 /** Sprachprofil der aktiven Lernsprache (P11B): Bereiche mit Sicherheit, Stärken, Schwächen, Verlauf. */
 
 import { h, icon } from "../dom.js";
-import { languageName, t, uiLanguage } from "../../model/i18n.js";
+import { languageName, t } from "../../model/i18n.js";
 
 export async function languageProfileView(ctx) {
   const p = await ctx.app.languageProfile();
@@ -27,7 +27,7 @@ export async function languageProfileView(ctx) {
         h("h2", { id: "dims-title" }, t("lp.dimensions")),
         h("dl", { class: "dimension-list" }, p.dimensions.map((d) => h("div", { class: `dimension ${d.status}`, "data-dimension": d.id },
           h("dt", {}, d.name_de),
-          h("dd", {}, h("span", { class: "level-badge level-sm" }, d.text), h("span", { class: "muted small" }, ` ${d.detail}`),
+          h("dd", {}, h("span", { class: "level-badge level-sm" }, d.text), d.short ? h("span", { class: "muted small" }, ` ${d.short}`) : null,
             d.measurements ? h("span", { class: "muted small evidence" }, t("lp.evidence", d.measurements, d.from_assessment, d.from_practice)) : null))))),
       p.strengths.length || p.weaknesses.length ? h("section", { class: "card", "aria-labelledby": "sw-title" },
         h("h2", { id: "sw-title" }, t("lp.sw")),
@@ -48,7 +48,7 @@ export async function languageProfileView(ctx) {
 
 /** Grund der nächsten Neubewertung: Deutsch wie vom Kern formuliert, Spanisch aus den Kennungen (triggers). */
 function reassessReason(next) {
-  if (uiLanguage() === "de") return next.reason;
+  // P25.7: auch auf Deutsch aus den Auslösern (der Kerntext enthielt interne Werte, z. B. "Sicherheit medium")
   const days = next.reason.match(/nach (\d+) Tagen/)?.[1];
   const parts = (next.triggers.length ? next.triggers : ["time"]).map((trigger) => (trigger === "time" ? t("lp.trigger_time", days)
     : trigger === "new_events" ? t("lp.trigger_events", next.attempts_since)

@@ -21,7 +21,10 @@ export async function progressView(ctx) {
   const dateOf = (iso) => new Date(iso).toLocaleDateString(t("locale"), { day: "numeric", month: "short", year: "numeric" });
   return h("div", { class: "page" },
     h("header", { class: "page-head" }, h("h1", {}, t("nav.progress")), h("p", { class: "muted" }, p.headline)),
+    // P25.7: Reihenfolge nach Bedeutung: Stufe und Ziel, Niveau je Bereich, woran wir arbeiten, Hören, Muster und
+    // Stärken (nur mit Daten), Überblick
     h("div", { class: "grid" },
+      levelCard(p),
       // P12: Niveau je Kompetenzbereich (mit Sicherheit, nie genauer als die Daten) und Entwicklung über die Zeit
       h("section", { class: "card", "aria-labelledby": "levels-title", "data-card": "levels" },
         h("h2", { id: "levels-title" }, t("progress.levels")),
@@ -32,6 +35,12 @@ export async function progressView(ctx) {
             h("ol", { class: "plain profile-history" }, lp.history.map((e) => h("li", {}, h("span", { class: "muted" }, `${dateOf(e.at)}: `), h("strong", {}, e.text)))))
           : h("p", { class: "muted small" }, t("progress.history_empty")),
         h("a", { class: "btn btn-link", href: "#/sprachprofil" }, t("progress.to_profile"))),
+      h("section", { class: "card", "aria-labelledby": "focus-title" },
+        h("h2", { id: "focus-title" }, t("progress.focus")),
+        p.focus.length
+          ? h("ul", { class: "plain focus" }, p.focus.map((f) => h("li", {}, h("strong", {}, f.title),
+            f.skills.length ? h("p", { class: "muted small" }, f.skills.join(" · "), f.more ? t("progress.more", f.more) : "") : null)))
+          : h("p", { class: "muted" }, t("progress.no_focus"))),
       // P15: Hören als eigene Evidenz, in Worten (nie als Punktzahl oder GER-Stufe)
       h("section", { class: "card", "aria-labelledby": "listening-title", "data-card": "listening", "data-state": listening.state },
         h("h2", { id: "listening-title" }, t("progress.listening")),
@@ -43,8 +52,7 @@ export async function progressView(ctx) {
           `${t("progress.not_heard")}${listening.known_not_verified.slice(0, 4).join(" · ")}${listening.known_not_verified.length > 4 ? " …" : ""}`) : null,
         listening.avoidance ? h("p", { class: "muted small" }, listening.avoidance) : null,
         h("p", { class: "muted small" }, listening.note)),
-      levelCard(p),
-      h("section", { class: "card", "aria-labelledby": "patterns-title" },
+      p.patterns.length || p.overcome.length ? h("section", { class: "card", "aria-labelledby": "patterns-title" },
         h("h2", { id: "patterns-title" }, t("progress.patterns")),
         p.patterns.length
           ? h("ol", { class: "patterns" }, p.patterns.map((m) => h("li", { "data-kind": m.kind },
@@ -54,18 +62,12 @@ export async function progressView(ctx) {
             h("p", { class: "muted small" }, m.text))))
           : h("p", { class: "muted" }, p.patterns_note ?? t("progress.not_enough")),
         p.overcome.length ? h("div", { class: "overcome" }, h("h3", { class: "h3" }, t("progress.overcome")),
-          h("ul", { class: "plain" }, p.overcome.map((item) => h("li", {}, item)))) : null),
-      h("section", { class: "card", "aria-labelledby": "focus-title" },
-        h("h2", { id: "focus-title" }, t("progress.focus")),
-        p.focus.length
-          ? h("ul", { class: "plain focus" }, p.focus.map((f) => h("li", {}, h("strong", {}, f.title),
-            f.skills.length ? h("p", { class: "muted small" }, f.skills.join(" · "), f.more ? t("progress.more", f.more) : "") : null)))
-          : h("p", { class: "muted" }, t("progress.no_focus"))),
-      h("section", { class: "card", "aria-labelledby": "strengths-title" },
+          h("ul", { class: "plain" }, p.overcome.map((item) => h("li", {}, item)))) : null) : null,
+      p.strengths.length ? h("section", { class: "card", "aria-labelledby": "strengths-title" },
         h("h2", { id: "strengths-title" }, t("progress.strengths")),
         p.strengths.length
           ? h("ul", { class: "plain" }, p.strengths.map((s) => h("li", {}, h("strong", {}, s.title), h("span", { class: "muted" }, ` – ${s.text}`))))
-          : h("p", { class: "muted" }, p.strengths_note ?? t("progress.strengths_empty"))),
+          : h("p", { class: "muted" }, p.strengths_note ?? t("progress.strengths_empty"))) : null,
       h("section", { class: "card", "aria-labelledby": "stats-title" },
         h("h2", { id: "stats-title" }, t("progress.overview")),
         h("dl", { class: "stats" },
@@ -95,7 +97,8 @@ function levelCard(p) {
     lv && rows.length ? h("p", { class: "muted small" }, t("lvl.intro", lv.level)) : null,
     h("ul", { class: "meters" }, rows.map((a) => h("li", { "data-area": a.key },
       h("div", { class: "meter-head" }, h("span", {}, lv ? `${a.label} ${lv.level}` : a.label), h("strong", { class: "small" }, a.text)),
-      meter(a.value, a.label),
+      // P25.7: sicher (kräftig) und in Arbeit (hell) in einem Balken: Bewegung wird sichtbar, ohne zu beschönigen
+      twoToneMeter(a, lv ? `${a.label} ${lv.level}` : a.label),
       h("p", { class: "muted small" }, a.detail)))),
     production.length ? h("div", {}, h("h3", { class: "h3" }, t("lvl.use")),
       h("ul", { class: "meters" }, production.map((a) => h("li", { "data-area": a.key },
@@ -106,4 +109,13 @@ function levelCard(p) {
 
 function stat(label, value) {
   return h("div", { class: "stat" }, h("dt", {}, label), h("dd", {}, String(value)));
+}
+
+function twoToneMeter(area, label) {
+  const total = Math.max(1, area.total ?? 0);
+  const secure = Math.round(((area.secure ?? 0) / total) * 100);
+  const working = Math.round((((area.working ?? area.started) ?? 0) / total) * 100);
+  return h("div", { class: "meter meter-two", role: "img", "aria-label": `${label}: ${area.detail ?? area.text}` },
+    h("span", { class: "meter-fill", style: { width: `${secure}%` } }),
+    h("span", { class: "meter-working", style: { width: `${Math.min(100 - secure, working)}%` } }));
 }

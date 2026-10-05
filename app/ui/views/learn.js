@@ -1,7 +1,7 @@
 /** Lernen: Länge wählen, Vorschau der geplanten Session, starten oder fortsetzen. */
 
 import { SESSION_MINUTES } from "../../services/app-service.js";
-import { h } from "../dom.js";
+import { h, icon } from "../dom.js";
 import { t } from "../../model/i18n.js";
 import { loading } from "../components.js";
 
@@ -10,6 +10,7 @@ export async function learnView(ctx) {
   const [open, profile] = await Promise.all([ctx.app.openSession(), ctx.app.profile()]);
   if (open) {
     return h("div", { class: "page" },
+      h("a", { class: "back", href: "#/" }, icon("back", { size: 18 }), t("learn.back")),
       h("header", { class: "page-head" }, h("h1", {}, t("nav.learn"))),
       h("section", { class: "card hero" },
         h("p", { class: "eyebrow" }, open.status === "paused" ? t("home.paused") : t("home.running")),
@@ -52,6 +53,7 @@ export async function learnView(ctx) {
 
   showPreview();
   return h("div", { class: "page" },
+    h("a", { class: "back", href: "#/" }, icon("back", { size: 18 }), t("learn.back")),
     h("header", { class: "page-head" }, h("h1", {}, t("nav.learn")),
       h("p", { class: "muted" }, t("learn.lead"))),
     h("section", { class: "card", "aria-labelledby": "length-title" },

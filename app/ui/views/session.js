@@ -8,6 +8,7 @@
 import { h, icon, meter } from "../dom.js";
 import { t } from "../../model/i18n.js";
 import { answerForm, coachTip, confirmDialog, emptyState, feedbackPanel, listeningPlayer, masteryText, taskCard } from "../components.js";
+import { startSessionAction } from "./learn.js";
 
 export async function sessionView(ctx) {
   ctx.setTitle(t("session.title"));
@@ -132,12 +133,12 @@ async function abandon(ctx, view, render) {
 function summaryLoader(ctx, view) {
   const box = h("div", { class: "session-body", "aria-live": "polite" });
   ctx.app.sessionSummary(view.session_id)
-    .then((summary) => box.replaceChildren(summaryCard(summary, null,
+    .then((summary) => box.replaceChildren(summaryCard(summary, null, ctx,
       // P25.5: erstes Session-Ende: wie Fortschritt gemessen wird (einmal)
       summary.status === "completed" && ctx.takeTip?.("first_summary") ? coachTip("first_summary", t("tip.first_summary")) : null)))
     .catch((error) => {
       console.error(error);
-      box.replaceChildren(summaryCard(null, view));
+      box.replaceChildren(summaryCard(null, view, ctx));
     });
   return box;
 }
@@ -150,7 +151,7 @@ export const MAX_WORK_ON = 2;
  * P25.4: Das Gelungene zuerst (gemessen: ohne Fehler geübt, Stufenaufstiege, überwundene Fehler, Meilensteine),
  * dann was morgen wartet; was noch nicht sitzt, kurz und ruhig am Ende.
  */
-function summaryCard(summary, view = null, tip = null) {
+function summaryCard(summary, view = null, ctx = null, tip = null) {
   const abandoned = (summary?.status ?? view?.status) === "abandoned";
   const completed = summary?.completed ?? view?.completed ?? 0;
   const s = summary;
@@ -159,6 +160,9 @@ function summaryCard(summary, view = null, tip = null) {
     h("div", { class: "summary-head" },
       h("span", { class: "summary-mark", "aria-hidden": "true" }, icon("check", { size: 30 })),
       h("h1", { id: "summary-title", tabindex: "-1" }, abandoned ? t("session.ended") : t("session.completed")),
+      // P25.7: die Kernaussage zuerst (ehrlich: ohne Fehler = richtig oder offen), dann das Wichtigste der Session
+      s && completed ? h("p", { class: "summary-score", "data-score": "" }, t("sum.score", s.answers.correct, completed),
+        s.answers.open ? h("span", { class: "muted summary-open" }, t("sum.score_open", s.answers.open)) : null) : null,
       h("p", { class: "summary-lead" }, abandoned ? t("session.saved") : leadLine(s, completed))),
     s ? h("dl", { class: "stats stats-compact" },
       stat(t("session.exercises"), `${completed}${abandoned ? t("session.of", s.planned) : ""}`),
@@ -181,9 +185,20 @@ function summaryCard(summary, view = null, tip = null) {
     s?.weaknesses.length ? h("div", { class: "summary-block calm", "data-block": "work-on" },
       h("h2", { class: "h3" }, t("session.work_on")),
       h("p", { class: "muted small" }, `${s.weaknesses.slice(0, MAX_WORK_ON).map((w) => w.title).join(" · ")}. ${t("sum.calm")}`)) : null,
-    h("div", { class: "stack" },
-      h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "home" }, t("common.back_home")),
-      h("a", { class: "btn btn-secondary btn-block", href: "#/fortschritt" }, t("session.see_progress"))));
+    h("div", { class: "stack summary-actions" },
+      h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "home" }, t("sum.done_today")),
+      ctx ? keepLearningButton(ctx) : null,
+      h("a", { class: "btn btn-link", href: "#/fortschritt" }, t("session.see_progress"))));
+}
+
+/** Weiterlernen: gleich die nächste Session (Länge aus dem Tagesziel), wie auf "Heute". */
+function keepLearningButton(ctx) {
+  const button = h("button", { type: "button", class: "btn btn-secondary btn-block", "data-action": "keep-learning" }, t("sum.keep_learning"));
+  button.addEventListener("click", async () => {
+    const profile = await ctx.app.profile();
+    await startSessionAction(ctx, profile.daily_minutes, button);
+  });
+  return button;
 }
 
 /** Der stärkste echte Satz der Session: überwundener Fehler, dann Aufstiege, dann Übungen ohne Fehler. */
@@ -192,8 +207,8 @@ function leadLine(s, completed) {
   const ups = s.went_well.filter((w) => w.improved).length;
   if (s.resolved?.length) return t("sum.hero_resolved", s.resolved.length);
   if (ups) return t("sum.hero_up", ups);
-  if (s.answers.without_errors > 0) return t("sum.hero_clean", s.answers.without_errors, completed);
-  return t("session.kept_going");
+  // die Zahl steht schon darüber (summary-score): hier nur noch ein kurzer, ehrlicher Satz
+  return s.answers.without_errors === completed && completed ? t("session.strong") : t("session.kept_going");
 }
 
 function stepText(w) {

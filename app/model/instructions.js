@@ -56,6 +56,9 @@ const FIXED_ES = Object.freeze({
   "Hintergrund oder Ereignis? Wähle die passende Form.": "¿Contexto o acontecimiento? Elige la forma adecuada.",
   "Im Restaurant: Wähle das passende Wort.": "En el restaurante: elige la palabra adecuada.",
   "Welches Wort passt?": "¿Qué palabra encaja?",
+  // P25.6: Anfängerinhalte
+  "Welcher Satz ist richtig?": "¿Qué frase es correcta?",
+  "Welche Antwort passt?": "¿Qué respuesta encaja?",
   "Welches Verb passt?": "¿Qué verbo encaja?",
   "Welches Verb passt (gehoben)?": "¿Qué verbo encaja (registro culto)?",
   "Welches Verb ist am präzisesten?": "¿Qué verbo es el más preciso?",
@@ -142,6 +145,12 @@ const PATTERNS_ES = Object.freeze([
   [new RegExp(`^Setze ${Q} in den Plural\\.$`), (q) => `Pon ${q} en plural.`],
   [new RegExp(`^Beginne den Satz mit ${Q}\\.$`), (q) => `Empieza la frase con ${q}.`],
   [new RegExp(`^Verbinde (?:die beiden Sätze|die Sätze) mit ${Q}\\.$`), (q) => `Une las frases con ${q}.`],
+  // P25.6: geführte Kurzantworten; was ausgedrückt werden soll (nach dem Doppelpunkt), ist Inhalt und bleibt
+  [/^Antworte kurz auf Spanisch: (.+)$/s, (what) => `Responde brevemente en español: ${what}`],
+  [/^Antworte kurz auf Deutsch: (.+)$/s, (what) => `Responde brevemente en alemán: ${what}`],
+  [new RegExp(`^Antworte kurz auf Deutsch mit ${Q}: (.+)$`, "s"), (q, what) => `Responde brevemente en alemán con ${q}: ${what}`],
+  [new RegExp(`^Antworte kurz auf Deutsch und beginne mit ${Q}: (.+)$`, "s"),
+    (q, what) => `Responde brevemente en alemán y empieza con ${q}: ${what}`],
 ]);
 
 /** Anweisung einer Übung in der Erklärungssprache; ohne Übersetzung unverändert (Deutsch). */

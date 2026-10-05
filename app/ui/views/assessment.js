@@ -60,6 +60,7 @@ function introCard(ctx, page, render) {
   const gaps = page.profile.content_gaps;
   return h("section", { class: "card assessment-intro", "aria-labelledby": "assess-title" },
     h("h1", { id: "assess-title" }, h("span", { "aria-hidden": "true" }, `${language.flag} `), t("as.title", languageName(language.id))),
+    h("p", { class: "lead" }, t("as.reassure")),
     h("p", {}, t("as.self_q")),
     h("div", { class: "chips level-chips", role: "group", "aria-label": t("as.self") }, chips),
     h("p", { class: "muted small" }, t("as.intro", page.available_modules.map((m) => ctx.labels.dimension(m)).join(", "))),
@@ -79,11 +80,10 @@ function header(ctx, assessment, render) {
   return h("header", { class: "conversation-head" },
     h("div", {}, h("h1", { class: "conversation-title" }, t("home.assessment")),
       h("span", { class: "muted small", "aria-live": "polite", "data-assessment-progress": "" },
-        t("as.module_of", Math.min(assessment.progress.done + 1, assessment.progress.total), assessment.progress.total))),
+        t("as.module_of", Math.min(assessment.progress.done + 1, assessment.progress.total), assessment.progress.total),
+        assessment.current?.dimension_name ? ` · ${assessment.current.dimension_name}` : "")),
     h("div", { class: "conversation-actions" }, assessment.paused ? null : pause, end),
-    meter(assessment.progress.total ? assessment.progress.done / assessment.progress.total : 0, t("as.progress")),
-    h("ol", { class: "plain module-list" }, assessment.modules.filter((m) => m.status !== "unavailable").map((m) =>
-      h("li", { class: `module ${m.status}`, "data-module": m.id }, m.name_de))));
+    meter(assessment.progress.total ? assessment.progress.done / assessment.progress.total : 0, t("as.progress")));
 }
 
 function itemCard(ctx, assessment, render) {
@@ -165,7 +165,7 @@ function resultCard(ctx, assessment) {
     body,
     h("p", { class: "muted small" }, t("as.disclaimer")),
     h("div", { class: "stack" },
-      h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "start-learning" }, t("home.learn_now")),
+      h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "start-learning" }, t("home.start")),
       h("a", { class: "btn btn-secondary btn-block", href: "#/sprachprofil", "data-action": "open-profile" }, t("progress.to_profile"))));
 }
 
@@ -174,12 +174,14 @@ function placementOutcome(ctx, p) {
   const outlook = learningOutlook(p, ctx.app.explanationLanguage);
   return [
     h("p", { class: "eyebrow" }, t("as.where")),
-    h("p", { class: "result-level" }, h("span", { class: "level-badge level-lg" }, p.overall.text), h("span", { class: "muted" }, ` ${p.overall.detail}`)),
+    h("p", { class: "result-level" }, h("span", { class: "level-badge level-lg" }, p.overall.text),
+      p.overall.status === "estimated" && p.overall.confidence === "low" ? h("span", { class: "muted" }, ` ${t("claim.provisional")}`) : null),
+    p.overall.status === "estimated" ? h("p", { class: "lead" }, t("as.start_here", p.overall.text)) : null,
     h("ul", { class: "plain result-dimensions" }, p.dimensions.filter((d) => !d.content_gap).map((d) => h("li", { "data-dimension": d.id, "data-status": d.status },
       `${d.name_de}: `,
       d.status === "unknown" || d.status === "insufficient"
         ? h("span", { class: "muted" }, t("as.not_measured"))
-        : [h("span", { class: "level-badge level-sm" }, d.text), h("span", { class: "muted small" }, ` (${d.detail})`)]))),
+        : [h("span", { class: "level-badge level-sm" }, d.text), d.short ? h("span", { class: "muted small" }, ` ${d.short}`) : null]))),
     h("p", { class: "eyebrow" }, t("as.next")),
     outlook.lines.map((line) => h("p", { class: "outlook" }, line))];
 }

@@ -20,7 +20,7 @@
  */
 
 // <generated:assets>
-const VERSION = "8fce5c307a433f8e";
+const VERSION = "09714778f0c8327c";
 const ASSETS = [
   "app/main.js",
   "app/model/conversation.js",

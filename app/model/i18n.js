@@ -23,6 +23,7 @@ const DICTIONARY = Object.freeze({
     back: "Zurück",
     start: "Los geht's",
     // P25.5: App-Sprache als beschriftete Einstellung auf dem ersten Screen (kein eigener Schritt mehr)
+    app_intro: "Dein persönlicher Sprachtrainer. Erst finden wir heraus, was du schon kannst. Danach plant die App jede Session für dich.",
     ui_bar: "Sprache der App",
     ui_bar_hint: "für Menüs und Erklärungen",
     learn_title: "Welche Sprache möchtest du lernen?",
@@ -63,6 +64,7 @@ const DICTIONARY = Object.freeze({
     next: "Continuar",
     back: "Atrás",
     start: "Empezar",
+    app_intro: "Tu entrenador personal de idiomas. Primero vemos lo que ya sabes. Después, la app planifica cada sesión para ti.",
     ui_bar: "Idioma de la app",
     ui_bar_hint: "para menús y explicaciones",
     learn_title: "¿Qué idioma quieres aprender?",

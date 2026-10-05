@@ -72,8 +72,8 @@ function quickActions(ctx) {
   const tile = (attrs, iconName, label) => h(attrs.href ? "a" : "button", { class: "tile", ...attrs },
     h("span", { class: "tile-icon", "aria-hidden": "true" }, icon(iconName, { size: 20 })), h("span", {}, label));
   return h("nav", { class: "tiles quick-actions", "aria-label": t("home.quick") },
-    tile({ href: "#/lernen", "data-action": "quick-learn" }, "play", t("nav.learn")),
     tile({ href: "#/ueben", "data-action": "quick-speak" }, "chat", t("home.speak")),
+    tile({ href: "#/ueben", "data-action": "quick-listen" }, "headphones", t("home.listen_read")),
     tile({ type: "button", "data-action": "quick-review", onclick: (e) => startSessionAction(ctx, 5, e.currentTarget) }, "repeat", t("home.review")),
     tile({ href: "#/einstufung", "data-action": "quick-assess" }, "target", t("home.assessment")));
 }
@@ -121,7 +121,7 @@ function nextSessionCard(ctx, d, profile = null) {
     h("div", { class: "hero-actions" },
       h("button", { type: "button", class: "btn btn-primary btn-block btn-lg", "data-action": "start", onclick: (e) => startSessionAction(ctx, next.minutes, e.currentTarget) },
         icon("play", { size: 18 }), t("home.start")),
-      h("a", { class: "btn btn-link", href: "#/lernen" }, t("home.other_length"))));
+      h("a", { class: "btn btn-link", href: "#/lernen", "data-action": "choose-length" }, t("home.other_length"))));
 }
 
 function howItWorksCard() {

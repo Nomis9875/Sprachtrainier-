@@ -1,8 +1,8 @@
 /**
  * Routen der App (Hash-Routing: funktioniert offline und ohne Server-Konfiguration). DOM-frei.
  *
- *   #/                 home         Startseite
- *   #/lernen           learn        Session wählen und starten
+ *   #/                 home         Heute: nächste Session (Hauptaktion), Rhythmus, Sprachstand
+ *   #/lernen           learn        andere Länge wählen (von "Heute" aus, ohne eigenen Reiter)
  *   #/session          session      laufende Session (fokussiert, ohne Navigation)
  *   #/ueben            practice     Themen
  *   #/ueben/<thema>    topic        Übungen eines Themas
@@ -17,16 +17,16 @@
  */
 
 export const NAV_ITEMS = Object.freeze([
-  { route: "home", href: "#/", label: "Start", icon: "home" },
-  { route: "learn", href: "#/lernen", label: "Lernen", icon: "play" },
+  { route: "home", href: "#/", label: "Heute", icon: "home" },
   { route: "practice", href: "#/ueben", label: "Üben", icon: "pencil" },
   { route: "progress", href: "#/fortschritt", label: "Fortschritt", icon: "chart" },
   { route: "profile", href: "#/profil", label: "Profil", icon: "user" },
 ]);
 
 const NAV_OF = Object.freeze({
-  topic: "practice", exercise: "practice", conversation: "practice", session: "learn", debug: "profile",
-  languages: "profile", assessment: "learn", languageProfile: "progress",
+  // P25.7: Lernen gehört zu "Heute" (dort startet die Session); vier Reiter statt fünf
+  topic: "practice", exercise: "practice", conversation: "practice", learn: "home", session: "home", debug: "profile",
+  languages: "profile", assessment: "home", languageProfile: "progress",
 });
 
 /**
