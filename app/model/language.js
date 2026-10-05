@@ -9,6 +9,7 @@
 import { presentExercise } from "./exercise.js";
 import { presentPlacementListening } from "./listening.js";
 import { explain } from "./explain.js";
+import { t } from "./i18n.js";
 
 export const DIMENSION_NAMES = Object.freeze({
   grammar: "Grammatik",
@@ -32,11 +33,16 @@ const MODULE_STATUS_TEXT = Object.freeze({
 
 /** Wie eine Stufe angezeigt wird: nie genauer, als die Sicherheit erlaubt. */
 export function levelClaim(entry) {
-  if (!entry || entry.status === "unknown") return { text: "–", detail: "noch keine Daten" };
-  if (entry.status === "insufficient") return { text: "–", detail: "zu wenig Daten für eine Einschätzung" };
+  if (!entry || entry.status === "unknown") return { text: "–", detail: t("app.no_data") };
+  if (entry.status === "insufficient") return { text: "–", detail: t("claim.insufficient") };
   const label = entry.level_label;
-  if (entry.confidence === "low") return { text: `etwa ${label}`, detail: CONFIDENCE_TEXT.low };
-  return { text: label, detail: CONFIDENCE_TEXT[entry.confidence] ?? "" };
+  if (entry.confidence === "low") return { text: t("claim.about", label), detail: t("claim.low") };
+  return { text: label, detail: CONFIDENCE_TEXT[entry.confidence] ? t(`claim.${entry.confidence}`) : "" };
+}
+
+/** Name eines Kompetenzbereichs in der Sprache der App. */
+export function dimensionName(id) {
+  return DIMENSION_NAMES[id] ? t(`dim.${id}`) : id;
 }
 
 /**
@@ -48,21 +54,21 @@ export function presentLanguageProfile({ profile, history = [], openAssessment =
   return {
     language_id: profile.language_id,
     overall: { ...overall, status: profile.overall.status, confidence: profile.overall.confidence,
-      basis: (profile.overall.basis ?? []).map((d) => DIMENSION_NAMES[d]) },
+      basis: (profile.overall.basis ?? []).map((d) => dimensionName(d)) },
     dimensions: DIMENSION_ORDER.map((id) => {
       const x = profile.dimensions[id];
       const claim = levelClaim(x);
       return {
-        id, name_de: DIMENSION_NAMES[id], status: x.status, confidence: x.confidence, text: claim.text,
-        detail: gaps.has(id) && x.status === "unknown" ? "noch nicht messbar (keine Aufgaben in diesem Sprachpaket)" : claim.detail,
+        id, name_de: dimensionName(id), status: x.status, confidence: x.confidence, text: claim.text,
+        detail: gaps.has(id) && x.status === "unknown" ? t("claim.no_tasks") : claim.detail,
         measurements: x.measurements ?? 0,
         from_assessment: x.sources?.assessment ?? 0,
         from_practice: x.sources?.practice ?? 0,
         content_gap: gaps.has(id),
       };
     }),
-    strengths: profile.strengths.map((s) => `${DIMENSION_NAMES[s.dimension]} (${s.level_label})`),
-    weaknesses: profile.weaknesses.map((w) => `${DIMENSION_NAMES[w.dimension]} (${w.level_label})`),
+    strengths: profile.strengths.map((s) => `${dimensionName(s.dimension)} (${s.level_label})`),
+    weaknesses: profile.weaknesses.map((w) => `${dimensionName(w.dimension)} (${w.level_label})`),
     weak_dimensions: profile.weaknesses.map((w) => ({ id: w.dimension, level_label: w.level_label })),
     vocabulary: { active_items: profile.vocabulary_estimate.active_items, stable_items: profile.vocabulary_estimate.stable_items,
       size_note: profile.vocabulary_estimate.size_note },
@@ -71,7 +77,7 @@ export function presentLanguageProfile({ profile, history = [], openAssessment =
     next_reassessment: profile.next_reassessment,
     reassessment_due: Boolean(profile.next_reassessment?.due),
     has_assessment_content: DIMENSION_ORDER.some((d) => !gaps.has(d)),
-    content_gaps: profile.content_gaps.map((g) => DIMENSION_NAMES[g.dimension]),
+    content_gaps: profile.content_gaps.map((g) => dimensionName(g.dimension)),
     open_assessment_id: openAssessment?.assessment_id ?? null,
     history: history.map((h) => ({ at: h.at, source: h.source, ...levelClaim(h.overall), confidence: h.overall.confidence })),
     content_version: library.contentVersion,
@@ -100,7 +106,7 @@ export function learningOutlook(p, language = "de") {
 /** Einstufung: Module, aktuelle Aufgabe (ohne Lösung), am Ende das Ergebnis dieser Einstufung. */
 export function presentAssessment({ state, current, library }) {
   const modules = state.modules.map((m) => ({
-    id: m.dimension, name_de: DIMENSION_NAMES[m.dimension], status: m.status, status_text: MODULE_STATUS_TEXT[m.status],
+    id: m.dimension, name_de: dimensionName(m.dimension), status: m.status, status_text: t(`module.${m.status}`),
     answered: m.answered,
   }));
   const counted = modules.filter((m) => m.status !== "unavailable");
@@ -117,7 +123,7 @@ export function presentAssessment({ state, current, library }) {
     current: !finished && current ? presentItem(current, library) : null,
     result: finished ? {
       estimated: levelClaim({ status: state.estimated_level ? "estimated" : "unknown", level_label: state.estimated_level, confidence: state.confidence }),
-      modules: Object.entries(state.results).map(([id, r]) => ({ id, name_de: DIMENSION_NAMES[id], ...levelClaim({ status: "estimated", ...r }) })),
+      modules: Object.entries(state.results).map(([id, r]) => ({ id, name_de: dimensionName(id), ...levelClaim({ status: "estimated", ...r }) })),
     } : null,
   };
 }
@@ -126,7 +132,7 @@ function presentItem({ item, exercise }, library) {
   return {
     item_id: item.id,
     dimension: item.dimension,
-    dimension_name: DIMENSION_NAMES[item.dimension],
+    dimension_name: dimensionName(item.dimension),
     format: item.format,
     prompt_de: item.prompt_de,
     stimulus_es: item.stimulus_es,

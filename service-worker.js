@@ -20,7 +20,7 @@
  */
 
 // <generated:assets>
-const VERSION = "823aa0ef4687e014";
+const VERSION = "234af6c499aef7a8";
 const ASSETS = [
   "app/main.js",
   "app/model/conversation.js",
@@ -28,10 +28,12 @@ const ASSETS = [
   "app/model/exercise.js",
   "app/model/explain.js",
   "app/model/feedback.js",
+  "app/model/i18n.js",
   "app/model/labels.js",
   "app/model/language.js",
   "app/model/listening.js",
   "app/model/progress.js",
+  "app/model/strings.js",
   "app/router.js",
   "app/services/app-service.js",
   "app/services/local-services.js",
@@ -46,6 +48,7 @@ const ASSETS = [
   "app/ui/views/language-profile.js",
   "app/ui/views/languages.js",
   "app/ui/views/learn.js",
+  "app/ui/views/onboarding.js",
   "app/ui/views/practice.js",
   "app/ui/views/profile.js",
   "app/ui/views/progress.js",

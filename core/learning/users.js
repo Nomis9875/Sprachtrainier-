@@ -33,6 +33,7 @@ export const LEGACY_PROFILE_META_KEY = "profile";
 export const DEFAULT_PREFERENCES = Object.freeze({ daily_minutes: 10, ai_analysis: false, explanation_language: "de" });
 // P24: Sprache der Erklärungen (unabhängig von der Lernsprache)
 export const EXPLANATION_LANGUAGES = Object.freeze(["de", "es"]);
+export const UI_LANGUAGES = Object.freeze(["de", "es"]);
 export const NAME_MAX = 40;
 // Lerner von vor P11B lernten Spanisch (dieselbe Eigenschaft alter Daten wie bei Ereignissen, util/language.js)
 export { LEGACY_EVENT_LANGUAGE as LEGACY_LANGUAGE } from "../util/language.js";
@@ -150,6 +151,10 @@ export class UserDirectory {
         throw new UserError(`Tagesziel: bitte ${SESSION_MINUTES.join(", ")} Minuten wählen.`, "invalid_goal");
       }
       next.ai_analysis = Boolean(next.ai_analysis);
+      // P25.1: Sprache der Oberfläche (optional; ohne Angabe gilt die des Geräts)
+      if (next.ui_language !== undefined && !UI_LANGUAGES.includes(next.ui_language)) {
+        throw new UserError(`Sprache der App: ${UI_LANGUAGES.join(" oder ")}.`, "invalid_ui_language");
+      }
       if (!EXPLANATION_LANGUAGES.includes(next.explanation_language)) {
         throw new UserError(`Erklärungssprache: ${EXPLANATION_LANGUAGES.join(" oder ")}.`, "invalid_explanation_language");
       }

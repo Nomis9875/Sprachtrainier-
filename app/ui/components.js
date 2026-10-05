@@ -4,8 +4,9 @@
  */
 
 import { countWords } from "../model/exercise.js";
-import { MASTERY_LABELS, minutesText } from "../model/labels.js";
+import { masteryLabel, minutesText } from "../model/labels.js";
 import { h, icon, targetLang } from "./dom.js";
+import { t } from "../model/i18n.js";
 import { MAX_SECONDS, recordingSupported, startRecording } from "./recorder.js";
 import { strongerSupport } from "../model/listening.js";
 
@@ -15,13 +16,13 @@ export function taskCard(exercise, { headingLevel = 2 } = {}) {
   const heading = `h${headingLevel}`;
   return h("section", { class: "card task", "aria-labelledby": "task-title", "data-exercise-id": exercise.id, "data-mode": exercise.mode },
     h("div", { class: "task-meta" },
-      h("span", { class: `badge ${exercise.challenge ? "badge-accent" : ""}` }, exercise.challenge ? "Challenge" : exercise.type_label),
+      h("span", { class: `badge ${exercise.challenge ? "badge-accent" : ""}` }, exercise.challenge ? t("c.challenge") : exercise.type_label),
       exercise.challenge ? h("span", { class: "badge" }, exercise.type_label) : null,
-      h("span", { class: "muted small" }, `ca. ${minutesText(exercise.estimated_seconds)}`)),
+      h("span", { class: "muted small" }, t("c.about", minutesText(exercise.estimated_seconds)))),
     exercise.why ? h("p", { class: "task-why" }, exercise.why) : null,
-    exercise.focus ? h("p", { class: "task-focus" }, h("span", { class: "muted" }, "Schwerpunkt: "), exercise.focus) : null,
+    exercise.focus ? h("p", { class: "task-focus" }, h("span", { class: "muted" }, t("c.focus")), exercise.focus) : null,
     exercise.why_text ? h("p", { class: "task-why-text muted small", "data-why": "" }, h("strong", {}, exercise.why_label ?? "Warum? "), exercise.why_text) : null,
-    h(heading, { id: "task-title", class: "task-prompt" }, exercise.prompt_de || "Aufgabe"),
+    h(heading, { id: "task-title", class: "task-prompt" }, exercise.prompt_de || t("c.task")),
     exercise.conversation ? conversationBlock(exercise.conversation) : null,
     // Lesetext (P12): erst der Text, dann die Frage (natürliche Lesereihenfolge)
     exercise.source.passage ? sourceBlock(exercise.source) : null,
@@ -29,8 +30,8 @@ export function taskCard(exercise, { headingLevel = 2 } = {}) {
     exercise.source.text && !exercise.source.passage ? sourceBlock(exercise.source) : null,
     exercise.instruction_de ? h("p", { class: "task-hint" }, exercise.instruction_de) : null,
     exercise.communication_goal_de && exercise.challenge
-      ? h("p", { class: "task-hint" }, h("span", { class: "muted" }, "Ziel: "), exercise.communication_goal_de) : null,
-    exercise.min_words ? h("p", { class: "muted small" }, `Mindestens ${exercise.min_words} Wörter.`) : null);
+      ? h("p", { class: "task-hint" }, h("span", { class: "muted" }, t("c.goal")), exercise.communication_goal_de) : null,
+    exercise.min_words ? h("p", { class: "muted small" }, t("c.min_words", exercise.min_words)) : null);
 }
 
 function sourceBlock(source) {
@@ -38,7 +39,7 @@ function sourceBlock(source) {
   if (!source.has_gap) return h("p", { class: "task-source", lang: targetLang() }, source.text);
   const parts = [];
   source.parts.forEach((part, i) => {
-    if (i > 0) parts.push(h("span", { class: "gap", "aria-label": "Lücke" }, "…"));
+    if (i > 0) parts.push(h("span", { class: "gap", "aria-label": t("c.gap") }, "…"));
     parts.push(part);
   });
   return h("p", { class: "task-source", lang: targetLang() }, parts);
@@ -48,7 +49,7 @@ function conversationBlock(conversation) {
   return h("div", { class: "conversation" },
     h("p", { class: "muted small" }, conversation.partner_role_de),
     h("p", { class: "bubble", lang: targetLang() }, conversation.opening_es),
-    h("p", { class: "muted small" }, "Antworte in einer Nachricht."));
+    h("p", { class: "muted small" }, t("c.reply_message")));
 }
 
 // ---------------------------------------------------------------- Hören (P15)
@@ -64,10 +65,10 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
   let plays = 0;
   let support = listening.base_support;
   const audio = h("audio", { preload: "auto", src: listening.src, "data-audio": listening.audio_id });
-  const status = h("span", { class: "muted small listening-status", "aria-live": "polite" }, "Noch nicht gehört");
-  const playLabel = h("span", {}, "Anhören");
+  const status = h("span", { class: "muted small listening-status", "aria-live": "polite" }, t("l.not_heard"));
+  const playLabel = h("span", {}, t("l.listen"));
   const play = h("button", { type: "button", class: "btn btn-primary", "data-action": "listen", "aria-pressed": "false" }, icon("play", { size: 18 }), playLabel);
-  const replay = h("button", { type: "button", class: "btn btn-secondary", "data-action": "replay", disabled: true }, "Noch einmal von vorn");
+  const replay = h("button", { type: "button", class: "btn btn-secondary", "data-action": "replay", disabled: true }, t("l.replay"));
   const report = (action) => { try { onInteraction({ action, playCount: plays, supportLevel: support }); } catch (err) { console.error(err); } };
   const start = () => {
     plays += 1;
@@ -79,7 +80,7 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
       const fromStart = plays === 0 || audio.ended; // Fortsetzen nach einer Pause ist kein neues Hören
       if (audio.ended) audio.currentTime = 0;
       if (fromStart) start();
-      audio.play().catch(() => { status.textContent = "Die Aufnahme lässt sich gerade nicht abspielen."; });
+      audio.play().catch(() => { status.textContent = t("l.cannot_play"); });
     } else {
       audio.pause();
       report("pause");
@@ -109,13 +110,13 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
       audio.pause();
     }
   });
-  const heard = () => (plays === 0 ? "Noch nicht gehört" : `${plays}× gehört`);
-  audio.addEventListener("play", () => { playLabel.textContent = "Pause"; play.setAttribute("aria-pressed", "true"); status.textContent = `${heard()} · läuft`; });
-  audio.addEventListener("pause", () => { playLabel.textContent = audio.ended ? "Anhören" : "Weiter anhören"; play.setAttribute("aria-pressed", "false"); status.textContent = heard(); });
-  audio.addEventListener("ended", () => { playLabel.textContent = "Anhören"; status.textContent = heard(); });
+  const heard = () => (plays === 0 ? t("l.not_heard") : t("l.heard", plays));
+  audio.addEventListener("play", () => { playLabel.textContent = t("l.pause"); play.setAttribute("aria-pressed", "true"); status.textContent = t("l.playing", heard()); });
+  audio.addEventListener("pause", () => { playLabel.textContent = audio.ended ? t("l.listen") : t("l.continue"); play.setAttribute("aria-pressed", "false"); status.textContent = heard(); });
+  audio.addEventListener("ended", () => { playLabel.textContent = t("l.listen"); status.textContent = heard(); });
 
   const revealed = h("div", { class: "listening-support", "aria-live": "polite" });
-  const supportNote = h("p", { class: "muted small", hidden: true }, "Mit Hilfe zählt deine Antwort weniger als Hörverstehen ohne Hilfe.");
+  const supportNote = h("p", { class: "muted small", hidden: true }, t("l.help_note"));
   const supportButtons = listening.supports.map((s) => {
     const button = h("button", { type: "button", class: "btn btn-link", "data-support": s.level }, s.label);
     button.addEventListener("click", () => {
@@ -128,8 +129,8 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
     return button;
   });
   const noAnswer = onNoAnswer ? [
-    h("button", { type: "button", class: "btn btn-ghost", "data-action": "dont-know" }, "Nichts verstanden"),
-    allowSkip ? h("button", { type: "button", class: "btn btn-ghost", "data-action": "skip-listening" }, "Überspringen") : null,
+    h("button", { type: "button", class: "btn btn-ghost", "data-action": "dont-know" }, t("l.dont_know")),
+    allowSkip ? h("button", { type: "button", class: "btn btn-ghost", "data-action": "skip-listening" }, t("l.skip")) : null,
   ].filter(Boolean) : [];
   for (const button of noAnswer) {
     button.addEventListener("click", () => {
@@ -138,21 +139,21 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
     });
   }
   const context = listening.context;
-  const element = h("section", { class: "card listening", "aria-label": "Aufnahme", "data-listening": listening.audio_id },
+  const element = h("section", { class: "card listening", "aria-label": t("l.recording"), "data-listening": listening.audio_id },
     context ? h("div", { class: "listening-context", "data-context": "" },
       context.title ? h("h3", { class: "group-title", lang: targetLang() }, "🎧 ", context.title) : null,
-      h("p", { class: "muted small" }, [listening.mode_label, context.length_label, context.speaker_count > 1 ? `${context.speaker_count} Sprecher` : "",
+      h("p", { class: "muted small" }, [listening.mode_label, context.length_label, context.speaker_count > 1 ? t("l.speakers", context.speaker_count) : "",
         context.progress].filter(Boolean).join(" · "))) : null,
     h("div", { class: "listening-controls" }, play, replay, status),
-    segmentButtons.length ? h("div", { class: "listening-segments" }, h("span", { class: "muted small" }, "Bezieht sich auf: "), segmentButtons) : null,
+    segmentButtons.length ? h("div", { class: "listening-segments" }, h("span", { class: "muted small" }, t("l.refers")), segmentButtons) : null,
     audio,
-    supportButtons.length ? h("div", { class: "listening-help" }, h("span", { class: "muted small" }, "Hilfe: "), supportButtons) : null,
+    supportButtons.length ? h("div", { class: "listening-help" }, h("span", { class: "muted small" }, t("l.help")), supportButtons) : null,
     supportNote,
     revealed,
     noAnswer.length ? h("div", { class: "listening-noanswer" }, noAnswer) : null,
     h("p", { class: "muted small listening-source" }, `${listening.source.type_label} · `,
-      h("a", { href: listening.source.source_url, target: "_blank", rel: "noopener" }, "Quelle"), ` · ${listening.source.license}`,
-      listening.source.development_only ? h("span", { class: "badge", "data-development-only": "" }, " nur Entwicklung") : null));
+      h("a", { href: listening.source.source_url, target: "_blank", rel: "noopener" }, t("l.source")), ` · ${listening.source.license}`,
+      listening.source.development_only ? h("span", { class: "badge", "data-development-only": "" }, t("l.dev_only")) : null));
   return {
     element,
     state: () => ({ playCount: plays, supportLevel: support }),
@@ -173,7 +174,7 @@ export function listeningPlayer(listening, { onInteraction = () => {}, onNoAnswe
  * busyLabel: Text des Knopfs während der Prüfung (ein zweites Absenden ist dann gesperrt).
  * onEvent: optional, meldet RECORD, STOP, TRANSCRIBED, STT_FAILED (für die Zustandsmaschine eines Gesprächs).
  */
-export function answerForm(exercise, { onSubmit, submitLabel = "Prüfen", busyLabel = "Wird geprüft …", speech = null, aiAnalysis = false,
+export function answerForm(exercise, { onSubmit, submitLabel = t("c.check"), busyLabel = t("c.checking"), speech = null, aiAnalysis = false,
   onEvent = () => {} }) {
   if (exercise.answer_kind === "choice") return choiceForm(exercise, { onSubmit });
   const started = performance.now();
@@ -190,10 +191,10 @@ export function answerForm(exercise, { onSubmit, submitLabel = "Prüfen", busyLa
     });
   const counter = h("span", { class: "muted small", "aria-live": "off" });
   const help = h("span", { id: `${id}-help`, class: "muted small kbd-hint" },
-    long ? "Strg/⌘ + Enter zum Prüfen" : "Enter zum Prüfen");
+    long ? t("c.kbd_long") : t("c.kbd_short"));
   const error = h("p", { class: "form-error", role: "alert", hidden: true });
   const button = h("button", { type: "submit", class: "btn btn-primary btn-block" }, submitLabel);
-  const skipAi = h("button", { type: "button", class: "btn btn-link", "data-action": "skip-ai", hidden: true }, "KI-Hinweise überspringen");
+  const skipAi = h("button", { type: "button", class: "btn btn-link", "data-action": "skip-ai", hidden: true }, t("c.skip_ai"));
   let controller = null;
   skipAi.addEventListener("click", () => controller?.abort());
   let spoken = null; // zuletzt erkannter Text (für inputMode)
@@ -211,7 +212,7 @@ export function answerForm(exercise, { onSubmit, submitLabel = "Prüfen", busyLa
   const updateCount = () => {
     if (!exercise.min_words) return;
     const words = countWords(input.value);
-    counter.textContent = `${words} / ${exercise.min_words} Wörter`;
+    counter.textContent = t("c.word_count", words, exercise.min_words);
     counter.classList.toggle("ok", words >= exercise.min_words);
   };
   input.addEventListener("input", () => {
@@ -221,7 +222,7 @@ export function answerForm(exercise, { onSubmit, submitLabel = "Prüfen", busyLa
   updateCount();
 
   const form = h("form", { class: "answer-form", novalidate: true },
-    h("label", { for: id, class: "label" }, "Deine Antwort"),
+    h("label", { for: id, class: "label" }, t("c.your_answer")),
     input,
     h("div", { class: "answer-row" }, help, counter),
     voice ? voice.element : null,
@@ -242,7 +243,7 @@ export function answerForm(exercise, { onSubmit, submitLabel = "Prüfen", busyLa
     try {
       await onSubmit(input.value, Math.round(performance.now() - started), { inputMode, signal: controller.signal });
     } catch (err) {
-      error.textContent = err?.userMessage ?? "Die Antwort konnte gerade nicht gespeichert werden. Bitte versuche es noch einmal.";
+      error.textContent = err?.userMessage ?? t("c.save_failed");
       error.hidden = false;
       if (!err?.userMessage) console.error(err);
       input.focus();
@@ -283,7 +284,7 @@ function choiceForm(exercise, { onSubmit }) {
     type: "button", class: "btn btn-secondary btn-block choice", "data-option": option, lang: targetLang(),
   }, option));
   const form = h("form", { class: "answer-form choice-form", novalidate: true },
-    h("p", { class: "label", id: `choices-${exercise.id}` }, "Wähle eine Antwort"),
+    h("p", { class: "label", id: `choices-${exercise.id}` }, t("c.choose_answer")),
     h("div", { class: "choice-list", role: "group", "aria-labelledby": `choices-${exercise.id}` }, buttons),
     error);
   let busy = false;
@@ -297,7 +298,7 @@ function choiceForm(exercise, { onSubmit }) {
       try {
         await onSubmit(button.dataset.option, Math.round(performance.now() - started), { inputMode: "text", signal: null });
       } catch (err) {
-        error.textContent = err?.userMessage ?? "Die Antwort konnte gerade nicht gespeichert werden. Bitte versuche es noch einmal.";
+        error.textContent = err?.userMessage ?? t("c.save_failed");
         error.hidden = false;
         if (!err?.userMessage) console.error(err);
       } finally {
@@ -317,7 +318,7 @@ function choiceForm(exercise, { onSubmit }) {
 
 /** Knopf "Sprechen": aufnehmen → lokal erkennen → Text zurückgeben. Fehler nur als Hinweis, nie als Absturz. */
 function speechControl(speech, { onText, onBusy, onEvent = () => {} }) {
-  const label = h("span", {}, "Sprechen");
+  const label = h("span", {}, t("c.speak"));
   const button = h("button", { type: "button", class: "btn btn-secondary mic", "data-action": "record", "aria-pressed": "false" },
     icon("mic", { size: 18 }), label);
   const status = h("p", { class: "muted small speech-status", role: "status", "aria-live": "polite" });
@@ -329,7 +330,7 @@ function speechControl(speech, { onText, onBusy, onEvent = () => {} }) {
     button.disabled = false;
     button.setAttribute("aria-pressed", "false");
     button.classList.remove("recording");
-    label.textContent = "Sprechen";
+    label.textContent = t("c.speak");
     onBusy(false);
   };
   const finish = async () => {
@@ -337,27 +338,27 @@ function speechControl(speech, { onText, onBusy, onEvent = () => {} }) {
     if (!current) return;
     clearInterval(timer);
     button.disabled = true;
-    label.textContent = "Wird erkannt …";
-    status.textContent = "Wird lokal erkannt …";
+    label.textContent = t("c.recognizing");
+    status.textContent = t("c.recognizing_local");
     onEvent("STOP");
     try {
       const wav = await current.stop();
       const result = await speech.transcribe(wav);
       if (!result.text) {
-        status.textContent = "Nichts verstanden. Versuche es noch einmal oder tippe.";
+        status.textContent = t("c.not_understood");
         onEvent("STT_FAILED");
       } else {
         onText(result.text);
         onEvent("TRANSCRIBED");
         status.textContent = result.confidence < 0.5
-          ? "Unsicher erkannt – bitte prüfe den Text, bevor du ihn abschickst."
-          : "Erkannt. Du kannst den Text noch korrigieren.";
+          ? t("c.unsure")
+          : t("c.recognized");
       }
     } catch (error) {
       onEvent("STT_FAILED");
       status.textContent = error?.code === "invalid_audio"
-        ? `Die Aufnahme war nicht verwendbar (${error.message}).`
-        : "Spracherkennung gerade nicht möglich. Bitte tippe deine Antwort.";
+        ? t("c.bad_audio", error.message)
+        : t("c.stt_off");
     } finally {
       reset();
     }
@@ -372,17 +373,17 @@ function speechControl(speech, { onText, onBusy, onEvent = () => {} }) {
     } catch (error) {
       recording = null;
       status.textContent = error?.name === "NotAllowedError"
-        ? "Das Mikrofon ist nicht erlaubt. Du kannst deine Antwort tippen."
-        : "Kein Mikrofon verfügbar. Du kannst deine Antwort tippen.";
+        ? t("c.mic_denied")
+        : t("c.no_mic");
       return;
     }
     onBusy(true);
     onEvent("RECORD");
     button.setAttribute("aria-pressed", "true");
     button.classList.add("recording");
-    label.textContent = "Stopp";
-    status.textContent = `Aufnahme läuft (höchstens ${MAX_SECONDS} s). Die Aufnahme bleibt auf diesem Gerät.`;
-    timer = setInterval(() => { label.textContent = `Stopp (${Math.floor(recording?.seconds() ?? 0)} s)`; }, 500);
+    label.textContent = t("c.stop");
+    status.textContent = t("c.recording", MAX_SECONDS);
+    timer = setInterval(() => { label.textContent = t("c.stop_s", Math.floor(recording?.seconds() ?? 0)); }, 500);
   });
   return { element: h("div", { class: "speech" }, button, status) };
 }
@@ -391,16 +392,11 @@ function speechControl(speech, { onText, onBusy, onEvent = () => {} }) {
 
 const TONE_ICON = Object.freeze({ success: "check", error: "alert", info: "info", neutral: "info", warning: "alert" });
 
-const AI_NOTES = Object.freeze({
-  unavailable: "KI-Zusatzanalyse gerade nicht erreichbar – bewertet wurde mit den Regeln.",
-  timeout: "KI-Zusatzanalyse hat zu lange gebraucht – bewertet wurde mit den Regeln.",
-  invalid: "KI-Zusatzanalyse lieferte nichts Verwertbares – bewertet wurde mit den Regeln.",
-  skipped: "KI-Zusatzhinweise übersprungen.",
-});
+const AI_NOTES = Object.freeze({ unavailable: "c.ai_unavailable", timeout: "c.ai_timeout", invalid: "c.ai_invalid", skipped: "c.ai_skipped" });
 
 export function feedbackPanel(feedback, { answerText, ai = null }) {
   const findings = (items) => h("ul", { class: "findings" }, items.map((item) => findingItem(item, feedback.labels)));
-  const aiNote = ai ? AI_NOTES[ai.status] : null;
+  const aiNote = ai && AI_NOTES[ai.status] ? t(AI_NOTES[ai.status]) : null;
   return h("section", { class: `card feedback tone-${feedback.tone}`, "aria-labelledby": "feedback-title", "data-verdict": feedback.verdict },
     h("h2", { id: "feedback-title", class: "feedback-title", tabindex: "-1" }, icon(TONE_ICON[feedback.tone]), feedback.title),
     h("div", { class: "your-answer" }, h("span", { class: "label" }, feedback.input_mode === "speech" ? feedback.labels.you_said : feedback.labels.you_wrote),
@@ -413,8 +409,8 @@ export function feedbackPanel(feedback, { answerText, ai = null }) {
       h("summary", {}, `${feedback.labels.more_hints} (${feedback.secondary.reduce((s, g) => s + g.items.length, 0)})`),
       feedback.secondary.map((group) => h("div", { class: "group" }, h("h3", { class: "group-title" }, group.label), findings(group.items)))) : null,
     feedback.ai_hints?.length ? h("details", { class: "more ai-hints", "data-ai-hints": "" },
-      h("summary", {}, `KI-Hinweise, unbestätigt (${feedback.ai_hints.length})`),
-      h("p", { class: "muted small" }, "Lokales Sprachmodell. Ergänzung ohne Einfluss auf Bewertung und Lernstand."),
+      h("summary", {}, t("c.ai_hints", feedback.ai_hints.length)),
+      h("p", { class: "muted small" }, t("c.ai_note")),
       findings(feedback.ai_hints)) : null,
     aiNote ? h("p", { class: "muted small ai-note", "data-ai-status": ai.status }, aiNote) : null,
     feedback.model_answer ? h("div", { class: "model" },
@@ -447,7 +443,7 @@ function findingItem(item, labels) {
     h("div", { class: "finding-head" },
       h("span", { class: `badge sev-badge sev-${item.severity}` }, item.severity_label),
       item.recurring ? h("span", { class: "badge badge-warning" }, icon("alert", { size: 14 }), labels.recurring) : null,
-      item.supplemental ? h("span", { class: "badge" }, "KI") : null,
+      item.supplemental ? h("span", { class: "badge" }, t("c.ai")) : null,
       item.title ? h("strong", {}, item.title) : null),
     item.original || item.suggestion ? h("p", { class: "finding-fix", lang: targetLang() },
       item.original ? h("del", {}, item.original) : null,
@@ -462,19 +458,19 @@ export function emptyState({ title, text, action = null }) {
   return h("div", { class: "empty" }, h("h2", {}, title), text ? h("p", { class: "muted" }, text) : null, action);
 }
 
-export function errorState({ title = "Das hat gerade nicht geklappt.", text, onRetry }) {
+export function errorState({ title = t("common.error"), text, onRetry }) {
   return h("div", { class: "card error-state", role: "alert" },
     h("h2", {}, icon("alert"), title),
     text ? h("p", {}, text) : null,
-    onRetry ? h("button", { type: "button", class: "btn btn-primary", onclick: onRetry }, "Erneut versuchen") : null);
+    onRetry ? h("button", { type: "button", class: "btn btn-primary", onclick: onRetry }, t("common.retry")) : null);
 }
 
-export function loading(text = "Wird geladen …") {
+export function loading(text = t("common.loading")) {
   return h("div", { class: "loading", role: "status" }, h("span", { class: "spinner", "aria-hidden": "true" }), text);
 }
 
 export function masteryText(level) {
-  return MASTERY_LABELS[level] ?? level;
+  return masteryLabel(level);
 }
 
 /**
@@ -499,7 +495,7 @@ export function choiceDialog({ title, text, choices }) {
 }
 
 /** Bestätigungsdialog (natives <dialog>, per Tastatur bedienbar). Promise<boolean>. */
-export function confirmDialog({ title, text, confirmLabel, cancelLabel = "Abbrechen", danger = false }) {
+export function confirmDialog({ title, text, confirmLabel, cancelLabel = t("common.cancel"), danger = false }) {
   return new Promise((resolve) => {
     const dialog = h("dialog", { class: "dialog", "aria-labelledby": "dialog-title" },
       h("form", { method: "dialog" },

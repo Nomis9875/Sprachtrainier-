@@ -1,4 +1,5 @@
 import { explain, localizedSkillLabel } from "./explain.js";
+import { uiLanguage } from "./i18n.js";
 
 /**
  * Anzeigetexte der App (Deutsch). Nur Beschriftungen, keine Lernlogik: Was eine Übungsart,
@@ -44,7 +45,8 @@ export const PURPOSE_LABELS = Object.freeze({
 });
 
 export function purposeText(purpose, count) {
-  const [one, many] = PURPOSE_LABELS[purpose] ?? ["Übung", "Übungen"];
+  const labels = uiLanguage() === "es" ? PURPOSE_LABELS_ES : PURPOSE_LABELS;
+  const [one, many] = labels[purpose] ?? (uiLanguage() === "es" ? ["ejercicio", "ejercicios"] : ["Übung", "Übungen"]);
   return plural(count, one, many);
 }
 
@@ -154,8 +156,55 @@ export const MEMORY_STATUS_LABELS = Object.freeze({
 });
 
 export function typeLabel(type) {
+  if (uiLanguage() === "es") return EXERCISE_TYPE_LABELS_ES[type] ?? "Ejercicio";
   return EXERCISE_TYPE_LABELS[type] ?? "Übung";
 }
+
+// ---------------------------------------------------------------- P25.2: Beschriftungen in der Sprache der App
+
+const EXERCISE_TYPE_LABELS_ES = Object.freeze({
+  gap_fill: "Completar", vocab_active: "Vocabulario activo", transform: "Transformar", translation: "Traducir",
+  rephrase: "Reformular", situational: "Situación", opinion: "Opinión", counterargument: "Rebatir", hypothetical: "Hipótesis",
+  reaction: "Reaccionar", storytelling: "Narrar", explanation: "Explicar", persuasion: "Convencer", discussion: "Debatir",
+  register_switch: "Cambiar de registro", conversation: "Conversación", free_production: "Escritura libre",
+  multiple_choice: "Opción múltiple", error_correction: "Corregir el error", reading_comprehension: "Comprensión lectora",
+  listening_comprehension: "Comprensión auditiva", dictation: "Dictado", listening_response: "Escuchar y responder",
+});
+const PURPOSE_LABELS_ES = Object.freeze({
+  error_focus: ["ejercicio de errores", "ejercicios de errores"], review: ["repaso", "repasos"],
+  production: ["tarea de producción", "tareas de producción"], consolidate: ["ejercicio para afianzar", "ejercicios para afianzar"],
+  new: ["tarea nueva", "tareas nuevas"], challenge: ["tarea de aplicación", "tareas de aplicación"],
+});
+const MODE_LABELS_ES = Object.freeze({ training: "Entrenamiento", challenge: "Reto" });
+const MASTERY_LABELS_ES = Object.freeze({
+  unknown: "sin practicar", introduced: "introducido", practicing: "en práctica", stable: "afianzado", mastered: "dominado",
+});
+const STRENGTH_LABELS_ES = Object.freeze({
+  transfer: "lo aplicas a tareas nuevas", spontaneous_production: "te sale también espontáneamente al hablar",
+  error_improvement: "te pasa menos", rapid_progress: "avanza rápido", stable_skill: "lo dominas con seguridad",
+  free_production: "lo usas con libertad y seguridad", improving: "va mejorando",
+});
+const FINDING_KIND_LABELS_ES = Object.freeze({
+  GRAMMATICAL_ERROR: "Gramática", PREPOSITION_ERROR: "Preposiciones", WRONG_WORD: "Elección de palabras",
+  GERMANISM: "palabras y giros alemanes", TARGET_NOT_USED: "usar la estructura pedida", GOAL_NOT_MET: "responder con más detalle",
+  UNNATURAL: "formular con más naturalidad", REGISTER_MISMATCH: "registro adecuado (tú/usted)", REPETITION: "evitar repeticiones",
+  CORRECT_BUT_SIMPLE: "expresiones más elaboradas", IDIOMATIC_UPGRADE: "formular de forma más idiomática", ACCENT: "Acentos",
+});
+const MEMORY_TYPE_LABELS_ES = Object.freeze({
+  recurring_error: "error recurrente", production_gap: "aún inseguro en uso libre", avoided_structure: "a menudo lo evitas",
+  stable_strength: "lo dominas con seguridad", auditory_recognition_gap: "aún no lo reconoces al oído", note: "Nota",
+});
+const MEMORY_STATUS_LABELS_ES = Object.freeze({
+  candidate: "empieza a notarse", active: "actual", weakening: "va disminuyendo", resolved: "superado", superseded: "sustituido",
+});
+
+const pick = (de, es, key, fallback = key) => (uiLanguage() === "es" ? es[key] : de[key]) ?? fallback;
+export const modeLabel = (mode) => pick(MODE_LABELS, MODE_LABELS_ES, mode);
+export const masteryLabel = (level) => pick(MASTERY_LABELS, MASTERY_LABELS_ES, level);
+export const strengthLabel = (kind) => pick(STRENGTH_LABELS, STRENGTH_LABELS_ES, kind, uiLanguage() === "es" ? "bien" : "gut");
+export const findingKindLabel = (kind) => pick(FINDING_KIND_LABELS, FINDING_KIND_LABELS_ES, kind);
+export const memoryTypeLabel = (type) => pick(MEMORY_TYPE_LABELS, MEMORY_TYPE_LABELS_ES, type);
+export const memoryStatusLabel = (status) => pick(MEMORY_STATUS_LABELS, MEMORY_STATUS_LABELS_ES, status);
 
 /** "1 Übung" / "3 Übungen" */
 export function plural(count, singular, pluralForm) {

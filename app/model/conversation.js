@@ -8,7 +8,8 @@
  */
 
 import { presentExercise } from "./exercise.js";
-import { FINDING_KIND_LABELS } from "./labels.js";
+import { findingKindLabel } from "./labels.js";
+import { t } from "./i18n.js";
 
 // Zustandsmaschine einer Runde (Kern), für die Oberfläche hier bereitgestellt
 export { canSubmit, initialPhase, transition } from "../../core/conversation/phases.js";
@@ -32,7 +33,7 @@ export function scenarioCard(scenario, goal, conversations) {
     title: scenario.title_de,
     level: scenario.level,
     goal: scenario.goal,
-    goal_label: GOAL_LABELS[scenario.goal] ?? scenario.goal,
+    goal_label: GOAL_LABELS[scenario.goal] ? t(`conv.goal_${scenario.goal}`) : scenario.goal,
     goal_name: goal?.name_de ?? scenario.goal,
     goal_de: scenario.goal_de,
     situation_de: scenario.situation_de,
@@ -87,17 +88,17 @@ export function presentConversation({ state, scenario, goal, library, result = n
 export function presentResult(result) {
   const summary = result.evaluation_summary;
   return {
-    completion: result.status === "abandoned" ? "Gespräch vorzeitig beendet" : COMPLETION_TEXT[result.completion_reason] ?? "",
+    completion: result.status === "abandoned" ? t("conv.done_abandoned") : COMPLETION_TEXT[result.completion_reason] ? t(`conv.done_${result.completion_reason}`) : "",
     minutes: Math.max(1, Math.round(result.duration_seconds / 60)),
     turns: result.turn_count,
     spoken: summary.spoken,
     error_free: summary.error_free,
     went_well: [
       ...result.communication.covered.map((m) => `Du hast ${m.name_de}.`),
-      ...result.learning_observations.demonstrated.map((d) => `Gut umgesetzt: ${d.label}`),
+      ...result.learning_observations.demonstrated.map((d) => t("conv.well_done", d.label)),
     ].slice(0, 5),
     work_on: result.learning_observations.to_work_on.map((e) => ({
-      label: e.label ?? FINDING_KIND_LABELS[e.kind] ?? e.kind, count: e.count, example: e.example,
+      label: e.label ?? findingKindLabel(e.kind), count: e.count, example: e.example,
     })),
     natural_sentence: result.natural_sentence,
     supplemental_hints: result.learning_observations.supplemental_hints,

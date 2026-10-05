@@ -6,7 +6,8 @@
  * Zahlen: Was es (noch) nicht gibt, wird als leerer Zustand gezeigt, nicht als 0 %-Balken.
  */
 
-import { PURPOSE_LABELS, plural, purposeText } from "./labels.js";
+import { PURPOSE_LABELS, purposeText } from "./labels.js";
+import { t } from "./i18n.js";
 
 const OPEN = new Set(["candidate", "active", "weakening"]);
 // Begrüßung in der Lernsprache (P22: vorher immer "Hola", auch beim Deutsch- oder Englischlernen)
@@ -32,17 +33,18 @@ export function buildDashboard({ profile, activity, reviews, memories, openSessi
   const open = memories.filter((m) => OPEN.has(m.status));
 
   const needs = [
-    { key: "reviews", count: dueCount(reviews), text: (n) => `${plural(n, "Wiederholung", "Wiederholungen")} fällig` },
+    { key: "reviews", count: dueCount(reviews), text: (n) => t("need.reviews", n) },
     { key: "recurring_errors", count: open.filter((m) => m.memory_type === "recurring_error").length,
-      text: (n) => plural(n, "wiederkehrender Fehler", "wiederkehrende Fehler") },
+      text: (n) => t("need.recurring", n) },
     { key: "production_gaps", count: open.filter((m) => m.memory_type === "production_gap").length,
-      text: (n) => `${plural(n, "Lücke", "Lücken")} in der freien Produktion` },
+      text: (n) => t("need.production", n) },
     { key: "avoided", count: open.filter((m) => m.memory_type === "avoided_structure").length,
-      text: (n) => `${plural(n, "Struktur", "Strukturen")}, die du oft umgehst` },
+      text: (n) => t("need.avoided", n) },
   ].filter((n) => n.count > 0).map((n) => ({ key: n.key, count: n.count, text: n.text(n.count) }));
 
   return {
-    greeting: profile.name ? `${GREETINGS[languageId] ?? "Hallo"}, ${profile.name}` : `${GREETINGS[languageId] ?? "Hallo"}!`,
+    // P25.1: ohne eigenen Namen (Onboarding übersprungen) ohne Namen grüßen
+    greeting: profile.name && profile.named !== false ? `${GREETINGS[languageId] ?? "Hallo"}, ${profile.name}` : `${GREETINGS[languageId] ?? "Hallo"}!`,
     has_history: hasHistory,
     today: {
       minutes: Math.round(todaySeconds / 60),

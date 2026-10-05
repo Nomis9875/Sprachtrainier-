@@ -7,11 +7,12 @@
 
 import { append, h, icon, meter, targetLang } from "../dom.js";
 import { answerForm, confirmDialog, listeningPlayer } from "../components.js";
+import { languageName, t } from "../../model/i18n.js";
 import { CEFR_CHOICES, learningOutlook } from "../../model/language.js";
 
 export async function assessmentView(ctx) {
   const page = await ctx.app.assessmentPage();
-  ctx.setTitle("Einstufung");
+  ctx.setTitle(t("home.assessment"));
   const root = h("div", { class: "page assessment-page" });
   const render = (assessment, profile = page.profile) => {
     root.dataset.status = assessment?.status ?? "intro";
@@ -27,8 +28,8 @@ export async function assessmentView(ctx) {
 function introCard(ctx, page, render) {
   const language = ctx.languages.activeInfo();
   if (!page.available_modules.length) {
-    return h("section", { class: "card" }, h("h1", {}, `Einstufung ${language.name_de}`),
-      h("p", {}, "Für diese Sprache gibt es noch keine Einstufungsaufgaben. Sie folgen mit dem Inhaltspaket."));
+    return h("section", { class: "card" }, h("h1", {}, t("as.title", languageName(language.id))),
+      h("p", {}, t("as.none")));
   }
   const selected = { level: page.profile.self_assessment };
   const chips = CEFR_CHOICES.map((level) => {
@@ -43,7 +44,7 @@ function introCard(ctx, page, render) {
     });
     return b;
   });
-  const start = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "start-assessment" }, icon("play", { size: 18 }), "Einstufung starten");
+  const start = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "start-assessment" }, icon("play", { size: 18 }), t("languages.assess"));
   const error = h("p", { class: "form-error", role: "alert", hidden: true });
   start.addEventListener("click", async () => {
     start.disabled = true;
@@ -51,43 +52,43 @@ function introCard(ctx, page, render) {
       if (selected.level) await ctx.app.recordSelfAssessment(selected.level);
       render(await ctx.app.startAssessment());
     } catch (err) {
-      error.textContent = err?.userMessage ?? "Die Einstufung konnte nicht gestartet werden.";
+      error.textContent = err?.userMessage ?? t("as.start_failed");
       error.hidden = false;
       start.disabled = false;
     }
   });
   const gaps = page.profile.content_gaps;
   return h("section", { class: "card assessment-intro", "aria-labelledby": "assess-title" },
-    h("h1", { id: "assess-title" }, h("span", { "aria-hidden": "true" }, `${language.flag} `), `Einstufung ${language.name_de}`),
-    h("p", {}, "Wie schätzt du dein Niveau ein? Das ist nur der Startpunkt, nicht das Ergebnis: Die App passt die Aufgaben an deine Antworten an."),
-    h("div", { class: "chips level-chips", role: "group", "aria-label": "Selbsteinschätzung" }, chips),
-    h("p", { class: "muted small" }, `Etwa 10–15 Minuten · Bereiche: ${page.available_modules.map((m) => ctx.labels.dimension(m)).join(", ")}. Du kannst jederzeit pausieren. „Weiß ich nicht“ ist besser als Raten.`),
-    gaps.length ? h("p", { class: "muted small" }, `Noch nicht messbar: ${gaps.join(", ")} (keine Aufgaben in diesem Sprachpaket).`) : null,
+    h("h1", { id: "assess-title" }, h("span", { "aria-hidden": "true" }, `${language.flag} `), t("as.title", languageName(language.id))),
+    h("p", {}, t("as.self_q")),
+    h("div", { class: "chips level-chips", role: "group", "aria-label": t("as.self") }, chips),
+    h("p", { class: "muted small" }, t("as.intro", page.available_modules.map((m) => ctx.labels.dimension(m)).join(", "))),
+    gaps.length ? h("p", { class: "muted small" }, t("as.gaps", gaps.join(", "))) : null,
     start, error);
 }
 
 function header(ctx, assessment, render) {
-  const pause = h("button", { type: "button", class: "btn btn-ghost", "data-action": "pause-assessment" }, icon("pause"), h("span", { class: "hide-narrow" }, "Pausieren"));
+  const pause = h("button", { type: "button", class: "btn btn-ghost", "data-action": "pause-assessment" }, icon("pause"), h("span", { class: "hide-narrow" }, t("as.pause")));
   pause.addEventListener("click", async () => render(await ctx.app.pauseAssessment(assessment.assessment_id)));
-  const end = h("button", { type: "button", class: "btn btn-ghost", "data-action": "abandon-assessment" }, icon("close"), h("span", { class: "hide-narrow" }, "Abbrechen"));
+  const end = h("button", { type: "button", class: "btn btn-ghost", "data-action": "abandon-assessment" }, icon("close"), h("span", { class: "hide-narrow" }, t("common.cancel")));
   end.addEventListener("click", async () => {
-    const ok = await confirmDialog({ title: "Einstufung abbrechen?", text: "Deine bisherigen Antworten bleiben gespeichert und fließen ins Sprachprofil ein.",
-      confirmLabel: "Abbrechen", cancelLabel: "Weitermachen", danger: true });
+    const ok = await confirmDialog({ title: t("as.abandon_q"), text: t("as.abandon_text"),
+      confirmLabel: t("common.cancel"), cancelLabel: t("as.keep"), danger: true });
     if (ok) render(await ctx.app.abandonAssessment(assessment.assessment_id));
   });
   return h("header", { class: "conversation-head" },
-    h("div", {}, h("h1", { class: "conversation-title" }, "Einstufung"),
+    h("div", {}, h("h1", { class: "conversation-title" }, t("home.assessment")),
       h("span", { class: "muted small", "aria-live": "polite", "data-assessment-progress": "" },
-        `Bereich ${Math.min(assessment.progress.done + 1, assessment.progress.total)} von ${assessment.progress.total}`)),
+        t("as.module_of", Math.min(assessment.progress.done + 1, assessment.progress.total), assessment.progress.total))),
     h("div", { class: "conversation-actions" }, assessment.paused ? null : pause, end),
-    meter(assessment.progress.total ? assessment.progress.done / assessment.progress.total : 0, "Fortschritt der Einstufung"),
+    meter(assessment.progress.total ? assessment.progress.done / assessment.progress.total : 0, t("as.progress")),
     h("ol", { class: "plain module-list" }, assessment.modules.filter((m) => m.status !== "unavailable").map((m) =>
       h("li", { class: `module ${m.status}`, "data-module": m.id }, m.name_de))));
 }
 
 function itemCard(ctx, assessment, render) {
   const item = assessment.current;
-  if (!item) return h("p", {}, "Wird ausgewertet …");
+  if (!item) return h("p", {}, t("as.evaluating"));
   const card = h("section", { class: "card assessment-item", "aria-labelledby": "item-title", "data-item": item.item_id, "data-dimension": item.dimension });
   let busy = false;
   const submit = async (answerText, extra = {}) => {
@@ -100,7 +101,7 @@ function itemCard(ctx, assessment, render) {
       busy = false;
     }
   };
-  const skip = h("button", { type: "button", class: "btn btn-link", "data-action": "dont-know" }, "Weiß ich nicht");
+  const skip = h("button", { type: "button", class: "btn btn-link", "data-action": "dont-know" }, t("as.dont_know"));
   skip.addEventListener("click", async () => {
     if (busy) return;
     busy = true;
@@ -116,12 +117,12 @@ function itemCard(ctx, assessment, render) {
   } else {
     body = answerForm(item.exercise, {
       speech: ctx.speech,
-      submitLabel: "Weiter",
-      busyLabel: "Wird ausgewertet …",
+      submitLabel: t("as.continue"),
+      busyLabel: t("as.evaluating"),
       onSubmit: async (answerText, durationMs, { inputMode }) => submit(answerText, { inputMode, durationMs }),
     });
     if (item.dimension === "conversation") {
-      const skipModule = h("button", { type: "button", class: "btn btn-link", "data-action": "skip-module" }, "Ohne Mikrofon: diesen Bereich auslassen");
+      const skipModule = h("button", { type: "button", class: "btn btn-link", "data-action": "skip-module" }, t("as.skip_module"));
       skipModule.addEventListener("click", async () => render(await ctx.app.skipAssessmentModule(assessment.assessment_id, item.dimension, "no_microphone")));
       body = h("div", {}, body, skipModule);
     }
@@ -139,18 +140,18 @@ function itemCard(ctx, assessment, render) {
 }
 
 function pausedCard(ctx, assessment, render) {
-  const resume = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "resume-assessment" }, "Fortsetzen");
+  const resume = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "resume-assessment" }, t("home.resume"));
   resume.addEventListener("click", async () => render(await ctx.app.resumeAssessment(assessment.assessment_id)));
   return h("section", { class: "card paused", "aria-labelledby": "assess-paused" },
-    h("h2", { id: "assess-paused" }, "Pausiert"),
-    h("p", {}, "Deine Antworten sind gespeichert. Es geht mit dem nächsten Bereich weiter."), resume);
+    h("h2", { id: "assess-paused" }, t("home.paused")),
+    h("p", {}, t("as.paused_text")), resume);
 }
 
 function resultCard(ctx, assessment) {
   const r = assessment.result;
   // P22: Das Ergebnis zeigt das Sprachprofil (danach plant die App), damit Ergebnis und Profil nicht voneinander
   // abweichen; die eigenen Werte der Einstufung bleiben der Rückfall, falls das Profil nicht lädt.
-  const body = h("div", { "aria-live": "polite" }, h("p", { class: "muted" }, "Wird ausgewertet …"));
+  const body = h("div", { "aria-live": "polite" }, h("p", { class: "muted" }, t("as.evaluating")));
   ctx.app.languageProfile()
     .then((p) => body.replaceChildren(...placementOutcome(ctx, p).flat()))
     .catch((error) => {
@@ -160,25 +161,25 @@ function resultCard(ctx, assessment) {
         h("ul", { class: "plain" }, r.modules.map((m) => h("li", {}, `${m.name_de}: `, h("strong", {}, m.text), h("span", { class: "muted small" }, ` (${m.detail})`)))));
     });
   return h("section", { class: "card assessment-result", "aria-labelledby": "assess-result" },
-    h("h2", { id: "assess-result", tabindex: "-1" }, assessment.status === "abandoned" ? "Einstufung abgebrochen" : "Einstufung abgeschlossen"),
+    h("h2", { id: "assess-result", tabindex: "-1" }, assessment.status === "abandoned" ? t("as.abandoned") : t("as.done")),
     body,
-    h("p", { class: "muted small" }, "Das ist eine Schätzung aus wenigen, von Hand eingestuften Aufgaben, keine geprüfte Zertifizierung. Mit jeder Übung, jedem Gespräch und jeder Sprachaufnahme wird dein Sprachprofil genauer."),
+    h("p", { class: "muted small" }, t("as.disclaimer")),
     h("div", { class: "stack" },
-      h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "start-learning" }, "Jetzt lernen"),
-      h("a", { class: "btn btn-secondary btn-block", href: "#/sprachprofil", "data-action": "open-profile" }, "Zum Sprachprofil")));
+      h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "start-learning" }, t("home.learn_now")),
+      h("a", { class: "btn btn-secondary btn-block", href: "#/sprachprofil", "data-action": "open-profile" }, t("progress.to_profile"))));
 }
 
 /** Wo stehe ich? Was als Nächstes? (aus dem Sprachprofil) */
 function placementOutcome(ctx, p) {
   const outlook = learningOutlook(p, ctx.app.explanationLanguage);
   return [
-    h("p", { class: "eyebrow" }, "Wo stehst du?"),
-    h("p", { class: "result-level" }, h("strong", {}, p.overall.text), h("span", { class: "muted" }, ` · ${p.overall.detail}`)),
+    h("p", { class: "eyebrow" }, t("as.where")),
+    h("p", { class: "result-level" }, h("span", { class: "level-badge level-lg" }, p.overall.text), h("span", { class: "muted" }, ` ${p.overall.detail}`)),
     h("ul", { class: "plain result-dimensions" }, p.dimensions.filter((d) => !d.content_gap).map((d) => h("li", { "data-dimension": d.id, "data-status": d.status },
       `${d.name_de}: `,
       d.status === "unknown" || d.status === "insufficient"
-        ? h("span", { class: "muted" }, "noch nicht gemessen")
-        : [h("strong", {}, d.text), h("span", { class: "muted small" }, ` (${d.detail})`)]))),
-    h("p", { class: "eyebrow" }, "Was als Nächstes?"),
+        ? h("span", { class: "muted" }, t("as.not_measured"))
+        : [h("span", { class: "level-badge level-sm" }, d.text), h("span", { class: "muted small" }, ` (${d.detail})`)]))),
+    h("p", { class: "eyebrow" }, t("as.next")),
     outlook.lines.map((line) => h("p", { class: "outlook" }, line))];
 }

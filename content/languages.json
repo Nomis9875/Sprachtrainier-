@@ -10,15 +10,23 @@
    "flag": "🇪🇸",
    "stt": "es",
    "enabled": true,
-   "content_version": "5a7d5fddf42e6143",
+   "content_version": "3583aba93261fe88",
    "package": "content/es/content-package.json",
    "exercise_count": 3833,
    "conversation_count": 16,
    "assessment": true,
    "cefr_range": [
-    "B1",
+    "A1",
     "C2"
-   ]
+   ],
+   "level_counts": {
+    "A1": 77,
+    "A2": 969,
+    "B1": 1919,
+    "B2": 444,
+    "C1": 285,
+    "C2": 139
+   }
   },
   {
    "id": "en",
@@ -35,7 +43,14 @@
    "cefr_range": [
     "B1",
     "C2"
-   ]
+   ],
+   "level_counts": {
+    "A2": 12,
+    "B1": 63,
+    "B2": 46,
+    "C1": 29,
+    "C2": 8
+   }
   },
   {
    "id": "fr",
@@ -52,7 +67,13 @@
    "cefr_range": [
     "A1",
     "B2"
-   ]
+   ],
+   "level_counts": {
+    "A1": 68,
+    "A2": 71,
+    "B1": 68,
+    "B2": 23
+   }
   },
   {
    "id": "de",
@@ -69,7 +90,14 @@
    "cefr_range": [
     "A1",
     "B2"
-   ]
+   ],
+   "level_counts": {
+    "A1": 65,
+    "A2": 76,
+    "B1": 78,
+    "B2": 23,
+    "C1": 20
+   }
   }
  ]
 }

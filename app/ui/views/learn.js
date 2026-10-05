@@ -1,43 +1,43 @@
 /** Lernen: Länge wählen, Vorschau der geplanten Session, starten oder fortsetzen. */
 
 import { SESSION_MINUTES } from "../../services/app-service.js";
-import { plural } from "../../model/labels.js";
 import { h } from "../dom.js";
+import { t } from "../../model/i18n.js";
 import { loading } from "../components.js";
 
 export async function learnView(ctx) {
-  ctx.setTitle("Lernen");
+  ctx.setTitle(t("nav.learn"));
   const [open, profile] = await Promise.all([ctx.app.openSession(), ctx.app.profile()]);
   if (open) {
     return h("div", { class: "page" },
-      h("header", { class: "page-head" }, h("h1", {}, "Lernen")),
+      h("header", { class: "page-head" }, h("h1", {}, t("nav.learn"))),
       h("section", { class: "card hero" },
-        h("p", { class: "eyebrow" }, open.status === "paused" ? "Pausiert" : "Läuft gerade"),
-        h("h2", {}, "Du hast eine offene Session"),
-        h("p", {}, `${open.completed} von ${open.total} Übungen erledigt. Eine neue Session gibt es, wenn diese fertig oder beendet ist.`),
-        h("a", { class: "btn btn-primary btn-block", href: "#/session" }, open.status === "paused" ? "Fortsetzen" : "Weiter lernen")));
+        h("p", { class: "eyebrow" }, open.status === "paused" ? t("home.paused") : t("home.running")),
+        h("h2", {}, t("learn.open")),
+        h("p", {}, t("learn.open_text", open.completed, open.total)),
+        h("a", { class: "btn btn-primary btn-block", href: "#/session" }, open.status === "paused" ? t("home.resume") : t("home.continue"))));
   }
 
   let minutes = profile.daily_minutes;
   const previewBox = h("div", { class: "preview", "aria-live": "polite" });
-  const startButton = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "start" }, "Session starten");
+  const startButton = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "start" }, t("learn.start"));
   startButton.addEventListener("click", () => startSessionAction(ctx, minutes, startButton));
 
   const showPreview = async () => {
-    previewBox.replaceChildren(loading("Session wird geplant …"));
+    previewBox.replaceChildren(loading(t("learn.planning")));
     const requested = minutes;
     try {
       const preview = await ctx.app.planPreview(requested);
       if (requested !== minutes) return; // inzwischen andere Länge gewählt
       startButton.disabled = preview.empty;
       previewBox.replaceChildren(
-        h("p", { class: "preview-title" }, h("strong", {}, preview.title), h("span", { class: "muted" }, ` · ${plural(preview.exercise_count, "Übung", "Übungen")} · ca. ${preview.estimated_minutes} min`)),
+        h("p", { class: "preview-title" }, h("strong", {}, preview.title), h("span", { class: "muted" }, ` · ${t("common.exercises", preview.exercise_count)} · ${t("c.about", `${preview.estimated_minutes} min`)}`)),
         preview.empty
-          ? h("p", { class: "muted" }, "Für diese Länge gibt es gerade keine passenden Übungen.")
+          ? h("p", { class: "muted" }, t("learn.none"))
           : h("ul", { class: "composition" }, preview.composition.map((c) => h("li", {}, c.text))));
     } catch (error) {
       console.error(error);
-      previewBox.replaceChildren(h("p", { class: "form-error" }, "Die Vorschau konnte gerade nicht berechnet werden."));
+      previewBox.replaceChildren(h("p", { class: "form-error" }, t("learn.preview_failed")));
     }
   };
 
@@ -52,11 +52,11 @@ export async function learnView(ctx) {
 
   showPreview();
   return h("div", { class: "page" },
-    h("header", { class: "page-head" }, h("h1", {}, "Lernen"),
-      h("p", { class: "muted" }, "Die App plant jede Session neu aus deinen Fehlern, fälligen Wiederholungen und neuen Themen.")),
+    h("header", { class: "page-head" }, h("h1", {}, t("nav.learn")),
+      h("p", { class: "muted" }, t("learn.lead"))),
     h("section", { class: "card", "aria-labelledby": "length-title" },
-      h("h2", { id: "length-title" }, "Wie viel Zeit hast du?"),
-      h("fieldset", { class: "choices" }, h("legend", { class: "sr-only" }, "Länge der Session"), options),
+      h("h2", { id: "length-title" }, t("learn.time")),
+      h("fieldset", { class: "choices" }, h("legend", { class: "sr-only" }, t("learn.length")), options),
       previewBox,
       startButton));
 }
@@ -69,7 +69,7 @@ export async function startSessionAction(ctx, minutes, button) {
     ctx.navigate("#/session");
   } catch (error) {
     if (button) button.disabled = false;
-    ctx.toast(error?.userMessage ?? "Die Lernsession konnte gerade nicht gestartet werden.");
+    ctx.toast(error?.userMessage ?? t("learn.start_failed"));
     if (!error?.userMessage) console.error(error);
   }
 }

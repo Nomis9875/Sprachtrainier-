@@ -13,7 +13,9 @@
  *   Spontan              dieselben, mit einem Erfolg spontan (Gespräch)
  */
 
-import { MASTERY_LABELS, MASTERY_ORDER, MEMORY_STATUS_LABELS, MEMORY_TYPE_LABELS, STRENGTH_LABELS, skillTitle } from "./labels.js";
+import { t, uiLanguage } from "./i18n.js";
+import { localizedSkillLabel } from "./explain.js";
+import { MASTERY_ORDER, masteryLabel, memoryStatusLabel, memoryTypeLabel, skillTitle, strengthLabel } from "./labels.js";
 
 const AREAS = Object.freeze([
   { key: "grammar", label: "Grammatik", type: "grammar_structure" },
@@ -32,11 +34,12 @@ export const MIN_DAYS_FOR_STRENGTHS = 2;
 /**
  * @param {{snapshot: object, coaching: object, memories: object[], reviews: object, activity: object, library: object}} input
  */
-export function buildProgress({ snapshot, coaching, memories, reviews, activity, library }) {
+export function buildProgress({ snapshot, coaching, memories, reviews, activity, library, language = "de" }) {
   const skills = snapshot.skills;
   const observed = skills.filter((s) => s.mastery !== "unknown");
   const hasHistory = observed.length > 0;
-  const label = (id) => library.skill(id)?.label ?? id;
+  // Strukturen und Fehler in der Erklärungssprache (wie in Session und Rückmeldung)
+  const label = (id) => localizedSkillLabel(library.skill(id), library, language) ?? id;
 
   const areas = AREAS.map((area) => {
     const own = skills.filter((s) => s.type === area.type);
@@ -46,13 +49,13 @@ export function buildProgress({ snapshot, coaching, memories, reviews, activity,
     const started = own.filter((s) => s.mastery === "introduced" || s.mastery === "practicing").length;
     return {
       key: area.key,
-      label: area.label,
+      label: t(`area.${area.key}`),
       value: round(value),
       total: own.length,
       secure,
       started,
       observed: secure + started,
-      detail: own.length ? `${secure} gefestigt · ${started} begonnen · ${own.length} insgesamt` : "noch keine Inhalte",
+      detail: own.length ? t("area.detail", secure, started, own.length) : t("area.no_content"),
     };
   });
 
@@ -60,10 +63,10 @@ export function buildProgress({ snapshot, coaching, memories, reviews, activity,
   const freeCount = productive.filter((s) => s.evidence.free.successes + s.evidence.spontaneous.successes > 0).length;
   const spontaneousCount = productive.filter((s) => s.evidence.spontaneous.successes > 0).length;
   const production = productive.length ? [
-    { key: "free", label: "Freie Produktion", value: round(freeCount / productive.length),
-      detail: `${freeCount} von ${productive.length} geübten Strukturen und Ausdrücken frei verwendet` },
-    { key: "spontaneous", label: "Spontane Kommunikation", value: round(spontaneousCount / productive.length),
-      detail: `${spontaneousCount} von ${productive.length} spontan im Gespräch verwendet` },
+    { key: "free", label: t("area.free"), value: round(freeCount / productive.length),
+      detail: t("area.free_detail", freeCount, productive.length) },
+    { key: "spontaneous", label: t("area.spontaneous"), value: round(spontaneousCount / productive.length),
+      detail: t("area.spontaneous_detail", spontaneousCount, productive.length) },
   ] : [];
 
   const openMemories = memories.filter((m) => OPEN.has(m.status));
@@ -75,17 +78,18 @@ export function buildProgress({ snapshot, coaching, memories, reviews, activity,
       memory_id: m.memory_id,
       title: label(m.skill_id),
       kind: m.memory_type,
-      kind_label: MEMORY_TYPE_LABELS[m.memory_type],
+      kind_label: memoryTypeLabel(m.memory_type),
       status: m.status,
-      status_label: MEMORY_STATUS_LABELS[m.status],
-      text: m.content.text,
+      status_label: memoryStatusLabel(m.status),
+      // Kerntext (Deutsch, mit Zahlen); in anderer Sprache der App ein kurzer Satz je Art
+      text: uiLanguage() === "de" ? m.content.text : t(`pattern.${m.memory_type}`) ?? m.content.text,
     }));
 
   const enoughDays = activity.totals.learning_days >= MIN_DAYS_FOR_STRENGTHS;
   const strengths = enoughDays ? [
     ...openMemories.filter((m) => m.memory_type === "stable_strength")
-      .map((m) => ({ skill_id: m.skill_id, title: label(m.skill_id), text: MEMORY_TYPE_LABELS.stable_strength })),
-    ...coaching.strengths.map((s) => ({ skill_id: s.skill_id, title: label(s.skill_id), text: STRENGTH_LABELS[s.kind] ?? "gut" })),
+      .map((m) => ({ skill_id: m.skill_id, title: label(m.skill_id), text: memoryTypeLabel("stable_strength") })),
+    ...coaching.strengths.map((s) => ({ skill_id: s.skill_id, title: label(s.skill_id), text: strengthLabel(s.kind) })),
   ].filter((s, i, list) => list.findIndex((x) => x.skill_id === s.skill_id) === i).slice(0, MAX_STRENGTHS) : [];
 
   // Empfehlungen des Coachings: Handlung und betroffene Skills (die Zahlenbegründung bleibt intern)
@@ -94,9 +98,9 @@ export function buildProgress({ snapshot, coaching, memories, reviews, activity,
     .slice(0, MAX_FOCUS)
     .map((r) => {
       // P22: typische Fehler außerhalb von "Fehler gezielt abbauen" als solche benennen
-      const skills = r.skill_ids.map((id) => (r.action === "focus_error_elimination" ? label(id) : skillTitle(library.skill(id), id)));
+      const skills = r.skill_ids.map((id) => (r.action === "focus_error_elimination" ? label(id) : skillTitle(library.skill(id), id, { language, library })));
       const shown = skills.slice(0, MAX_FOCUS_SKILLS);
-      return { title: r.title_de, skills: shown, more: skills.length - shown.length };
+      return { title: t(`rec.${r.action}`) ?? r.title_de, skills: shown, more: skills.length - shown.length };
     });
 
   return {
@@ -105,15 +109,15 @@ export function buildProgress({ snapshot, coaching, memories, reviews, activity,
     areas,
     production,
     mastery: MASTERY_ORDER.slice(1).map((level) => ({
-      level, label: MASTERY_LABELS[level], count: skills.filter((s) => s.mastery === level).length,
+      level, label: masteryLabel(level), count: skills.filter((s) => s.mastery === level).length,
     })),
     patterns,
-    patterns_note: hasHistory && !patterns.length ? "Noch nicht genügend Daten für wiederkehrende Muster." : null,
+    patterns_note: hasHistory && !patterns.length ? t("progress.patterns_empty") : null,
     // "Das sitzt inzwischen gut": überwundene Fehlermuster (Erinnerung resolved)
     overcome: memories.filter((m) => m.memory_type === "recurring_error" && m.status === "resolved")
       .sort((a, b) => (a.updated_at < b.updated_at ? 1 : -1)).slice(0, MAX_PATTERNS).map((m) => label(m.skill_id)),
     strengths,
-    strengths_note: enoughDays ? null : "Stärken zeigen sich, wenn du an mehreren Tagen geübt hast.",
+    strengths_note: enoughDays ? null : t("progress.strengths_days"),
     focus,
     reviews: {
       due: (reviews.summary.by_due_status.due ?? 0) + (reviews.summary.by_due_status.overdue ?? 0),
@@ -137,8 +141,7 @@ function round(value) {
 
 /** Kopfzeile aus Lernersicht (P22): dieselben Zahlen wie der CoachingReport, ohne Fachbegriffe ("Skills", "unter Kontrolle"). */
 function learnerHeadline(o) {
-  if (!o.observed_skills) return "Noch keine Übungen in dieser Sprache. Deine erste Session legt los.";
+  if (!o.observed_skills) return t("progress.headline_none");
   const free = o.development.free + o.development.spontaneous;
-  const errors = o.errors.active ? ` ${o.errors.active === 1 ? "Ein typischer Fehler kommt" : `${o.errors.active} typische Fehler kommen`} noch vor.` : "";
-  return `${o.observed_skills === 1 ? "1 Struktur oder Ausdruck" : `${o.observed_skills} Strukturen und Ausdrücke`} geübt, davon ${free} schon frei verwendet.${errors}`;
+  return t("progress.headline", o.observed_skills, free, o.errors.active);
 }

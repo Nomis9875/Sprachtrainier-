@@ -20,7 +20,7 @@ import { LearnerApp } from "./services/app-service.js";
 import { LocalServices } from "./services/local-services.js";
 import { NAV_ITEMS, isDebug, parseRoute } from "./router.js";
 import { h, icon, setTargetLanguage } from "./ui/dom.js";
-import { DIMENSION_NAMES, levelClaim } from "./model/language.js";
+import { dimensionName, levelClaim } from "./model/language.js";
 import { choiceDialog, errorState, loading } from "./ui/components.js";
 import { debugView } from "./ui/views/debug.js";
 import { homeView } from "./ui/views/home.js";
@@ -33,7 +33,9 @@ import { sessionView } from "./ui/views/session.js";
 import { welcomeView } from "./ui/views/welcome.js";
 import { assessmentView } from "./ui/views/assessment.js";
 import { languageProfileView } from "./ui/views/language-profile.js";
-import { languageSetupView, languagesView } from "./ui/views/languages.js";
+import { languagesView } from "./ui/views/languages.js";
+import { onboardingView } from "./ui/views/onboarding.js";
+import { defaultName, detectUiLanguage, languageName, onboardingOutcome, setUiLanguage, t, uiLanguage, uiLanguageOf } from "./model/i18n.js";
 
 const LANGUAGES_URL = "content/languages.json";
 // Seiten, die auch ohne Inhaltspaket der aktiven Sprache sinnvoll sind
@@ -77,7 +79,7 @@ const offlineBadge = document.getElementById("offline-badge");
 boot();
 
 async function boot() {
-  main.replaceChildren(loading("App wird gestartet …"));
+  main.replaceChildren(loading(t("app.starting")));
   registerServiceWorker();
   watchConnection();
   const capabilities = services.refresh(); // parallel; die App wartet nicht auf lokale Dienste
@@ -89,14 +91,17 @@ async function boot() {
     persistent = opened.persistent;
     users = new UserDirectory({ storage });
     active = await users.init(); // übernimmt einmalig den bisherigen Einzelnutzer
-    if (!persistent) toast("Speichern ist in diesem Browser nicht möglich: Dein Fortschritt geht beim Schließen verloren.", { timeout: 8000 });
+    // P25.1: Sprache der Oberfläche: des aktiven Nutzers, sonst die des Geräts, sonst aus der Gerätesprache
+    applyUiLanguage(active?.preferences?.ui_language ?? (await storage.getMeta(UI_LANGUAGE_META_KEY))
+      ?? detectUiLanguage(navigator.languages ?? [navigator.language]));
+    if (!persistent) toast(t("app.no_storage"), { timeout: 8000 });
   } catch (error) {
     console.error(error);
     main.replaceChildren(errorState({
-      title: "Die App konnte gerade nicht gestartet werden.",
+      title: t("app.start_failed"),
       text: navigator.onLine
-        ? "Die Lerninhalte ließen sich nicht laden. Bitte versuche es noch einmal."
-        : "Du bist offline und die App wurde auf diesem Gerät noch nicht vollständig geladen. Verbinde dich einmal mit dem Internet.",
+        ? t("app.content_failed")
+        : t("app.offline_first"),
       onRetry: () => location.reload(),
     }));
     document.documentElement.dataset.ready = "error";
@@ -111,8 +116,9 @@ async function boot() {
 }
 
 /** Die App für genau einen Lerner in seiner aktiven Lernsprache starten (erster Start, Wechsel, Neuanlage). */
-async function startLearner(learnerId) {
+async function startLearner(learnerId, { beforeRender = null } = {}) {
   const user = await users.get(learnerId);
+  if (user.preferences?.ui_language) applyUiLanguage(user.preferences.ui_language);
   if (!user.languages.length || !user.active_language) {
     await showLanguageSetup(user);
     return;
@@ -124,27 +130,65 @@ async function startLearner(learnerId) {
   document.documentElement.dataset.learner = learnerId;
   document.documentElement.dataset.language = language;
   await refreshLearner();
+  if (beforeRender) await beforeRender(app);
   await render();
 }
 
-/** Erster Start eines Nutzers: Lernsprachen wählen; danach geht es mit der ersten zur Einstufung. */
+/** Neuer Nutzer ohne Lernsprache (im Profil angelegt): Onboarding ab der Lernsprache. */
 async function showLanguageSetup(user) {
+  showOnboarding({ user });
+}
+
+/**
+ * P25.1: Onboarding. Erster Start (ohne Nutzer): Sprache der App, Lernsprache, Selbsteinschätzung, Tagesziel (Name
+ * optional); für einen schon angelegten Nutzer ab der Lernsprache. Gespeichert wird erst am Ende.
+ */
+function showOnboarding({ user = null } = {}) {
   app = null;
-  await updateLearnerBadge();
+  updateLearnerBadge();
   document.body.classList.add("focus-mode");
   main.dataset.route = "language-setup";
-  main.replaceChildren(languageSetupView({
-    name: user.display_name,
+  main.replaceChildren(onboardingView({
     languages: registry.languages,
-    onConfirm: async (chosen) => {
-      for (const id of chosen) await users.addLanguage(user.id, id);
-      const first = chosen.find((id) => languageInfo(id).enabled) ?? chosen[0];
-      await users.setActiveLanguage(user.id, first);
-      history.replaceState(null, "", languageInfo(first).assessment ? "#/einstufung" : "#/"); // kein hashchange: startLearner zeigt die Seite
-      await startLearner(user.id);
+    uiLanguage: uiLanguage(),
+    askUiLanguage: !user,
+    askName: !user,
+    onUiLanguage: (id) => {
+      applyUiLanguage(id);
+      storage.setMeta(UI_LANGUAGE_META_KEY, id).catch((error) => console.error(error));
+    },
+    onFinish: async ({ ui, learn, level, goal, name }) => {
+      let learner = user;
+      if (!learner) {
+        const existing = (await users.list()).map((u) => u.display_name);
+        learner = await users.create(name || defaultName(existing, ui));
+        await users.setActive(learner.id);
+      }
+      await users.updatePreferences(learner.id, {
+        daily_minutes: goal, ui_language: ui, explanation_language: ui, ...(user ? {} : { named: Boolean(name) }),
+      });
+      await users.addLanguage(learner.id, learn);
+      await users.setActiveLanguage(learner.id, learn);
+      const outcome = onboardingOutcome({ level, hasAssessment: Boolean(languageInfo(learn).assessment) });
+      history.replaceState(null, "", outcome.route); // kein hashchange: startLearner zeigt die Seite
+      await startLearner(learner.id, {
+        beforeRender: outcome.selfAssessment ? (started) => started.recordSelfAssessment(outcome.selfAssessment) : null,
+      });
     },
   }));
   document.documentElement.dataset.ready = "true";
+}
+
+const UI_LANGUAGE_META_KEY = "ui_language";
+
+function applyUiLanguage(language) {
+  setUiLanguage(uiLanguageOf(language));
+  document.documentElement.lang = uiLanguage();
+  // statische Texte der Hülle (index.html) und die Navigation in der Sprache der App
+  offlineBadge.textContent = t("app.offline_badge");
+  const skip = document.querySelector(".skip-link");
+  if (skip) skip.textContent = t("app.skip");
+  if (nav.childElementCount) buildNav();
 }
 
 /**
@@ -158,7 +202,7 @@ async function switchLanguage(languageId, { silent = false } = {}) {
   await users.setActiveLanguage(learnerId, languageId);
   if (!silent && location.hash !== "#/") history.replaceState(null, "", "#/");
   await startLearner(learnerId);
-  if (!silent) toast(`Du lernst jetzt ${languageInfo(languageId).name_de}.`);
+  if (!silent) toast(t("app.now_learning", languageName(languageId, { capital: uiLanguage() === "de" })));
   return true;
 }
 
@@ -178,7 +222,7 @@ async function languagesOverview() {
   const mine = [];
   for (const id of user.languages) {
     const info = languageInfo(id);
-    let level = { text: "–", detail: "noch keine Daten" };
+    let level = { text: "–", detail: t("app.no_data") };
     let assessed = false;
     if (info.enabled) {
       const other = id === app.languageId ? app : await new LearnerApp({ storage, library: await libraryFor(id), users, learnerId: app.learnerId, persistent }).init();
@@ -192,11 +236,16 @@ async function languagesOverview() {
 }
 
 async function showWelcome() {
+  const all = await users.list();
+  if (!all.length) {
+    showOnboarding(); // P25.1: erster Start
+    return;
+  }
   app = null;
   document.body.classList.add("focus-mode");
   main.dataset.route = "welcome";
   main.replaceChildren(welcomeView({
-    users: await users.list(),
+    users: all,
     onCreate: async (name) => {
       const user = await users.create(name);
       await users.setActive(user.id);
@@ -244,18 +293,18 @@ async function settleOpenWork(current, reason) {
   ]);
   const running = conversation && conversation.status === "active" ? conversation : null;
   const assessing = assessment && assessment.status === "in_progress" ? assessment : null;
-  const parts = [open && "eine offene Session", running && "ein laufendes Gespräch", assessing && "eine laufende Einstufung"].filter(Boolean);
+  const parts = [open && t("work.session"), running && t("work.conversation"), assessing && t("work.assessment")].filter(Boolean);
   if (!parts.length) return true;
   const learner = await current.learner();
   const choice = await choiceDialog({
-    title: `${learner.display_name} hat ${parts.join(" und ")}`,
+    title: t("work.title", learner.display_name, parts.join(t("work.and"))),
     text: reason === "language_switch"
-      ? "Das bleibt bei dieser Sprache. Was soll damit geschehen?"
-      : "Das bleibt bei diesem Nutzer. Was soll damit geschehen?",
+      ? t("work.language")
+      : t("work.learner"),
     choices: [
-      { value: "pause", label: "Pausieren und wechseln", variant: "primary" },
-      { value: "abandon", label: "Beenden und wechseln", variant: "secondary" },
-      { value: "cancel", label: "Abbrechen", variant: "link" },
+      { value: "pause", label: t("work.pause"), variant: "primary" },
+      { value: "abandon", label: t("work.abandon"), variant: "secondary" },
+      { value: "cancel", label: t("common.cancel"), variant: "link" },
     ],
   });
   if (!choice || choice === "cancel") return false;
@@ -275,7 +324,7 @@ async function switchLearner(userId) {
   await users.setActive(userId);
   if (location.hash !== "#/") history.replaceState(null, "", "#/");
   await startLearner(userId);
-  if (app) toast(`Jetzt lernt ${(await app.learner()).display_name}.`);
+  if (app) toast(t("app.now_learner", (await app.learner()).display_name));
   return true;
 }
 
@@ -313,13 +362,13 @@ async function openStorage() {
 
 function buildNav() {
   nav.replaceChildren(
-    h("a", { class: "brand", href: "#/", "aria-label": `${APP_NAME} – Startseite` },
+    h("a", { class: "brand", href: "#/", "aria-label": t("app.home_label", APP_NAME) },
       h("img", { src: "icons/icon.svg", alt: "", width: 32, height: 32 }), h("span", {}, APP_NAME)),
-    h("a", { class: "learner-badge", href: "#/profil", hidden: true, title: "Aktiver Nutzer (im Profil wechseln)" },
-      icon("user", { size: 18 }), h("span", { class: "sr-only" }, "Aktiver Nutzer: "), h("span", { class: "learner-name" }),
-      h("span", { class: "learner-language", "aria-label": "Lernsprache" })),
+    h("a", { class: "learner-badge", href: "#/profil", hidden: true, title: t("app.active_user") },
+      icon("user", { size: 18 }), h("span", { class: "sr-only" }, t("app.active_user_sr")), h("span", { class: "learner-name" }),
+      h("span", { class: "learner-language", "aria-label": t("app.learning_language") })),
     h("ul", { class: "nav-list" }, NAV_ITEMS.map((item) => h("li", {},
-      h("a", { class: "nav-link", href: item.href, "data-route": item.route }, icon(item.icon), h("span", { class: "nav-label" }, item.label))))));
+      h("a", { class: "nav-link", href: item.href, "data-route": item.route }, icon(item.icon), h("span", { class: "nav-label" }, t(`nav.${item.route}`)))))));
 }
 
 async function render() {
@@ -344,7 +393,7 @@ async function render() {
   } catch (error) {
     console.error(error);
     view = errorState({
-      title: route.name === "session" ? "Die Lernsession konnte gerade nicht geladen werden." : "Diese Seite konnte gerade nicht geladen werden.",
+      title: route.name === "session" ? t("app.session_failed") : t("app.page_failed"),
       text: error?.userMessage ?? null,
       onRetry: render,
     });
@@ -385,6 +434,12 @@ function context() {
       remove: async (id) => users.delete(id),
     },
     refreshLearner,
+    // P25.2: Sprache der App ändern (Profil): gespeichert am Nutzer und am Gerät, Ansicht neu
+    setUiLanguage: (id) => {
+      applyUiLanguage(id);
+      storage.setMeta(UI_LANGUAGE_META_KEY, id).catch((error) => console.error(error));
+      render();
+    },
     services,
     languages: {
       registry: () => registry.languages,
@@ -393,7 +448,7 @@ function context() {
       switchTo: switchLanguage,
       add: addLanguage,
     },
-    labels: { dimension: (id) => DIMENSION_NAMES[id] ?? id, level: levelClaim },
+    labels: { dimension: dimensionName, level: levelClaim },
     // Spracherkennung in der aktiven Lernsprache (Whisper-Sprachcode aus dem Sprachverzeichnis)
     speech: services.sttAvailable() && app
       ? { transcribe: (wav, options = {}) => services.transcribe(wav, { ...options, language: languageInfo(app.languageId).stt }) }
@@ -413,8 +468,8 @@ async function resetAll() {
   } catch (error) {
     console.error(error);
     toast(error?.message?.includes("anderen Tab")
-      ? "Die App ist noch in einem anderen Tab geöffnet. Schließe ihn und versuche es erneut."
-      : "Die Daten konnten nicht gelöscht werden.");
+      ? t("app.other_tab")
+      : t("app.delete_failed"));
   }
 }
 
@@ -437,8 +492,8 @@ function watchConnection() {
 }
 
 function offlineStatus() {
-  if (!("serviceWorker" in navigator)) return "nicht unterstützt";
-  return navigator.serviceWorker.controller ? "bereit" : "wird eingerichtet";
+  if (!("serviceWorker" in navigator)) return t("app.sw_unsupported");
+  return navigator.serviceWorker.controller ? t("app.sw_ready") : t("app.sw_setup");
 }
 
 // ---------------------------------------------------------------- Service Worker
@@ -456,10 +511,10 @@ function registerServiceWorker() {
       worker?.addEventListener("statechange", () => {
         // Nur ein UPDATE melden: Beim ersten Einrichten gibt es noch keinen steuernden Worker
         if (worker.state === "activated" && hadController) {
-          toast("Eine neue Version ist bereit.", { timeout: 15000, action: { label: "Neu laden", run: () => location.reload() } });
+          toast(t("app.new_version"), { timeout: 15000, action: { label: t("app.reload"), run: () => location.reload() } });
         } else if (worker.state === "activated") {
           // erstes Einrichten fertig: Ab jetzt läuft die App ohne Verbindung (wichtig auf dem iPhone nach der Installation)
-          toast("Die App ist jetzt offline verfügbar.", { timeout: 8000 });
+          toast(t("app.offline_ready"), { timeout: 8000 });
         }
       });
     });

@@ -48,6 +48,7 @@ import { presentConversation, scenarioCard } from "../model/conversation.js";
 import { buildDashboard, describePreview } from "../model/dashboard.js";
 import { exerciseCard, presentExercise } from "../model/exercise.js";
 import { skillTitle } from "../model/labels.js";
+import { t, uiLanguage } from "../model/i18n.js";
 import { explanationLanguageOf, localizedListeningFeedback } from "../model/explain.js";
 import { presentFeedback } from "../model/feedback.js";
 import { buildProgress } from "../model/progress.js";
@@ -62,7 +63,8 @@ export class AppError extends Error {
   constructor(userMessage, { cause, code = "app_error" } = {}) {
     super(userMessage, { cause });
     this.name = "AppError";
-    this.userMessage = userMessage;
+    // P25.2: Meldung in der Sprache der App (nach Code); ohne Übersetzung die ursprüngliche (Deutsch)
+    this.userMessage = uiLanguage() !== "de" ? t(`err.${code}`) ?? userMessage : userMessage;
     this.code = code;
   }
 }
@@ -123,7 +125,7 @@ export class LearnerApp {
     return { name: user.display_name, ...DEFAULT_PROFILE, ...user.preferences };
   }
 
-  async saveProfile({ name, daily_minutes: minutes, ai_analysis: ai, explanation_language: explanation }) {
+  async saveProfile({ name, daily_minutes: minutes, ai_analysis: ai, explanation_language: explanation, ui_language: ui }) {
     try {
       const current = await this.profile();
       if (name !== undefined && String(name).trim() !== current.name) await this.users.rename(this.learnerId, name);
@@ -131,6 +133,7 @@ export class LearnerApp {
       if (minutes !== undefined) changes.daily_minutes = Number(minutes);
       if (ai !== undefined) changes.ai_analysis = Boolean(ai);
       if (explanation !== undefined) changes.explanation_language = explanation;
+      if (ui !== undefined) changes.ui_language = ui; // P25.2: Sprache der App
       await this.users.updatePreferences(this.learnerId, changes);
       const saved = await this.profile();
       this._language = explanationLanguageOf(saved.explanation_language);
@@ -181,7 +184,7 @@ export class LearnerApp {
       this.engine.reviewSnapshot({ library: this.library }),
       this.engine.activitySummary({ days: 14 }),
     ]);
-    return buildProgress({ snapshot, coaching, memories, reviews, activity, library: this.library });
+    return buildProgress({ snapshot, coaching, memories, reviews, activity, library: this.library, language: this.explanationLanguage });
   }
 
   /** Erinnerungen aus den Ereignissen ableiten und in den MemoryStore übernehmen (alle Status). */

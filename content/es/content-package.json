@@ -3,12 +3,12 @@
  "format_version": 1,
  "pattern_syntax": 1,
  "target": "production",
- "content_version": "5a7d5fddf42e6143",
+ "content_version": "3583aba93261fe88",
  "language": {
   "id": "es",
   "germanism_explanation_de": "Deutsche Wörter im spanischen Text: {words}. Formuliere diese Stelle auf Spanisch.",
   "cefr_range": [
-   "B1",
+   "A1",
    "C2"
   ],
   "accent_marks": [

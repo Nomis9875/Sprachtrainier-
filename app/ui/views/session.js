@@ -6,17 +6,18 @@
  */
 
 import { h, icon, meter } from "../dom.js";
+import { t } from "../../model/i18n.js";
 import { explain } from "../../model/explain.js";
 import { answerForm, confirmDialog, emptyState, feedbackPanel, listeningPlayer, masteryText, taskCard } from "../components.js";
 
 export async function sessionView(ctx) {
-  ctx.setTitle("Session");
+  ctx.setTitle(t("session.title"));
   const open = await ctx.app.openSession();
   if (!open) {
     return h("div", { class: "page session" },
       emptyState({
-        title: "Keine laufende Session",
-        text: "Starte eine neue Session, wenn du lernen möchtest.",
+        title: t("session.none"),
+        text: t("session.none_text"),
         action: h("a", { class: "btn btn-primary", href: "#/lernen" }, "Zur Auswahl"),
       }));
   }
@@ -33,25 +34,25 @@ function screen(ctx, view, extra = {}, render) {
 }
 
 function header(ctx, view, render) {
-  const pause = h("button", { type: "button", class: "btn btn-ghost", "data-action": "pause", "aria-label": "Session pausieren" },
-    icon("pause"), h("span", { class: "hide-narrow" }, "Pause"));
+  const pause = h("button", { type: "button", class: "btn btn-ghost", "data-action": "pause", "aria-label": t("session.pause_label") },
+    icon("pause"), h("span", { class: "hide-narrow" }, t("l.pause")));
   pause.addEventListener("click", async () => {
     pause.disabled = true;
     try {
       render(await ctx.app.pauseSession(view.session_id));
     } catch (error) {
       pause.disabled = false;
-      ctx.toast(error?.userMessage ?? "Die Session konnte gerade nicht pausiert werden.");
+      ctx.toast(error?.userMessage ?? t("session.pause_failed"));
     }
   });
-  const end = h("button", { type: "button", class: "btn btn-ghost", "data-action": "abandon", "aria-label": "Session beenden" },
-    icon("close"), h("span", { class: "hide-narrow" }, "Beenden"));
+  const end = h("button", { type: "button", class: "btn btn-ghost", "data-action": "abandon", "aria-label": t("session.end_label") },
+    icon("close"), h("span", { class: "hide-narrow" }, t("session.end")));
   end.addEventListener("click", () => abandon(ctx, view, render));
   return h("header", { class: "session-head" },
     view.status === "paused" ? h("span") : pause,
     h("div", { class: "session-progress" },
       h("span", { class: "session-count", "aria-live": "polite" }, `${view.position} / ${view.total}`),
-      meter(view.ratio, "Fortschritt der Session")),
+      meter(view.ratio, t("home.session_progress"))),
     end);
 }
 
@@ -62,7 +63,7 @@ function taskStep(ctx, view, render) {
     onInteraction: (i) => ctx.app.recordListeningInteraction(exercise.id, { ...i, sessionId: view.session_id }).catch((err) => console.error(err)),
     onNoAnswer: async (reason, state) => {
       await ctx.app.skipListening(exercise.id, { reason, ...state, sessionId: view.session_id });
-      ctx.toast("Notiert, kein Fehler. Nutze eine Hilfe oder antworte, so gut es geht.");
+      ctx.toast(t("session.noted"));
     },
   }) : null;
   const form = answerForm(exercise, {
@@ -81,7 +82,7 @@ function taskStep(ctx, view, render) {
 function feedbackStep(ctx, view, { feedback, ai, answerText, next }, render) {
   const last = next.finished;
   const button = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "next" },
-    last ? "Zur Auswertung" : "Weiter", icon("arrow", { size: 18 }));
+    last ? t("session.to_summary") : t("session.next"), icon("arrow", { size: 18 }));
   button.addEventListener("click", () => render(next));
   const panel = feedbackPanel(feedback, { answerText, ai });
   queueMicrotask(() => panel.querySelector("#feedback-title")?.focus());
@@ -89,38 +90,38 @@ function feedbackStep(ctx, view, { feedback, ai, answerText, next }, render) {
 }
 
 function pausedPanel(ctx, view, render) {
-  const resume = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "resume" }, "Fortsetzen");
+  const resume = h("button", { type: "button", class: "btn btn-primary btn-block", "data-action": "resume" }, t("home.resume"));
   resume.addEventListener("click", async () => {
     resume.disabled = true;
     try {
       render(await ctx.app.resumeSession(view.session_id));
     } catch (error) {
       resume.disabled = false;
-      ctx.toast(error?.userMessage ?? "Die Session konnte gerade nicht fortgesetzt werden.");
+      ctx.toast(error?.userMessage ?? t("session.resume_failed"));
     }
   });
-  const end = h("button", { type: "button", class: "btn btn-secondary btn-block", "data-action": "abandon" }, "Session beenden");
+  const end = h("button", { type: "button", class: "btn btn-secondary btn-block", "data-action": "abandon" }, t("session.end_label"));
   end.addEventListener("click", () => abandon(ctx, view, render));
   queueMicrotask(() => resume.focus());
   return h("section", { class: "card paused", "aria-labelledby": "paused-title" },
-    h("h2", { id: "paused-title" }, "Pausiert"),
-    h("p", {}, `${view.completed} von ${view.total} Übungen erledigt. Die Pausenzeit zählt nicht als Lernzeit.`),
-    h("div", { class: "stack" }, resume, end, h("a", { class: "btn btn-link", href: "#/" }, "Zur Startseite")));
+    h("h2", { id: "paused-title" }, t("home.paused")),
+    h("p", {}, t("session.paused_text", view.completed, view.total)),
+    h("div", { class: "stack" }, resume, end, h("a", { class: "btn btn-link", href: "#/" }, t("common.back_home"))));
 }
 
 async function abandon(ctx, view, render) {
   const ok = await confirmDialog({
-    title: "Session beenden?",
-    text: "Deine bereits gemachten Übungen bleiben gespeichert. Die übrigen Aufgaben verfallen.",
-    confirmLabel: "Beenden",
-    cancelLabel: "Weiterlernen",
+    title: t("session.end_q"),
+    text: t("session.end_text"),
+    confirmLabel: t("session.end"),
+    cancelLabel: t("session.keep"),
     danger: true,
   });
   if (!ok) return;
   try {
     render(await ctx.app.abandonSession(view.session_id));
   } catch (error) {
-    ctx.toast(error?.userMessage ?? "Die Session konnte gerade nicht beendet werden.");
+    ctx.toast(error?.userMessage ?? t("session.end_failed"));
   }
 }
 
@@ -140,28 +141,31 @@ function summaryCard(summary, view = null, language = "de") {
   const abandoned = (summary?.status ?? view?.status) === "abandoned";
   const completed = summary?.completed ?? view?.completed ?? 0;
   return h("section", { class: "card summary", "aria-labelledby": "summary-title", "data-status": abandoned ? "abandoned" : "completed" },
-    h("h1", { id: "summary-title", tabindex: "-1" }, abandoned ? "Session beendet." : "Session abgeschlossen!"),
+    h("h1", { id: "summary-title", tabindex: "-1" }, abandoned ? t("session.ended") : t("session.completed")),
     h("p", {}, abandoned
-      ? "Deine bereits gemachten Übungen wurden gespeichert."
-      : `${summary && summary.answers.with_errors > summary.answers.correct ? "Gut, dass du drangeblieben bist." : "Stark."} Alles ist gespeichert und fließt in deine nächste Session ein.`),
+      ? t("session.saved")
+      : `${summary && summary.answers.with_errors > summary.answers.correct ? t("session.kept_going") : t("session.strong")} ${t("session.saved_next")}`),
     summary ? h("dl", { class: "stats" },
-      stat("Übungen", `${completed}${abandoned ? ` von ${summary.planned}` : ""}`),
-      stat("Richtig", String(summary.answers.correct)),
-      stat("Mit Fehlern", String(summary.answers.with_errors)),
-      summary.answers.open ? stat("Offen", String(summary.answers.open)) : null,
-      stat("Lernzeit", `${summary.minutes} min`)) : null,
+      stat(t("session.exercises"), `${completed}${abandoned ? t("session.of", summary.planned) : ""}`),
+      stat(t("session.correct"), String(summary.answers.correct)),
+      stat(t("session.with_errors"), String(summary.answers.with_errors)),
+      summary.answers.open ? stat(t("session.open"), String(summary.answers.open)) : null,
+      stat(t("session.time"), `${summary.minutes} min`)) : null,
     summary?.answers.open ? h("p", { class: "muted small" },
       explain(language, "open_note")) : null,
     summary?.improved.length ? h("div", {},
-      h("h2", { class: "h3" }, "Fortschritt"),
-      h("ul", { class: "plain" }, summary.improved.map((s) => h("li", {}, h("strong", {}, s.title), `: ${masteryText(s.before)} → ${masteryText(s.after)}`)))) : null,
+      h("h2", { class: "h3" }, t("nav.progress")),
+      // höchstens drei Zeilen, der Rest als Zahl (die vollständige Übersicht steht unter Fortschritt)
+      h("ul", { class: "plain progress-list" }, summary.improved.slice(0, 3).map((s) => h("li", {}, h("strong", {}, s.title),
+        h("span", { class: "muted" }, ` ${masteryText(s.before)} → ${masteryText(s.after)}`)))),
+      summary.improved.length > 3 ? h("p", { class: "muted small" }, t("session.more", summary.improved.length - 3)) : null) : null,
     summary?.weaknesses.length ? h("div", {},
-      h("h2", { class: "h3" }, "Daran arbeiten wir weiter"),
+      h("h2", { class: "h3" }, t("session.work_on")),
       h("ul", { class: "plain" }, summary.weaknesses.slice(0, 3).map((s) => h("li", {}, h("strong", {}, s.title),
-        h("span", { class: "muted" }, ` – ${s.failures}× nicht gelungen${s.successes ? `, ${s.successes}× gelungen` : ""}`))))) : null,
+        h("span", { class: "muted" }, t("session.failures", s.failures, s.successes)))))) : null,
     h("div", { class: "stack" },
-      h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "home" }, "Zur Startseite"),
-      h("a", { class: "btn btn-secondary btn-block", href: "#/fortschritt" }, "Fortschritt ansehen")));
+      h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "home" }, t("common.back_home")),
+      h("a", { class: "btn btn-secondary btn-block", href: "#/fortschritt" }, t("session.see_progress"))));
 }
 
 function stat(label, value) {

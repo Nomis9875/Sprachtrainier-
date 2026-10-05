@@ -10,7 +10,7 @@
  */
 
 import { prepare } from "../../core/evaluation/text.js";
-import { MODE_LABELS, purposeHint, reasonText, typeLabel } from "./labels.js";
+import { modeLabel, purposeHint, reasonText, typeLabel } from "./labels.js";
 import { explain } from "./explain.js";
 import { presentListening } from "./listening.js";
 
@@ -41,7 +41,7 @@ export function presentExercise(exercise, { focus = null, purpose = null, planne
     type: exercise.type,
     type_label: typeLabel(exercise.type),
     mode: exercise.mode,
-    mode_label: MODE_LABELS[exercise.mode] ?? exercise.mode,
+    mode_label: modeLabel(exercise.mode),
     challenge,
     level: exercise.level,
     topic_id: exercise.topics?.[0] ?? null, // nur für die Rück-Navigation beim Üben (wird nicht angezeigt)
@@ -78,7 +78,7 @@ export function exerciseCard(exercise) {
     title,
     type_label: typeLabel(exercise.type),
     mode: exercise.mode,
-    mode_label: MODE_LABELS[exercise.mode] ?? exercise.mode,
+    mode_label: modeLabel(exercise.mode),
     level: exercise.level,
     estimated_seconds: exercise.estimated_seconds,
   };

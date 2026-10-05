@@ -9,6 +9,7 @@
 import {
   MEASURE_LABELS, SUPPORT_LEVELS, UNSUPPORTED, listeningMode, listeningScore, partialTranscript,
 } from "../../core/learning/listening/model.js";
+import { t } from "./i18n.js";
 
 export const SUPPORT_LABELS = Object.freeze({
   keywords: "Stichwörter zeigen",
@@ -16,6 +17,8 @@ export const SUPPORT_LABELS = Object.freeze({
   full_transcript: "Ganzen Text zeigen",
 });
 const SOURCE_LABELS = Object.freeze({ real: "echte Aufnahme", synthetic: "synthetische Aufnahme (Sprachausgabe)" });
+/** P25.2: Messgröße in der Sprache der App (Kern: deutsche Bezeichnung als Rückfall). */
+export const measureLabel = (measure) => (MEASURE_LABELS[measure] ? t(`measure.${measure}`) ?? MEASURE_LABELS[measure] : measure);
 /** Hörform (P16) in Worten. */
 export const MODE_LABELS = Object.freeze({
   sentence_comprehension: "Satz verstehen", contextual_comprehension: "Hörtext verstehen",
@@ -37,34 +40,34 @@ export function presentListening(exercise, audio, context = null) {
   if (!exercise.listening || !audio) return null;
   const spec = exercise.listening;
   const supports = [];
-  if (spec.keywords?.length) supports.push({ level: "keywords", label: SUPPORT_LABELS.keywords, content: spec.keywords.join(" · ") });
+  if (spec.keywords?.length) supports.push({ level: "keywords", label: t("support.keywords"), content: spec.keywords.join(" · ") });
   if (spec.task !== "dictation") {
-    supports.push({ level: "partial_transcript", label: SUPPORT_LABELS.partial_transcript, content: partialTranscript(audio.transcript) });
+    supports.push({ level: "partial_transcript", label: t("support.partial_transcript"), content: partialTranscript(audio.transcript) });
   }
-  supports.push({ level: "full_transcript", label: SUPPORT_LABELS.full_transcript, content: audio.transcript });
+  supports.push({ level: "full_transcript", label: t("support.full_transcript"), content: audio.transcript });
   const segments = (spec.segments ?? []).map((id) => audio.segments?.find((s) => s.id === id)).filter(Boolean)
     .map((s, i, all) => ({ id: s.id, start_s: s.start_s, end_s: s.end_s,
-      label: `${all.length > 1 ? `Abschnitt ${i + 1}` : "Abschnitt"} (${clock(s.start_s)}–${clock(s.end_s)})` }));
+      label: `${all.length > 1 ? t("listen.section_n", i + 1) : t("listen.section")} (${clock(s.start_s)}–${clock(s.end_s)})` }));
   const mode = listeningMode(exercise, audio);
   return {
     audio_id: audio.id,
     src: audio.src,
     duration_s: audio.duration_s,
     mode,
-    mode_label: MODE_LABELS[mode] ?? mode,
+    mode_label: MODE_LABELS[mode] ? t(`lmode.${mode}`) : mode,
     context: context && audio.segments?.length ? {
       title: context.title ?? "",
       task_index: context.task_index ?? null,
       task_count: context.task_count ?? null,
-      progress: context.task_count > 1 ? `Frage ${context.task_index} von ${context.task_count} zu diesem Hörtext` : "",
+      progress: context.task_count > 1 ? t("listen.question_of", context.task_index, context.task_count) : "",
       speaker_count: audio.speaker_count ?? 1,
-      length_label: { short: "kurzer Hörtext", medium: "mittellanger Hörtext", long: "langer Hörtext" }[audio.context_length] ?? "",
+      length_label: ["short", "medium", "long"].includes(audio.context_length) ? t(`listen.length_${audio.context_length}`) : "",
     } : null,
     segments,
     base_support: spec.base_support,
     task: spec.task,
     measure: spec.measure,
-    measure_label: MEASURE_LABELS[spec.measure] ?? spec.measure,
+    measure_label: measureLabel(spec.measure),
     supports,
     source: sourceOf(audio),
   };
@@ -85,7 +88,7 @@ export function presentPlacementListening(audio) {
 function sourceOf(audio) {
   return {
     type: audio.source_type,
-    type_label: SOURCE_LABELS[audio.source_type] ?? audio.source_type,
+    type_label: SOURCE_LABELS[audio.source_type] ? t(`source.${audio.source_type}`) : audio.source_type,
     attribution: audio.attribution,
     license: audio.license,
     license_url: audio.license_url,
@@ -160,18 +163,18 @@ export function presentListeningOverview(profile, library) {
     answered: profile.answered,
     state: profile.answered ? profile.overall.state : "unverified",
     // P22: Aussage über die bisherigen Höraufgaben, nicht über das Hörverstehen insgesamt (das zeigt das Sprachprofil)
-    text: profile.answered ? `In deinen bisherigen Höraufgaben: ${LISTENING_STATE_TEXT[profile.overall.state]}` : "Du hast noch keine Höraufgabe gemacht. Hören ist deshalb nicht gemessen, nicht schwach.",
+    text: profile.answered ? t("listen.so_far", t(`lstate.${profile.overall.state}`)) : t("listen.none"),
     measures: Object.entries(profile.by_measure).map(([measure, s]) => ({
-      measure, label: MEASURE_LABELS[measure] ?? measure, state: s.state, text: LISTENING_STATE_TEXT[s.state],
+      measure, label: measureLabel(measure), state: s.state, text: t(`lstate.${s.state}`),
     })),
     known_not_verified: profile.matrix.filter((m) => m.status === "known_not_listening_verified").map((m) => label(m.skill_id)),
     weak: profile.skills.filter((s) => s.state === "weak").map((s) => ({
       title: label(s.skill_id),
       text: s.written.state === "secure"
-        ? "Schriftlich sicher, im Gesprochenen noch nicht sicher erkannt."
-        : "Beim Hören noch unsicher.",
+        ? t("listen.weak_written")
+        : t("listen.weak"),
     })),
-    avoidance: profile.avoidance.detected ? "Höraufgaben wurden zuletzt oft übersprungen. Wir fangen mit kürzeren, langsameren Aufnahmen an." : null,
-    note: "Gemessen wird bisher vor allem das Verstehen kurzer Sätze, noch kein natürliches Hörverstehen längerer Gespräche.",
+    avoidance: profile.avoidance.detected ? t("listen.avoidance") : null,
+    note: t("listen.note"),
   };
 }
