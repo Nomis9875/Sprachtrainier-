@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Persönlicher Sprachtrainer für Spanisch, Englisch, Französisch und Deutsch: lokal, offline, ohne Cloud.">
+  <meta name="theme-color" content="#b8431d" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1714" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Sprachtrainer">
+  <title>Sprachtrainer</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="icon" href="icons/icon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="app/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <div class="shell">
+    <nav id="nav" class="nav" aria-label="Hauptnavigation"></nav>
+    <div class="content">
+      <p id="offline-badge" class="offline-badge" role="status" hidden>Offline – alles funktioniert weiter, gespeichert wird lokal.</p>
+      <main id="main" class="main" tabindex="-1">
+        <div class="loading" role="status"><span class="spinner" aria-hidden="true"></span>App wird gestartet …</div>
+      </main>
+    </div>
+  </div>
+  <div id="toast" class="toast-box" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">Diese App braucht JavaScript.</p></noscript>
+  <script type="module" src="app/main.js"></script>
+  <script>
+    // Absicherung: Lädt ein Modul nicht (Netzfehler beim ersten Start), bleibt die Seite sonst leer.
+    setTimeout(function () {
+      if (document.documentElement.dataset.ready) return;
+      var main = document.getElementById("main");
+      main.innerHTML = '<div class="card error-state" role="alert"><h2>Die App konnte nicht vollständig geladen werden.</h2>'
+        + '<p>Bitte lade die Seite neu. Beim ersten Start braucht die App einmal eine Verbindung.</p>'
+        + '<button type="button" class="btn btn-primary" onclick="location.reload()">Neu laden</button></div>';
+    }, 15000);
+  </script>
+</body>
+</html>

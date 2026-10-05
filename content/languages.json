@@ -1,0 +1,75 @@
+{
+ "format": "spanisch-ai.languages",
+ "version": 1,
+ "reference_language": "es",
+ "languages": [
+  {
+   "id": "es",
+   "name_de": "Spanisch",
+   "native_name": "Español",
+   "flag": "🇪🇸",
+   "stt": "es",
+   "enabled": true,
+   "content_version": "5a7d5fddf42e6143",
+   "package": "content/es/content-package.json",
+   "exercise_count": 3833,
+   "conversation_count": 16,
+   "assessment": true,
+   "cefr_range": [
+    "B1",
+    "C2"
+   ]
+  },
+  {
+   "id": "en",
+   "name_de": "Englisch",
+   "native_name": "English",
+   "flag": "🇬🇧",
+   "stt": "en",
+   "enabled": true,
+   "content_version": "7310558ada8818d4",
+   "package": "content/en/content-package.json",
+   "exercise_count": 158,
+   "conversation_count": 2,
+   "assessment": true,
+   "cefr_range": [
+    "B1",
+    "C2"
+   ]
+  },
+  {
+   "id": "fr",
+   "name_de": "Französisch",
+   "native_name": "Français",
+   "flag": "🇫🇷",
+   "stt": "fr",
+   "enabled": true,
+   "content_version": "f9ecdb020b1a1443",
+   "package": "content/fr/content-package.json",
+   "exercise_count": 230,
+   "conversation_count": 2,
+   "assessment": true,
+   "cefr_range": [
+    "A1",
+    "B2"
+   ]
+  },
+  {
+   "id": "de",
+   "name_de": "Deutsch",
+   "native_name": "Deutsch",
+   "flag": "🇩🇪",
+   "stt": "de",
+   "enabled": true,
+   "content_version": "16ce3738df02eb9f",
+   "package": "content/de/content-package.json",
+   "exercise_count": 262,
+   "conversation_count": 2,
+   "assessment": true,
+   "cefr_range": [
+    "A1",
+    "B2"
+   ]
+  }
+ ]
+}
