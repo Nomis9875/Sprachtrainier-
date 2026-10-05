@@ -1,14 +1,15 @@
 /** Profil: Nutzer (wechseln, anlegen, löschen), Name und Tagesziel, Daten (Sicherung, Löschen), App-Status. */
 
 import { SESSION_MINUTES } from "../../services/app-service.js";
-import { h } from "../dom.js";
+import { h, icon } from "../dom.js";
 import { confirmDialog } from "../components.js";
 import { EXPLANATION_LANGUAGES, EXPLANATION_LANGUAGE_NAMES } from "../../model/explain.js";
 import { UI_LANGUAGES, UI_LANGUAGE_NAMES, languageName, t, uiLanguage } from "../../model/i18n.js";
 
 export async function profileView(ctx) {
   ctx.setTitle(t("nav.profile"));
-  const [profile, info, allUsers] = await Promise.all([ctx.app.profile(), ctx.app.dataInfo(), ctx.users.list()]);
+  const [profile, info, allUsers, milestones] = await Promise.all([ctx.app.profile(), ctx.app.dataInfo(), ctx.users.list(),
+    ctx.app.library.empty ? [] : ctx.app.milestoneList()]);
   const usersCard = usersSection(ctx, allUsers, ctx.app.learnerId);
 
   const name = h("input", { id: "profile-name", type: "text", value: profile.name, maxlength: 40, autocomplete: "given-name" });
@@ -91,6 +92,7 @@ export async function profileView(ctx) {
     h("header", { class: "page-head" }, h("h1", {}, t("nav.profile"))),
     h("div", { class: "grid" },
       usersCard,
+      milestonesCard(ctx, milestones),
       languagesCard(ctx),
       h("section", { class: "card", "aria-labelledby": "settings-title" }, h("h2", { id: "settings-title" }, t("profile.settings", profile.name)), form),
       h("section", { class: "card", "aria-labelledby": "data-title" },
@@ -103,8 +105,9 @@ export async function profileView(ctx) {
           stat(t("profile.since"), info.first_event_at ? new Date(info.first_event_at).toLocaleDateString(t("locale")) : "–"),
           stat(t("profile.content_exercises"), info.exercise_count)),
         h("div", { class: "stack-row" }, exportButton, resetButton)),
-      h("section", { class: "card", "aria-labelledby": "app-title" },
-        h("h2", { id: "app-title" }, "App"),
+      // P25.4: technische Angaben aufklappbar, nicht im Vordergrund
+      h("details", { class: "card info-card", "data-card": "app-info" },
+        h("summary", { id: "app-title" }, t("profile.info")),
         h("ul", { class: "plain" },
           h("li", {}, t("profile.offline"), h("strong", { "data-offline-status": "" }, ctx.offlineStatus())),
           h("li", {}, t("profile.evaluation"), profile.ai_analysis && llm ? t("profile.with_ai") : t("profile.without_ai")),
@@ -112,6 +115,19 @@ export async function profileView(ctx) {
             ? t("profile.speech_local", ctx.services.status.stt.model) : t("profile.unavailable"))),
           h("li", {}, t("profile.content_version"), h("code", {}, info.content_version))),
         ctx.debug ? h("a", { class: "btn btn-link", href: "#/debug" }, t("profile.debug")) : null)));
+}
+
+/** P25.4: echte Meilensteine der aktiven Lernsprache, neuester zuerst, mit Datum. */
+function milestonesCard(ctx, milestones) {
+  const dateOf = (iso) => new Date(iso).toLocaleDateString(t("locale"), { day: "numeric", month: "short", year: "numeric" });
+  return h("section", { class: "card", "aria-labelledby": "milestones-title", "data-card": "milestones" },
+    h("h2", { id: "milestones-title" }, t("ms.title"), h("span", { class: "muted small" }, ` · ${languageName(ctx.app.languageId)}`)),
+    milestones.length
+      ? h("ol", { class: "plain milestone-list" }, milestones.map((m) => h("li", { class: "milestone", "data-milestone": m.id },
+        h("span", { class: "milestone-icon", "aria-hidden": "true" }, icon("award", { size: 18 })),
+        h("span", {}, h("strong", {}, m.title), h("span", { class: "muted small" }, m.text)),
+        h("time", { class: "muted small", datetime: m.at }, dateOf(m.at)))))
+      : h("p", { class: "muted small" }, t("ms.empty")));
 }
 
 /** Nutzer auf diesem Gerät: aktiv, wechseln, löschen (nicht den aktiven), neu anlegen. */

@@ -12,6 +12,7 @@
  * Die App-Instanz gilt für genau einen Lerner in genau einer Sprache; ein Sprachwechsel startet sie neu.
  */
 
+import { TIPS_META_KEY, takeTip } from "./model/tips.js";
 import { emptyContentLibrary, loadContentPackage } from "../core/content/library.js";
 import { IndexedDBStorage } from "../core/storage/indexeddb.js";
 import { MemoryStorage } from "../core/storage/memory.js";
@@ -67,6 +68,7 @@ let users = null; // Nutzerverzeichnis des Geräts
 let registry = null; // Sprachverzeichnis
 const libraries = new Map(); // geladene Inhaltspakete je Sprache
 let persistent = true;
+let tipsSeen = {}; // P25.5: gezeigte Tutorial-Hinweise je Lerner (Geräteeinstellung, Speicher-Meta)
 let renderToken = 0;
 const services = new LocalServices();
 let aiOn = false; // KI-Zusatzanalyse für den aktiven Lerner eingeschaltet und erreichbar
@@ -94,6 +96,7 @@ async function boot() {
     // P25.1: Sprache der Oberfläche: des aktiven Nutzers, sonst die des Geräts, sonst aus der Gerätesprache
     applyUiLanguage(active?.preferences?.ui_language ?? (await storage.getMeta(UI_LANGUAGE_META_KEY))
       ?? detectUiLanguage(navigator.languages ?? [navigator.language]));
+    tipsSeen = (await storage.getMeta(TIPS_META_KEY)) ?? {};
     if (!persistent) toast(t("app.no_storage"), { timeout: 8000 });
   } catch (error) {
     console.error(error);
@@ -449,6 +452,15 @@ function context() {
       add: addLanguage,
     },
     labels: { dimension: dimensionName, level: levelClaim },
+    // P25.5: Tutorial im Kontext: Hinweis einmal je Lerner zeigen (gemerkt beim Anzeigen)
+    takeTip: (id) => {
+      const result = takeTip(tipsSeen, app?.learnerId, id);
+      if (result.show) {
+        tipsSeen = result.seen;
+        storage.setMeta(TIPS_META_KEY, tipsSeen).catch((error) => console.error(error));
+      }
+      return result.show;
+    },
     // Spracherkennung in der aktiven Lernsprache (Whisper-Sprachcode aus dem Sprachverzeichnis)
     speech: services.sttAvailable() && app
       ? { transcribe: (wav, options = {}) => services.transcribe(wav, { ...options, language: languageInfo(app.languageId).stt }) }

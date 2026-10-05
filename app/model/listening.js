@@ -9,7 +9,26 @@
 import {
   MEASURE_LABELS, SUPPORT_LEVELS, UNSUPPORTED, listeningMode, listeningScore, partialTranscript,
 } from "../../core/learning/listening/model.js";
-import { t } from "./i18n.js";
+import { t, uiLanguage } from "./i18n.js";
+
+// P25.4a: Rahmenwörter der Quellenangaben (Inhalt: deutsch erzeugt) auf Spanisch; Namen, Titel und Lizenzen bleiben
+const ATTRIBUTION_ES = Object.freeze([
+  ["Synthetisch erzeugt mit ", "Generado de forma sintética con "], [" und der Stimme ", " y la voz "],
+  ["Trainingsdaten gemeinfrei: ", "datos de entrenamiento de dominio público: "], ["; von Grund auf trainiert", "; entrenada desde cero"],
+  ["Erzeugte Datei: ", "Archivo generado: "],
+  ["Aufnahme: ", "Grabación: "], ["(gemeinfrei)", "(dominio público)"], ["gelesen von ", "leído por "], ["“ von ", "» de "],
+  ["LibriVox-Sprecher ", "lector de LibriVox "], ["Abschnitte und Transkript: ", "fragmentos y transcripción: "],
+  ["Abschnitte: ", "fragmentos: "], ["Text mit Zeichensetzung: ", "texto con puntuación: "], [" Nr. ", " n.º "],
+  ["Ausschnitt geschnitten", "fragmento recortado"], ["Zeichensetzung ergänzt", "puntuación añadida"],
+  ["Stille am Anfang/Ende gekürzt", "silencio inicial y final recortado"], ["umkodiert", "recodificado"],
+  ["unverändert", "sin cambios"], ["; Satz: ", "; frase: "], ["„", "«"], ["“", "»"],
+]);
+
+/** Quellenangabe einer Aufnahme in der Sprache der App. */
+export function localizedAttribution(text) {
+  if (!text || uiLanguage() === "de") return text ?? "";
+  return ATTRIBUTION_ES.reduce((out, [de, es]) => out.split(de).join(es), text);
+}
 
 export const SUPPORT_LABELS = Object.freeze({
   keywords: "Stichwörter zeigen",
@@ -89,7 +108,7 @@ function sourceOf(audio) {
   return {
     type: audio.source_type,
     type_label: SOURCE_LABELS[audio.source_type] ? t(`source.${audio.source_type}`) : audio.source_type,
-    attribution: audio.attribution,
+    attribution: localizedAttribution(audio.attribution),
     license: audio.license,
     license_url: audio.license_url,
     source_url: audio.source_url,
@@ -139,7 +158,7 @@ export function listeningFeedback({ exercise, audio, outcome, answerText, contex
     understood,
     notes,
     transcript: audio?.transcript ?? "",
-    source: audio ? `${audio.attribution}` : "",
+    source: audio ? localizedAttribution(audio.attribution) : "",
     source_type: audio?.source_type ?? null,
   };
 }

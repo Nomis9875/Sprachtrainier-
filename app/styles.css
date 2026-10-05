@@ -714,3 +714,102 @@ input[type="text"]:hover, textarea:hover, select:hover { border-color: color-mix
 .toast { border-radius: 14px; box-shadow: var(--shadow-lift); }
 .dialog { border-radius: 20px; box-shadow: var(--shadow-lift); }
 .notice { border-radius: 14px; }
+
+/* ================================================================ P25.4 Stolz, Fortschritt, Ruhe
+ * Session-Ende mit dem Gelungenen zuerst, Stufe statt Katalog-Prozent, Meilensteine, aufgeräumte Aufgabe.
+ * Animationen dezent und kurz; bei "Bewegung reduzieren" entfallen sie ganz.
+ */
+@keyframes rise-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes mark-pop { 0% { transform: scale(0.6); opacity: 0; } 60% { transform: scale(1.06); opacity: 1; } 100% { transform: scale(1); } }
+@keyframes glow { 0% { box-shadow: 0 0 0 0 var(--accent-ring); } 100% { box-shadow: 0 0 0 14px rgb(180 68 31 / 0%); } }
+
+.summary { text-align: left; }
+.summary-head { display: grid; justify-items: start; gap: 0.35rem; margin-bottom: 0.25rem; }
+.summary-mark {
+  display: inline-grid; place-items: center; width: 56px; height: 56px; border-radius: 50%;
+  background: var(--success-soft); color: var(--success); animation: mark-pop 420ms cubic-bezier(.2,.8,.2,1) both;
+}
+.summary[data-status="abandoned"] .summary-mark { background: var(--surface-2); color: var(--muted); }
+.summary h1 { margin: 0.25rem 0 0; }
+.summary-lead { font-size: 1.12rem; font-weight: 600; line-height: 1.4; margin: 0; }
+.stats-compact { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stats-compact .stat { padding: 0.6rem 0.75rem; }
+.stats-compact .stat dd { font-size: 1.15rem; }
+.summary-block { margin-top: 1.25rem; animation: rise-in 360ms ease-out both; }
+.summary-block:nth-of-type(2) { animation-delay: 80ms; }
+.summary-block:nth-of-type(3) { animation-delay: 160ms; }
+.summary-block:nth-of-type(4) { animation-delay: 240ms; }
+.summary-block .h3 { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.5rem; }
+.check-list li, .icon-list li { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.35rem 0; }
+.check-list li > svg { flex: none; margin-top: 0.2rem; color: var(--success); }
+.icon-list li > svg { flex: none; margin-top: 0.2rem; color: var(--accent); }
+.summary-block.calm { padding-top: 1rem; border-top: 1px solid var(--border); }
+.summary-block.calm .h3 { font-size: 0.95rem; color: var(--muted); }
+
+.milestones-new {
+  background: linear-gradient(135deg, var(--accent-soft), var(--surface) 75%); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1rem 1.1rem; animation: rise-in 360ms ease-out both, glow 1.4s ease-out 300ms 1;
+}
+.milestones-new .eyebrow { display: flex; align-items: center; gap: 0.35rem; margin: 0 0 0.35rem; }
+.milestone-list { display: grid; gap: 0.6rem; }
+.milestone-list .milestone { display: grid; gap: 0.1rem; }
+.milestone-list .milestone .muted { display: block; }
+[data-card="milestones"] .milestone { grid-template-columns: auto 1fr auto; align-items: start; gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--border); }
+[data-card="milestones"] .milestone:last-child { border-bottom: 0; }
+.milestone-icon { display: inline-grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); }
+.milestone time { white-space: nowrap; }
+
+.tomorrow-card .summary-block { margin-top: 0; }
+.tomorrow .h3 svg { color: var(--accent); }
+
+/* Fortschritt: Stufe und nächstes Ziel */
+.level-card .card-head { align-items: center; }
+.level-next { margin: 0.25rem 0 0.75rem; }
+.level-card .meter-head strong { font-variant-numeric: tabular-nums; }
+.level-card .h3 { margin-top: 1.25rem; }
+
+/* Aufgabe: Begründung ruhig und aufklappbar unter der Aufgabe */
+.task-context { margin-top: 0.75rem; border-top: 1px solid var(--border); padding-top: 0.6rem; }
+.task-context summary { cursor: pointer; color: var(--muted); font-size: 0.875rem; font-weight: 600; list-style: none; }
+.task-context summary::-webkit-details-marker { display: none; }
+.task-context summary::after { content: "›"; margin-left: 0.35rem; display: inline-block; transition: transform 160ms ease; }
+.task-context[open] summary::after { transform: rotate(90deg); }
+.task-context p { margin: 0.4rem 0 0; }
+.task-why { margin: 0 0 0.15rem; }
+
+/* Rückmeldung und Seitenwechsel: kurz einblenden; richtig leuchtet einmal sanft */
+.feedback { animation: rise-in 280ms ease-out both; }
+.feedback[data-verdict="correct"] { animation: rise-in 280ms ease-out both, glow 1.1s ease-out 120ms 1; }
+.page > .grid > .card, .page > .grid > details.card { animation: rise-in 300ms ease-out both; }
+
+/* Profil: App-Info aufklappbar */
+.info-card > summary { cursor: pointer; font-weight: 700; font-size: 1.05rem; list-style: none; }
+.info-card > summary::-webkit-details-marker { display: none; }
+.info-card > summary::after { content: " ›"; color: var(--muted); }
+.info-card[open] > summary { margin-bottom: 0.5rem; }
+
+@media (prefers-reduced-motion: reduce) {
+  .summary-mark, .summary-block, .milestones-new, .feedback, .feedback[data-verdict="correct"],
+  .page > .grid > .card, .page > .grid > details.card { animation: none !important; }
+  .task-context summary::after { transition: none; }
+}
+
+/* P25.5: Sprache der App als klar beschriftete Einstellung über der Lernsprache */
+.app-language { display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem 0.75rem; border: 1px solid var(--border);
+  border-radius: var(--radius-sm); background: var(--surface); }
+.app-language-icon { color: var(--muted); display: inline-grid; }
+.app-language-text { display: grid; flex: 1; line-height: 1.25; }
+.app-language-text strong { font-size: 0.9rem; }
+.segmented { display: inline-flex; background: var(--surface-2); border-radius: 999px; padding: 3px; gap: 2px; }
+.segmented button { border: 0; background: transparent; padding: 0.4rem 0.75rem; border-radius: 999px; font: inherit; font-size: 0.85rem;
+  font-weight: 600; color: var(--muted); min-height: 36px; cursor: pointer; }
+.segmented button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+
+/* P25.5: Tutorial im Kontext */
+.coach-tip { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.6rem; align-items: start; padding: 0.75rem 0.9rem;
+  border-radius: var(--radius-sm); background: var(--accent-soft); border: 1px solid var(--border); animation: rise-in 300ms ease-out both; }
+.coach-tip-icon { color: var(--accent); padding-top: 0.1rem; }
+.coach-tip p { margin: 0; font-size: 0.92rem; line-height: 1.45; }
+.coach-tip-ok { grid-column: 2; justify-self: start; padding: 0; min-height: 0; }
+.summary .coach-tip { margin-top: 1.25rem; }
+@media (prefers-reduced-motion: reduce) { .coach-tip { animation: none !important; } }

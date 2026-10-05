@@ -64,6 +64,7 @@
  * intern (mit Skill und Gründen); was der Lerner sieht, liefert learnerView().
  */
 
+import { beginnerExercises } from "./beginner.js";
 import { SKILL_TYPES, parseSkillId } from "../../content/skills.js";
 import { diagnoseDifficulty, difficultyLabel } from "../calibration/calibration.js";
 import { audioDifficulty, audioFeatures, isListening } from "../listening/model.js";
@@ -205,14 +206,20 @@ export function planSession({ library, snapshot, reviews = null, events = [], me
       .some((e) => exerciseZone(e, ability)?.zone !== "too_difficult");
     if (zone && (zone.zone === "too_easy" || zone.zone === "too_difficult" || !doable)) {
       outsideZone.push({ skill_id: skill.skill_id, level: meta.level, zone: doable ? zone.zone : "too_difficult" });
-      const exercises = library.exercisesForSkill(skill.skill_id);
+      const exercises = beginnerExercises(library.exercisesForSkill(skill.skill_id), { ability, purpose: scored.purpose });
       if (doable && zone.zone === "too_easy" && exercises.length) {
         coldStart.push({ skill, meta, review, ...scored, learning_need: scored, priority: scored.score, exercises, ladder: null });
       }
       continue;
     }
     // P15: Höraufgaben gehören zu den Hörbedarfen, nicht zu den schriftlichen Skill-Bedarfen
-    const exercises = library.exercisesForSkill(skill.skill_id).filter((e) => !isListening(e));
+    const written = library.exercisesForSkill(skill.skill_id).filter((e) => !isListening(e));
+    // P25.5: Anfänger nur in Reichweite (höchstens eine Stufe darüber), Neues zuerst über Wiedererkennen
+    const exercises = beginnerExercises(written, { ability, purpose: scored.purpose });
+    if (written.length && !exercises.length) {
+      outsideZone.push({ skill_id: skill.skill_id, level: meta.level, zone: "beyond_beginner_reach" });
+      continue;
+    }
     if (exercises.length) {
       // neuer Skill genau in der Lernzone: vor gleich dringenden, die nur "herausfordernd" sind
       const zoneBonus = zone?.zone === "learning_zone" ? PLANNER_RULES.zoneNewBonus : 0;
@@ -234,7 +241,7 @@ export function planSession({ library, snapshot, reviews = null, events = [], me
   const skillOf = new Map(snapshot.skills.map((s) => [s.skill_id, s]));
   for (const need of listeningNeeds) {
     const skill = skillOf.get(need.skill_id);
-    const exercises = library.exercisesForSkill(need.skill_id).filter(isListening);
+    const exercises = beginnerExercises(library.exercisesForSkill(need.skill_id).filter(isListening), { ability, purpose: need.purpose });
     if (!skill || !exercises.length) continue;
     candidates.push({ skill, meta: skillMeta(library, need.skill_id), review: null, ...need, learning_need: need,
       priority: need.score, exercises, ladder: null });
@@ -259,7 +266,7 @@ export function planSession({ library, snapshot, reviews = null, events = [], me
     // nur echte Wiederholungen: ein nie abgerufener Skill (Phase "new") ist formal "due", aber keine Wiederholung
     due: candidates.filter((c) => c.review && c.review.phase !== "new" && ["due", "overdue"].includes(c.review.due_status)).length,
     strongestWeakness: weaknessDeltas.length ? Math.min(...weaknessDeltas) : null,
-    abilityKnown: Boolean(ability),
+    abilityKnown: Boolean(ability) && !ability.provisional,
     unmeasured: unmeasured.size,
     productionGaps: candidates.filter((c) => c.reason_code === "production_gap").length,
     daysWithoutProduction: daysWithoutProduction(snapshot.skills, asOf),

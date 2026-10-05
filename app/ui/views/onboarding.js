@@ -1,6 +1,7 @@
 /**
- * Onboarding (P25.1): 1 Sprache der App → 2 Lernsprache → 3 Selbsteinschätzung → 4 Tagesziel (und optional ein Name).
- * Neue Nutzer ohne Lernsprache (angelegt im Profil) beginnen bei Schritt 2. Alles wird erst am Ende gespeichert.
+ * Onboarding (P25.1, P25.5): 1 Lernsprache → 2 Selbsteinschätzung → 3 Tagesziel (und optional ein Name). Beim ersten
+ * Start steht die Sprache der App als klar beschriftete Einstellung über der Frage nach der Lernsprache (vorher ein
+ * eigener Schritt "Choose your language", der wie die Wahl der Lernsprache wirkte). Gespeichert wird erst am Ende.
  */
 
 import { FEW_EXERCISES, ONBOARDING_GOALS, ONBOARDING_LEVELS, UI_LANGUAGES, UI_LANGUAGE_NAMES, belowRange, exercisesAtLevel, setUiLanguage, t } from "../../model/i18n.js";
@@ -11,7 +12,7 @@ import { h, icon } from "../dom.js";
  *   onUiLanguage: (id: string) => void, onFinish: (choice: object) => Promise<void>}} options
  */
 export function onboardingView({ languages, uiLanguage, askUiLanguage, askName, onUiLanguage, onFinish }) {
-  const steps = [...(askUiLanguage ? ["ui"] : []), "learn", "level", "goal"];
+  const steps = ["learn", "level", "goal"];
   const choice = { ui: uiLanguage, learn: null, level: null, goal: 10, name: "" };
   let index = 0;
   const root = h("div", { class: "page onboarding" });
@@ -21,7 +22,7 @@ export function onboardingView({ languages, uiLanguage, askUiLanguage, askName, 
     root.dataset.onboardingStep = step;
     const error = h("p", { class: "form-error", role: "alert", hidden: true });
     const fail = (text) => { error.textContent = text; error.hidden = false; };
-    const content = { ui: uiStep, learn: learnStep, level: levelStep, goal: goalStep }[step]();
+    const content = { learn: learnStep, level: levelStep, goal: goalStep }[step]();
     const last = index === steps.length - 1;
     const next = h("button", { type: "submit", class: "btn btn-primary btn-block", "data-action": last ? "onboarding-finish" : "onboarding-next" },
       last ? t("start") : t("next"));
@@ -66,18 +67,29 @@ export function onboardingView({ languages, uiLanguage, askUiLanguage, askName, 
       return button;
     }));
 
-  function uiStep() {
-    return [
-      h("h1", { tabindex: "-1", lang: "en" }, t("ui_title")),
-      h("p", { class: "muted" }, t("ui_lead")),
-      options("ui-language", UI_LANGUAGES.map((id) => ({ id, title: UI_LANGUAGE_NAMES[id], flag: id === "de" ? "🇩🇪" : "🇪🇸" })),
-        choice.ui, (id) => { choice.ui = id; setUiLanguage(id); onUiLanguage(id); }),
-    ];
+  /** Sprache der App: kleine, beschriftete Umschaltung (Menüs und Erklärungen), deutlich getrennt von der Lernsprache. */
+  function uiBar() {
+    return h("div", { class: "app-language", role: "group", "aria-labelledby": "app-language-label" },
+      h("span", { class: "app-language-icon", "aria-hidden": "true" }, icon("globe", { size: 18 })),
+      h("span", { class: "app-language-text" }, h("strong", { id: "app-language-label" }, t("ui_bar")),
+        h("span", { class: "muted small" }, t("ui_bar_hint"))),
+      h("span", { class: "segmented" }, UI_LANGUAGES.map((id) => {
+        const button = h("button", { type: "button", "data-ui-language": id, "aria-pressed": String(id === choice.ui), lang: id },
+          UI_LANGUAGE_NAMES[id]);
+        button.addEventListener("click", () => {
+          choice.ui = id;
+          setUiLanguage(id);
+          onUiLanguage(id);
+          render();
+        });
+        return button;
+      })));
   }
 
   function learnStep() {
     const names = t("language_names");
     return [
+      askUiLanguage ? uiBar() : null,
       h("h1", { tabindex: "-1" }, t("learn_title")),
       h("p", { class: "muted" }, t("learn_lead")),
       options("learn-language", languages.map((l) => ({

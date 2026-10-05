@@ -7,8 +7,7 @@
 
 import { h, icon, meter } from "../dom.js";
 import { t } from "../../model/i18n.js";
-import { explain } from "../../model/explain.js";
-import { answerForm, confirmDialog, emptyState, feedbackPanel, listeningPlayer, masteryText, taskCard } from "../components.js";
+import { answerForm, coachTip, confirmDialog, emptyState, feedbackPanel, listeningPlayer, masteryText, taskCard } from "../components.js";
 
 export async function sessionView(ctx) {
   ctx.setTitle(t("session.title"));
@@ -76,7 +75,9 @@ function taskStep(ctx, view, render) {
     },
   });
   queueMicrotask(() => form.focusInput());
-  return [h("div", { class: "session-body" }, taskCard(exercise), player?.element ?? null, form)];
+  // P25.5: erste Aufgabe: kurz erklären, warum selbst schreiben und warum Fehler zählen (einmal)
+  const tip = view.completed === 0 && ctx.takeTip?.("first_task") ? coachTip("first_task", t("tip.first_task")) : null;
+  return [h("div", { class: "session-body" }, tip, taskCard(exercise), player?.element ?? null, form)];
 }
 
 function feedbackStep(ctx, view, { feedback, ai, answerText, next }, render) {
@@ -86,7 +87,9 @@ function feedbackStep(ctx, view, { feedback, ai, answerText, next }, render) {
   button.addEventListener("click", () => render(next));
   const panel = feedbackPanel(feedback, { answerText, ai });
   queueMicrotask(() => panel.querySelector("#feedback-title")?.focus());
-  return [h("div", { class: "session-body" }, taskCard(view.exercise, { headingLevel: 2 }), panel, h("div", { class: "sticky-actions" }, button))];
+  // P25.5: erste Rückmeldung mit Fehler: der Fehler kommt gezielt wieder (einmal)
+  const tip = feedback.verdict === "incorrect" && ctx.takeTip?.("first_error") ? coachTip("first_error", t("tip.first_error")) : null;
+  return [h("div", { class: "session-body" }, taskCard(view.exercise, { headingLevel: 2 }), panel, tip, h("div", { class: "sticky-actions" }, button))];
 }
 
 function pausedPanel(ctx, view, render) {
@@ -129,7 +132,9 @@ async function abandon(ctx, view, render) {
 function summaryLoader(ctx, view) {
   const box = h("div", { class: "session-body", "aria-live": "polite" });
   ctx.app.sessionSummary(view.session_id)
-    .then((summary) => box.replaceChildren(summaryCard(summary, null, ctx.app.explanationLanguage)))
+    .then((summary) => box.replaceChildren(summaryCard(summary, null,
+      // P25.5: erstes Session-Ende: wie Fortschritt gemessen wird (einmal)
+      summary.status === "completed" && ctx.takeTip?.("first_summary") ? coachTip("first_summary", t("tip.first_summary")) : null)))
     .catch((error) => {
       console.error(error);
       box.replaceChildren(summaryCard(null, view));
@@ -137,35 +142,77 @@ function summaryLoader(ctx, view) {
   return box;
 }
 
-function summaryCard(summary, view = null, language = "de") {
+/** Höchstens so viele Zeilen "Heute gelungen" und "Daran arbeiten wir weiter" (der Rest steht unter Fortschritt). */
+export const MAX_WENT_WELL = 4;
+export const MAX_WORK_ON = 2;
+
+/**
+ * P25.4: Das Gelungene zuerst (gemessen: ohne Fehler geübt, Stufenaufstiege, überwundene Fehler, Meilensteine),
+ * dann was morgen wartet; was noch nicht sitzt, kurz und ruhig am Ende.
+ */
+function summaryCard(summary, view = null, tip = null) {
   const abandoned = (summary?.status ?? view?.status) === "abandoned";
   const completed = summary?.completed ?? view?.completed ?? 0;
+  const s = summary;
+  const well = s ? s.went_well.slice(0, MAX_WENT_WELL) : [];
   return h("section", { class: "card summary", "aria-labelledby": "summary-title", "data-status": abandoned ? "abandoned" : "completed" },
-    h("h1", { id: "summary-title", tabindex: "-1" }, abandoned ? t("session.ended") : t("session.completed")),
-    h("p", {}, abandoned
-      ? t("session.saved")
-      : `${summary && summary.answers.with_errors > summary.answers.correct ? t("session.kept_going") : t("session.strong")} ${t("session.saved_next")}`),
-    summary ? h("dl", { class: "stats" },
-      stat(t("session.exercises"), `${completed}${abandoned ? t("session.of", summary.planned) : ""}`),
-      stat(t("session.correct"), String(summary.answers.correct)),
-      stat(t("session.with_errors"), String(summary.answers.with_errors)),
-      summary.answers.open ? stat(t("session.open"), String(summary.answers.open)) : null,
-      stat(t("session.time"), `${summary.minutes} min`)) : null,
-    summary?.answers.open ? h("p", { class: "muted small" },
-      explain(language, "open_note")) : null,
-    summary?.improved.length ? h("div", {},
-      h("h2", { class: "h3" }, t("nav.progress")),
-      // höchstens drei Zeilen, der Rest als Zahl (die vollständige Übersicht steht unter Fortschritt)
-      h("ul", { class: "plain progress-list" }, summary.improved.slice(0, 3).map((s) => h("li", {}, h("strong", {}, s.title),
-        h("span", { class: "muted" }, ` ${masteryText(s.before)} → ${masteryText(s.after)}`)))),
-      summary.improved.length > 3 ? h("p", { class: "muted small" }, t("session.more", summary.improved.length - 3)) : null) : null,
-    summary?.weaknesses.length ? h("div", {},
+    h("div", { class: "summary-head" },
+      h("span", { class: "summary-mark", "aria-hidden": "true" }, icon("check", { size: 30 })),
+      h("h1", { id: "summary-title", tabindex: "-1" }, abandoned ? t("session.ended") : t("session.completed")),
+      h("p", { class: "summary-lead" }, abandoned ? t("session.saved") : leadLine(s, completed))),
+    s ? h("dl", { class: "stats stats-compact" },
+      stat(t("session.exercises"), `${completed}${abandoned ? t("session.of", s.planned) : ""}`),
+      stat(t("session.correct"), String(s.answers.correct)),
+      stat(t("session.time"), `${s.minutes} min`)) : null,
+    s?.milestones?.length ? h("div", { class: "summary-block milestones-new", "data-block": "milestones" },
+      h("p", { class: "eyebrow" }, icon("award", { size: 16 }), t("sum.milestone")),
+      h("ul", { class: "plain milestone-list" }, s.milestones.map((m) => h("li", { class: "milestone", "data-milestone": m.id },
+        h("strong", {}, m.title), h("span", { class: "muted small" }, m.text))))) : null,
+    s?.resolved?.length ? h("div", { class: "summary-block", "data-block": "resolved" },
+      h("h2", { class: "h3" }, t("sum.resolved")),
+      h("ul", { class: "plain check-list" }, s.resolved.map((title) => h("li", {}, icon("check", { size: 16 }), h("strong", {}, title))))) : null,
+    well.length ? h("div", { class: "summary-block", "data-block": "went-well" },
+      h("h2", { class: "h3" }, t("sum.today_well")),
+      h("ul", { class: "plain check-list" }, well.map((w) => h("li", { "data-improved": String(w.improved) }, icon("check", { size: 16 }),
+        h("span", {}, h("strong", {}, w.title), h("span", { class: "muted small" }, ` ${stepText(w)}`))))),
+      s.went_well.length > MAX_WENT_WELL ? h("p", { class: "muted small" }, t("session.more", s.went_well.length - MAX_WENT_WELL)) : null) : null,
+    tip,
+    s?.tomorrow ? tomorrowBlock(s.tomorrow) : null,
+    s?.weaknesses.length ? h("div", { class: "summary-block calm", "data-block": "work-on" },
       h("h2", { class: "h3" }, t("session.work_on")),
-      h("ul", { class: "plain" }, summary.weaknesses.slice(0, 3).map((s) => h("li", {}, h("strong", {}, s.title),
-        h("span", { class: "muted" }, t("session.failures", s.failures, s.successes)))))) : null,
+      h("p", { class: "muted small" }, `${s.weaknesses.slice(0, MAX_WORK_ON).map((w) => w.title).join(" · ")}. ${t("sum.calm")}`)) : null,
     h("div", { class: "stack" },
       h("a", { class: "btn btn-primary btn-block", href: "#/", "data-action": "home" }, t("common.back_home")),
       h("a", { class: "btn btn-secondary btn-block", href: "#/fortschritt" }, t("session.see_progress"))));
+}
+
+/** Der stärkste echte Satz der Session: überwundener Fehler, dann Aufstiege, dann Übungen ohne Fehler. */
+function leadLine(s, completed) {
+  if (!s) return t("session.saved_next");
+  const ups = s.went_well.filter((w) => w.improved).length;
+  if (s.resolved?.length) return t("sum.hero_resolved", s.resolved.length);
+  if (ups) return t("sum.hero_up", ups);
+  if (s.answers.without_errors > 0) return t("sum.hero_clean", s.answers.without_errors, completed);
+  return t("session.kept_going");
+}
+
+function stepText(w) {
+  if (!w.improved) return t("sum.times_right", w.successes);
+  return w.before === "unknown" ? t("sum.new_learned") : `${masteryText(w.before)} → ${masteryText(w.after)}`;
+}
+
+/** "Morgen wartet": konkrete Inhalte (fällige Wiederholungen, nächste neue Struktur, noch einmal das Schwierige). */
+export function tomorrowBlock(tomorrow, again = null) {
+  const items = [
+    tomorrow.reviews ? ["repeat", t("sum.t_reviews", tomorrow.reviews, tomorrow.review_titles.join(", "))] : null,
+    tomorrow.new_skill ? ["sparkle", t("sum.t_new", tomorrow.new_skill)] : null,
+    again ? ["target", t("sum.t_again", again)] : null,
+  ].filter(Boolean);
+  return h("div", { class: "summary-block tomorrow", "data-block": "tomorrow" },
+    h("h2", { class: "h3" }, icon("calendar", { size: 18 }), t("sum.tomorrow")),
+    items.length
+      ? h("ul", { class: "plain icon-list" }, items.map(([name, text]) => h("li", {}, icon(name, { size: 16 }), h("span", {}, text))))
+      : h("p", { class: "muted small" }, t("sum.t_none")));
 }
 
 function stat(label, value) {

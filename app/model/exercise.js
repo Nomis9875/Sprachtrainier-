@@ -13,6 +13,7 @@ import { prepare } from "../../core/evaluation/text.js";
 import { modeLabel, purposeHint, reasonText, typeLabel } from "./labels.js";
 import { explain } from "./explain.js";
 import { presentListening } from "./listening.js";
+import { localizedInstruction } from "./instructions.js";
 
 const GAP = /_{3,}/;
 
@@ -46,7 +47,8 @@ export function presentExercise(exercise, { focus = null, purpose = null, planne
     level: exercise.level,
     topic_id: exercise.topics?.[0] ?? null, // nur für die Rück-Navigation beim Üben (wird nicht angezeigt)
     answer_kind: answerKind(exercise),
-    prompt_de: exercise.prompt_de || "",
+    // P25.4a: feste Anweisungen in der Erklärungssprache (instructions.js); eigener Inhalt bleibt Deutsch
+    prompt_de: localizedInstruction(exercise.prompt_de || "", language),
     prompt_es: exercise.prompt_es || "",
     source: { ...splitGap(exercise.source_text_es || ""), passage: exercise.type === "reading_comprehension" },
     // Auswahl (P12): feste, aber vom Inhalt unabhängige Reihenfolge (die richtige Option steht nicht immer vorn)
@@ -68,11 +70,11 @@ export function presentExercise(exercise, { focus = null, purpose = null, planne
 }
 
 /** Kurzbeschreibung für Listen (Üben): Training mit Lernziel, Challenge nur mit der Aufgabe. */
-export function exerciseCard(exercise) {
+export function exerciseCard(exercise, language = "de") {
   const challenge = exercise.mode === "challenge";
   const title = challenge
-    ? exercise.communication_goal_de || exercise.prompt_de
-    : exercise.learning_goal_de || exercise.prompt_de;
+    ? exercise.communication_goal_de || localizedInstruction(exercise.prompt_de, language)
+    : exercise.learning_goal_de || localizedInstruction(exercise.prompt_de, language);
   return {
     id: exercise.id,
     title,

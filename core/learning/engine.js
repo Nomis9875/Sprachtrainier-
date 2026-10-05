@@ -12,6 +12,7 @@
  * Schritten, ebenfalls als Berechnung aus den Ereignissen): Fortschritt, Streak, Tagesziel.
  */
 
+import { levelValue } from "./profile/scale.js";
 import { assertStorage } from "../storage/storage.js";
 import { readEvaluation } from "../evaluation/result.js";
 import { deriveMemories } from "../memory/derive.js";
@@ -26,9 +27,31 @@ import { buildCalibration } from "./calibration/calibration.js";
 import { buildListeningProfile } from "./listening/evidence.js";
 import { isListening, isListeningOnly } from "./listening/model.js";
 import { abilityFromProfile } from "./planning/zone.js";
+import { BEGINNER_RULES, provisionalAbility } from "./planning/beginner.js";
 import { planSession } from "./planning/planner.js";
 import { buildActivitySummary } from "./progress/activity.js";
 import { buildReviewSnapshot } from "./repetition/snapshot.js";
+
+/**
+ * Können für die Planung: verlässliches Sprachprofil; ohne verlässliche Gesamtstufe ergänzt das vorläufige Können
+ * (P25.5, beginner.js) die Gesamtstufe, damit Bereiche ohne eigene Schätzung nicht ohne Bezug geplant werden.
+ */
+function plannerAbility(brain, library) {
+  const measured = abilityFromProfile(brain.language_profile);
+  if (measured && measured.overall !== null) return measured;
+  const provisional = provisionalAbility({
+    selfAssessment: brain.language_profile?.self_assessment?.level ?? null, snapshot: brain.snapshot, library,
+  });
+  const measuredBest = Math.max(...Object.values(measured?.by_dimension ?? {}));
+  // Selbsteinschätzung ab B1-Mitte ohne gemessenen Bereich: Planung wie bisher (kein vorläufiges Können)
+  if (!measured) return provisional.overall > BEGINNER_RULES.maxTheta ? null : provisional;
+  // Bereiche gemessen, aber keine Gesamtstufe: Unter B2 gilt der beste gemessene Bereich (bzw. das vorläufige Können,
+  // wenn höher) als Gesamtstufe, damit ungemessene Bereiche nicht ohne Lernzone geplant werden; über B1-Mitte gelten
+  // dann die normalen Zonenregeln (Stretch begrenzt), kein Anfängerschutz. Ab B2 bleibt die Planung unverändert.
+  const overall = Math.max(provisional.overall, measuredBest);
+  if (overall >= levelValue("B2")) return measured;
+  return { ...measured, overall, basis: `${measured.basis}; Gesamtstufe aus ${overall === measuredBest ? "dem besten gemessenen Bereich" : provisional.basis}` };
+}
 
 export class LearningEngine {
   /**
@@ -258,7 +281,9 @@ export class LearningEngine {
     const brain = buildLearnerBrain({ events, userId: this.identity.userId, asOf: at, library });
     return planSession({
       library, snapshot: brain.snapshot, reviews: brain.reviews, memories: brain.memories, events, minutes,
-      dimensionNeeds: brain.dimension_needs, ability: abilityFromProfile(brain.language_profile),
+      dimensionNeeds: brain.dimension_needs,
+      // P25.5: ohne verlässliche Schätzung ein vorläufiges Können (Selbsteinschätzung bzw. A1, angehoben durch Belegtes)
+      ability: plannerAbility(brain, library),
       calibration: await this.calibration({ library, asOf: at }),
       listeningNeeds: brain.listening_needs, listening: brain.listening,
     });

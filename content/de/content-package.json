@@ -3,7 +3,7 @@
  "format_version": 1,
  "pattern_syntax": 1,
  "target": "production",
- "content_version": "16ce3738df02eb9f",
+ "content_version": "c2138b0c102ff317",
  "language": {
   "id": "de",
   "germanism_explanation_de": "",
@@ -5041,6 +5041,1574 @@
    "difficulty_source": "derived",
    "sublevel": "B2.2",
    "category": "transformation"
+  },
+  {
+   "id": "beg-de-a1-artikel-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.cases",
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Was möchten Sie?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "articles_nominative_accusative",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich möchte einen Kaffee, bitte.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich möchte ein Kaffee, bitte.",
+     "feedback_de": "„der Kaffee“ im Akkusativ: einen Kaffee.",
+     "error_id": null
+    },
+    {
+     "text": "Ich möchte der Kaffee, bitte.",
+     "feedback_de": "Nach „möchten“ steht der Akkusativ: einen Kaffee.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Ich möchte einen Kaffee, bitte.",
+    "Ich möchte ein Kaffee, bitte.",
+    "Ich möchte der Kaffee, bitte."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-artikel-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Wähle den passenden Artikel.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich kaufe ___ Tisch für die Küche.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "articles_nominative_accusative",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "einen",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "ein",
+     "feedback_de": "„der Tisch“ im Akkusativ: einen Tisch.",
+     "error_id": null
+    },
+    {
+     "text": "eine",
+     "feedback_de": "„Tisch“ ist maskulin (der Tisch): einen Tisch.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "einen",
+    "ein",
+    "eine"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a1-artikel-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du beschreibst dein Zimmer.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "articles_nominative_accusative",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Das Zimmer ist klein.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Der Zimmer ist klein.",
+     "feedback_de": "„Zimmer“ ist neutral: das Zimmer.",
+     "error_id": null
+    },
+    {
+     "text": "Die Zimmer ist klein.",
+     "feedback_de": "Ein Zimmer: das Zimmer (die Zimmer ist Plural).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Das Zimmer ist klein.",
+    "Der Zimmer ist klein.",
+    "Die Zimmer ist klein."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-haben-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs"
+   ],
+   "prompt_de": "Wähle die richtige Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Wir ___ zwei Kinder.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "sein_haben_present",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "haben",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "hat",
+     "feedback_de": "„hat“ gehört zu er/sie/es. Zu „wir“: haben.",
+     "error_id": null
+    },
+    {
+     "text": "sind",
+     "feedback_de": "Besitz und Familie: haben. Wir haben zwei Kinder.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "haben",
+    "hat",
+    "sind"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a1-kein-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.negation",
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Nein, du hast keinen Garten.",
+   "estimated_seconds": 30,
+   "prompt_es": "",
+   "source_text_es": "Hast du einen Garten?",
+   "instruction_de": "einen → keinen",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "negation_kein",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Nein, ich habe keinen Garten.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Nein, leider habe ich keinen Garten.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ich habe keinen Garten.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Nein, ich habe nicht einen Garten.",
+     "feedback_de": "„einen“ wird zu „keinen“: keinen Garten.",
+     "error_id": null
+    },
+    {
+     "text": "Nein, ich habe kein Garten.",
+     "feedback_de": "„der Garten“ im Akkusativ: keinen Garten.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a1-kein-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.negation"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hast du ein Auto?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "negation_kein",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Nein, ich habe kein Auto.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Nein, ich habe nicht ein Auto.",
+     "feedback_de": "„ein“ wird zu „kein“: kein Auto.",
+     "error_id": null
+    },
+    {
+     "text": "Nein, ich habe keinen Auto.",
+     "feedback_de": "„das Auto“ ist neutral: kein Auto.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Nein, ich habe kein Auto.",
+    "Nein, ich habe nicht ein Auto.",
+    "Nein, ich habe keinen Auto."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-kein-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.negation"
+   ],
+   "prompt_de": "Wähle die richtige Verneinung.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ich habe heute ___ Zeit.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "negation_kein",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "keine",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "nicht",
+     "feedback_de": "Ein Nomen ohne Artikel verneint man mit „kein“: keine Zeit.",
+     "error_id": null
+    },
+    {
+     "text": "kein",
+     "feedback_de": "„die Zeit“ ist feminin: keine Zeit.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "keine",
+    "nicht",
+    "kein"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a1-modal-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.verbs",
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Du möchtest ein Wasser.",
+   "estimated_seconds": 30,
+   "prompt_es": "",
+   "source_text_es": "Was möchtest du trinken?",
+   "instruction_de": "möchten + Akkusativ",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "modal_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich möchte ein Wasser.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Ich möchte ein Wasser, bitte.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ich möchte gern ein Wasser.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ich möchte bitte ein Wasser.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich möchten ein Wasser.",
+     "feedback_de": "Zu „ich“: möchte.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a1-modal-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs",
+    "register.informal"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Kommst du heute Abend ins Kino?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "modal_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Nein, ich muss arbeiten.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Nein, ich muss arbeite.",
+     "feedback_de": "Nach „muss“ steht der Infinitiv: arbeiten.",
+     "error_id": null
+    },
+    {
+     "text": "Nein, ich arbeiten muss.",
+     "feedback_de": "Im Hauptsatz steht „muss“ an zweiter Stelle: ich muss arbeiten.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Nein, ich muss arbeiten.",
+    "Nein, ich muss arbeite.",
+    "Nein, ich arbeiten muss."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-modal-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs"
+   ],
+   "prompt_de": "Wähle die richtige Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Morgen ___ ich früh aufstehen.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "modal_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "muss",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "müssen",
+     "feedback_de": "Zu „ich“: muss.",
+     "error_id": null
+    },
+    {
+     "text": "musst",
+     "feedback_de": "„musst“ gehört zu „du“. Zu „ich“: muss.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "muss",
+    "müssen",
+    "musst"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a1-modal-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs",
+    "grammar.infinitive"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du sagst, was du kannst.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "modal_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich kann gut schwimmen.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich kann gut schwimme.",
+     "feedback_de": "Nach einem Modalverb steht der Infinitiv am Ende: schwimmen.",
+     "error_id": null
+    },
+    {
+     "text": "Ich kanne gut schwimmen.",
+     "feedback_de": "„können“ mit „ich“: ich kann (ohne -e).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Ich kann gut schwimmen.",
+    "Ich kann gut schwimme.",
+    "Ich kanne gut schwimmen."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-possessiv-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Deine Mutter heißt Carmen.",
+   "estimated_seconds": 30,
+   "prompt_es": "",
+   "source_text_es": "Wie heißt deine Mutter?",
+   "instruction_de": "die Mutter → meine Mutter",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "possessive_articles",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Meine Mutter heißt Carmen.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Sie heißt Carmen.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Meine Mama heißt Carmen.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Mein Mutter heißt Carmen.",
+     "feedback_de": "„die Mutter“ ist feminin: meine Mutter.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a1-possessiv-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Wie heißt dein Bruder?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "possessive_articles",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mein Bruder heißt Pablo.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Dein Bruder heißt Pablo.",
+     "feedback_de": "Es ist dein eigener Bruder: mein Bruder.",
+     "error_id": null
+    },
+    {
+     "text": "Meine Bruder heißt Pablo.",
+     "feedback_de": "„der Bruder“ ist maskulin: mein Bruder.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Mein Bruder heißt Pablo.",
+    "Dein Bruder heißt Pablo.",
+    "Meine Bruder heißt Pablo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-possessiv-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.cases"
+   ],
+   "prompt_de": "Wähle den passenden Possessivartikel.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Das ist ___ Schwester Anna.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "possessive_articles",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "meine",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "mein",
+     "feedback_de": "„die Schwester“ ist feminin: meine Schwester.",
+     "error_id": null
+    },
+    {
+     "text": "meinen",
+     "feedback_de": "Nach „Das ist“ steht der Nominativ: meine Schwester.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "meine",
+    "mein",
+    "meinen"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a1-praesens-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.verbs"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Du lernst Deutsch.",
+   "estimated_seconds": 30,
+   "prompt_es": "",
+   "source_text_es": "Was machst du hier?",
+   "instruction_de": "lernen, Form für „ich“: lerne",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_conjugation",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich lerne Deutsch.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Ich lerne hier Deutsch.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ich lerne gerade Deutsch.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich lernt Deutsch.",
+     "feedback_de": "Zu „ich“: lerne.",
+     "error_id": null
+    },
+    {
+     "text": "Ich lernen Deutsch.",
+     "feedback_de": "Zu „ich“: lerne.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a1-praesens-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs",
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Wo wohnst du?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_conjugation",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich wohne in Köln.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich wohnt in Köln.",
+     "feedback_de": "Zu „ich“: wohne.",
+     "error_id": null
+    },
+    {
+     "text": "Er wohne in Köln.",
+     "feedback_de": "Du sprichst über dich: Ich wohne …",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Ich wohne in Köln.",
+    "Ich wohnt in Köln.",
+    "Er wohne in Köln."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-praesens-luecke",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs"
+   ],
+   "prompt_de": "Wähle die richtige Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du ___ sehr gut Deutsch.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_conjugation",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "sprichst",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "spreche",
+     "feedback_de": "„spreche“ gehört zu „ich“. Zu „du“: sprichst.",
+     "error_id": null
+    },
+    {
+     "text": "sprecht",
+     "feedback_de": "„sprecht“ gehört zu „ihr“. Zu „du“: sprichst.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "sprichst",
+    "spreche",
+    "sprecht"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-de-a1-praesens-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du sprichst über deine Arbeit.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_conjugation",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich arbeite in einem Hotel.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich arbeitet in einem Hotel.",
+     "feedback_de": "Zu „ich“ gehört die Endung -e: ich arbeite.",
+     "error_id": null
+    },
+    {
+     "text": "Ich arbeiten in einem Hotel.",
+     "feedback_de": "„arbeiten“ ist der Infinitiv. Zu „ich“: arbeite.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Ich arbeite in einem Hotel.",
+    "Ich arbeitet in einem Hotel.",
+    "Ich arbeiten in einem Hotel."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-sein-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.verbs"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch: Du bist müde.",
+   "estimated_seconds": 30,
+   "prompt_es": "",
+   "source_text_es": "Wie geht es dir?",
+   "instruction_de": "sein: ich bin …",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "sein_haben_present",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich bin müde.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Ich bin sehr müde.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Nicht so gut, ich bin müde.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ich bin heute müde.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich habe müde.",
+     "feedback_de": "müde sein: Ich bin müde.",
+     "error_id": null
+    },
+    {
+     "text": "Ich ist müde.",
+     "feedback_de": "Zu „ich“ gehört „bin“.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a1-sein-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Woher kommst du?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "sein_haben_present",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich bin aus Spanien.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich habe aus Spanien.",
+     "feedback_de": "Herkunft: Ich bin aus … / Ich komme aus …",
+     "error_id": null
+    },
+    {
+     "text": "Ich bin 25 Jahre alt.",
+     "feedback_de": "Gefragt ist die Herkunft (Woher?), nicht das Alter.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Ich bin aus Spanien.",
+    "Ich habe aus Spanien.",
+    "Ich bin 25 Jahre alt."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-sein-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.verbs"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du stellst dich vor.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "sein_haben_present",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ich bin Lehrerin.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ich ist Lehrerin.",
+     "feedback_de": "Zu „ich“ gehört „bin“: Ich bin …",
+     "error_id": null
+    },
+    {
+     "text": "Ich habe Lehrerin.",
+     "feedback_de": "Beruf: sein. Ich bin Lehrerin.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Ich bin Lehrerin.",
+    "Ich ist Lehrerin.",
+    "Ich habe Lehrerin."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-verbzweit-antworten",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.word_order"
+   ],
+   "prompt_de": "Antworte kurz auf Deutsch und beginne mit „Heute“: Du gehst einkaufen.",
+   "estimated_seconds": 30,
+   "prompt_es": "",
+   "source_text_es": "Was machst du heute?",
+   "instruction_de": "Heute + Verb + ich",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "verb_second",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Heute gehe ich einkaufen.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Heute gehe ich einkaufen, und du?",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Heute ich gehe einkaufen.",
+     "feedback_de": "Das Verb steht an zweiter Stelle: Heute gehe ich einkaufen.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-de-a1-verbzweit-dialog",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.word_order"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Wann fährst du nach Hause?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "verb_second",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Morgen fahre ich nach Hause.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Morgen ich fahre nach Hause.",
+     "feedback_de": "Das Verb steht an zweiter Stelle: Morgen fahre ich …",
+     "error_id": null
+    },
+    {
+     "text": "Morgen nach Hause ich fahre.",
+     "feedback_de": "Das Verb steht an zweiter Stelle: Morgen fahre ich nach Hause.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Morgen fahre ich nach Hause.",
+    "Morgen ich fahre nach Hause.",
+    "Morgen nach Hause ich fahre."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-de-a1-verbzweit-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.word_order"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Du erzählst von deinem Wochenende.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "verb_second",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Am Samstag spiele ich Fußball.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Am Samstag ich spiele Fußball.",
+     "feedback_de": "Das Verb steht an zweiter Stelle: Am Samstag spiele ich …",
+     "error_id": null
+    },
+    {
+     "text": "Am Samstag spiele Fußball ich.",
+     "feedback_de": "Nach dem Verb kommt direkt das Subjekt: spiele ich Fußball.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Am Samstag spiele ich Fußball.",
+    "Am Samstag ich spiele Fußball.",
+    "Am Samstag spiele Fußball ich."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
   },
   {
    "id": "ec-dativ-kinder",
@@ -36038,7 +37606,10 @@
    ],
    "grammar_structure:articles_nominative_accusative": [
     "a1-akkusativ-mann",
-    "a1-akkusativ-tisch"
+    "a1-akkusativ-tisch",
+    "beg-de-a1-artikel-dialog",
+    "beg-de-a1-artikel-luecke",
+    "beg-de-a1-artikel-satz"
    ],
    "grammar_structure:comparison": [
     "a2-vergleich-als",
@@ -36098,6 +37669,10 @@
    "grammar_structure:modal_verbs": [
     "a1-modal-kannst",
     "a1-modal-muss",
+    "beg-de-a1-modal-antworten",
+    "beg-de-a1-modal-dialog",
+    "beg-de-a1-modal-luecke",
+    "beg-de-a1-modal-satz",
     "prod-a2-absage",
     "text/lv-kafka-verwandlung-ung01kafka-00375/forma-2",
     "text/lv-kafka-verwandlung-ung01kafka-06474/forma-2",
@@ -36148,6 +37723,9 @@
    "grammar_structure:negation_kein": [
     "a1-kein-idee",
     "a1-kein-zeit",
+    "beg-de-a1-kein-antworten",
+    "beg-de-a1-kein-dialog",
+    "beg-de-a1-kein-luecke",
     "text/lv-kafka-verwandlung-ung01kafka-00375/forma-1",
     "text/lv-kafka-verwandlung-ung01kafka-05133/forma-1",
     "text/lv-kafka-verwandlung-ung01kafka-06474/forma-1",
@@ -36211,11 +37789,18 @@
     "text/tatoeba-745515/dictado"
    ],
    "grammar_structure:possessive_articles": [
+    "beg-de-a1-possessiv-antworten",
+    "beg-de-a1-possessiv-dialog",
+    "beg-de-a1-possessiv-luecke",
     "p21-possessiv-ihren",
     "p21-possessiv-meine",
     "p21-prod-a1-vorstellen"
    ],
    "grammar_structure:present_conjugation": [
+    "beg-de-a1-praesens-antworten",
+    "beg-de-a1-praesens-dialog",
+    "beg-de-a1-praesens-luecke",
+    "beg-de-a1-praesens-satz",
     "p21-praesens-arbeitet",
     "p21-praesens-wohnst",
     "p21-prod-a1-vorstellen"
@@ -36260,7 +37845,11 @@
    ],
    "grammar_structure:sein_haben_present": [
     "a1-haben-du",
-    "a1-sein-wir"
+    "a1-sein-wir",
+    "beg-de-a1-haben-luecke",
+    "beg-de-a1-sein-antworten",
+    "beg-de-a1-sein-dialog",
+    "beg-de-a1-sein-satz"
    ],
    "grammar_structure:separable_verbs": [
     "p21-trennbar-anrufen",
@@ -36291,7 +37880,10 @@
    ],
    "grammar_structure:verb_second": [
     "a1-verbzweit-heute",
-    "a1-verbzweit-morgen"
+    "a1-verbzweit-morgen",
+    "beg-de-a1-verbzweit-antworten",
+    "beg-de-a1-verbzweit-dialog",
+    "beg-de-a1-verbzweit-satz"
    ],
    "grammar_structure:zwar_aber": [
     "b2-zwar-aber",
@@ -36450,6 +38042,12 @@
     "b2-genitiv-trotz",
     "b2-genitiv-wegen",
     "b2-nominalstil-regen",
+    "beg-de-a1-artikel-dialog",
+    "beg-de-a1-artikel-luecke",
+    "beg-de-a1-artikel-satz",
+    "beg-de-a1-possessiv-antworten",
+    "beg-de-a1-possessiv-dialog",
+    "beg-de-a1-possessiv-luecke",
     "ec-dativ-kinder",
     "ec-groesser-wie",
     "ec-mehr-besser",
@@ -36468,6 +38066,7 @@
    "grammar.infinitive": [
     "b1-umzu-kaufen",
     "b1-umzu-verbinden",
+    "beg-de-a1-modal-satz",
     "text/lv-kafka-verwandlung-ung02kafka-02343/forma-1",
     "text/lv-kafka-verwandlung-ung02kafka-02343/forma-2",
     "text/lv-kafka-verwandlung-ung02kafka-02343/palabra"
@@ -36523,6 +38122,9 @@
    "grammar.negation": [
     "a1-kein-idee",
     "a1-kein-zeit",
+    "beg-de-a1-kein-antworten",
+    "beg-de-a1-kein-dialog",
+    "beg-de-a1-kein-luecke",
     "text/lv-kafka-verwandlung-ung01kafka-00375/dictado-3",
     "text/lv-kafka-verwandlung-ung01kafka-00375/forma-1",
     "text/lv-kafka-verwandlung-ung01kafka-00375/forma-2",
@@ -36656,6 +38258,18 @@
     "a1-modal-kannst",
     "a1-modal-muss",
     "a1-sein-wir",
+    "beg-de-a1-haben-luecke",
+    "beg-de-a1-modal-antworten",
+    "beg-de-a1-modal-dialog",
+    "beg-de-a1-modal-luecke",
+    "beg-de-a1-modal-satz",
+    "beg-de-a1-praesens-antworten",
+    "beg-de-a1-praesens-dialog",
+    "beg-de-a1-praesens-luecke",
+    "beg-de-a1-praesens-satz",
+    "beg-de-a1-sein-antworten",
+    "beg-de-a1-sein-dialog",
+    "beg-de-a1-sein-satz",
     "p21-praesens-arbeitet",
     "p21-praesens-wohnst",
     "p21-prod-a1-vorstellen",
@@ -36707,6 +38321,9 @@
    "grammar.word_order": [
     "a1-verbzweit-heute",
     "a1-verbzweit-morgen",
+    "beg-de-a1-verbzweit-antworten",
+    "beg-de-a1-verbzweit-dialog",
+    "beg-de-a1-verbzweit-satz",
     "ec-weil-verb",
     "p21-trennbar-anrufen",
     "p21-trennbar-aufstehen"
@@ -36719,6 +38336,7 @@
     "voc-zur-verfuegung"
    ],
    "register.informal": [
+    "beg-de-a1-modal-dialog",
     "prod-a2-absage"
    ],
    "vocabulary.collocations": [
@@ -36735,6 +38353,8 @@
     "p21-voc-krankgeschrieben"
    ],
    "vocabulary.everyday.housing": [
+    "beg-de-a1-kein-antworten",
+    "beg-de-a1-praesens-dialog",
     "p21-prod-a1-vorstellen",
     "p21-voc-miete",
     "p21-voc-wohnung",
@@ -36743,6 +38363,8 @@
     "text/lesen-wohnung-anzeige/mitbewohner"
    ],
    "vocabulary.everyday.shopping": [
+    "beg-de-a1-artikel-dialog",
+    "beg-de-a1-modal-antworten",
     "p21-voc-einkaufen",
     "p21-voc-rechnung"
    ],

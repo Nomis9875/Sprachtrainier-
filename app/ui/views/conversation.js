@@ -142,7 +142,7 @@ function turnCard(ctx, conversation, render, initial) {
   const form = answerForm(turn.exercise, {
     speech: ctx.speech,
     aiAnalysis: ctx.aiAnalysis,
-    submitLabel: "Antworten",
+    submitLabel: t("conv.reply"),
     busyLabel: t("conv.evaluating"),
     onEvent: (type) => dispatch(type),
     onSubmit: async (answerText, durationMs, { inputMode, signal }) => {

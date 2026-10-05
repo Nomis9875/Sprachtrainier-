@@ -4,9 +4,12 @@
  *   - die Erklärungstexte der App (dieses Modul, EXPLAIN),
  *   - Titel und Erklärung jeder Struktur und jedes typischen Fehlers (Inhalt: content/<sprache>/l10n_es.toml),
  *   - die festen, vom Kern erzeugten Meldungen (Mindestwortzahl, Wiederholung, Akzente …), hier nachgebildet.
- * Was es nur auf Deutsch gibt (Rückmeldungen einzelner Übungen, Aufgabenstellungen, Bedeutungsangaben), erscheint
- * auf Deutsch. Die Oberfläche (Navigation, Knöpfe) bleibt Deutsch.
+ * Feste Aufgabenanweisungen übersetzt instructions.js (P25.4a). Was es nur auf Deutsch gibt (Rückmeldungen einzelner
+ * Übungen, Aufgaben mit eigenem Inhalt, Bedeutungsangaben), erscheint auf Deutsch. Die Oberfläche folgt der Sprache
+ * der App (i18n.js, strings.js).
  */
+
+import { STRINGS } from "./strings.js";
 
 export const EXPLANATION_LANGUAGES = Object.freeze(["de", "es"]);
 export const EXPLANATION_LANGUAGE_NAMES = Object.freeze({ de: "Deutsch", es: "Español" });
@@ -93,7 +96,7 @@ const EXPLAIN = Object.freeze({
     },
     error_title: (label) => `Error típico «${label}»`,
     outlook_weak: (list) => `Primero trabajamos de forma específica: ${list}. Esta área está por debajo de tu nivel general.`,
-    outlook_reading: "Hay pocos textos de lectura y no aparecen en todas las sesiones. Para practicarlos: Üben → Hören und Lesen.",
+    outlook_reading: "Hay pocos textos de lectura y no aparecen en todas las sesiones. Para practicarlos: Practicar → Escuchar y leer.",
     outlook_even: "Ninguna área está claramente por debajo de tu nivel general. Las sesiones practican a tu nivel y afianzan lo que aún no es seguro.",
     outlook_unmeasured: (list) => `Aún sin medir: ${list}. No es una debilidad: simplemente todavía hay pocas respuestas. Las próximas sesiones incluyen tareas para ello.`,
     dimensions: {
@@ -127,10 +130,11 @@ export function localizedSkillLabel(skill, library, language) {
 // ---------------------------------------------------------------- Meldungen des Kerns (P24, nur Spanisch)
 
 const TARGET_LANGUAGE_ES = Object.freeze({ es: "español", fr: "francés", en: "inglés", de: "alemán" });
-const MEASURE_ES = Object.freeze({
-  Hauptaussage: "Idea principal", Details: "Detalles", Schlussfolgern: "Inferencia", "Bedeutung im Kontext": "Significado en contexto",
-  Hörverstehen: "Comprensión auditiva",
-});
+// alle Messgrößen der Oberfläche (strings.js, measure.*) plus der Oberbegriff
+const MEASURE_ES = Object.freeze(Object.fromEntries([
+  ...Object.entries(STRINGS).filter(([key]) => key.startsWith("measure.")).map(([, [de, es]]) => [de, es]),
+  ["Hörverstehen", "Comprensión auditiva"],
+]));
 
 /**
  * Erklärung eines Befunds in der Erklärungssprache: typische Fehler und Aufgabenziele aus dem Inhalt, feste
@@ -165,6 +169,9 @@ export function localizedCoreMessage(text, library) {
   }
   if ((m = text.match(/^„(.+)“ kommt in diesem Hörtext nicht vor\.$/s))) return `«${m[1]}» no aparece en este audio.`;
   if (text === "Diesen Satz hörst du erst später im Hörtext.") return "Esta frase se oye más adelante en el audio.";
+  // P25.4a: erzeugte Rückmeldungen der Hörsätze (falsche Auswahl): zwei weitere feste Muster
+  if ((m = text.match(/^„(.+)“ kommt in diesem Satz nicht vor\.$/s))) return `«${m[1]}» no aparece en esta frase.`;
+  if ((m = text.match(/^Zu hören ist „(.+)“\.$/s))) return `Se oye «${m[1]}».`;
   if ((m = text.match(/^Deutsche Wörter im [a-zäöü]+ Text: (.+)\. Formuliere diese Stelle auf [A-Za-zäöü]+\.$/))) {
     return `Palabras alemanas en el texto: ${m[1]}. Formula esa parte en ${TARGET_LANGUAGE_ES[library?.languageId] ?? "la lengua que aprendes"}.`;
   }

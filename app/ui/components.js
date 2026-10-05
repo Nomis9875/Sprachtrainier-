@@ -10,6 +10,18 @@ import { t } from "../model/i18n.js";
 import { MAX_SECONDS, recordingSupported, startRecording } from "./recorder.js";
 import { strongerSupport } from "../model/listening.js";
 
+// ---------------------------------------------------------------- Tutorial im Kontext (P25.5)
+
+/** Kurzer Hinweis an einem echten Moment (einmal je Lerner, siehe model/tips.js); "Verstanden" blendet ihn aus. */
+export function coachTip(id, text) {
+  const ok = h("button", { type: "button", class: "btn btn-link coach-tip-ok", "data-action": "tip-ok" }, t("tip.ok"));
+  const tip = h("aside", { class: "coach-tip", role: "note", "data-tip": id },
+    h("span", { class: "coach-tip-icon", "aria-hidden": "true" }, icon("sparkle", { size: 18 })),
+    h("p", {}, text), ok);
+  ok.addEventListener("click", () => tip.remove());
+  return tip;
+}
+
 // ---------------------------------------------------------------- Aufgabe
 
 export function taskCard(exercise, { headingLevel = 2 } = {}) {
@@ -20,8 +32,6 @@ export function taskCard(exercise, { headingLevel = 2 } = {}) {
       exercise.challenge ? h("span", { class: "badge" }, exercise.type_label) : null,
       h("span", { class: "muted small" }, t("c.about", minutesText(exercise.estimated_seconds)))),
     exercise.why ? h("p", { class: "task-why" }, exercise.why) : null,
-    exercise.focus ? h("p", { class: "task-focus" }, h("span", { class: "muted" }, t("c.focus")), exercise.focus) : null,
-    exercise.why_text ? h("p", { class: "task-why-text muted small", "data-why": "" }, h("strong", {}, exercise.why_label ?? "Warum? "), exercise.why_text) : null,
     h(heading, { id: "task-title", class: "task-prompt" }, exercise.prompt_de || t("c.task")),
     exercise.conversation ? conversationBlock(exercise.conversation) : null,
     // Lesetext (P12): erst der Text, dann die Frage (natürliche Lesereihenfolge)
@@ -31,7 +41,12 @@ export function taskCard(exercise, { headingLevel = 2 } = {}) {
     exercise.instruction_de ? h("p", { class: "task-hint" }, exercise.instruction_de) : null,
     exercise.communication_goal_de && exercise.challenge
       ? h("p", { class: "task-hint" }, h("span", { class: "muted" }, t("c.goal")), exercise.communication_goal_de) : null,
-    exercise.min_words ? h("p", { class: "muted small" }, t("c.min_words", exercise.min_words)) : null);
+    exercise.min_words ? h("p", { class: "muted small" }, t("c.min_words", exercise.min_words)) : null,
+    // P25.4: Schwerpunkt und Begründung ruhig unter der Aufgabe, aufklappbar (die Aufgabe steht im Mittelpunkt)
+    exercise.focus || exercise.why_text ? h("details", { class: "task-context" },
+      h("summary", {}, t("c.why_task")),
+      exercise.focus ? h("p", { class: "task-focus" }, h("span", { class: "muted" }, t("c.focus")), exercise.focus) : null,
+      exercise.why_text ? h("p", { class: "task-why-text muted small", "data-why": "" }, h("strong", {}, exercise.why_label ?? "Warum? "), exercise.why_text) : null) : null);
 }
 
 function sourceBlock(source) {

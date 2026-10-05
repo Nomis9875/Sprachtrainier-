@@ -26,7 +26,7 @@ export async function progressView(ctx) {
       h("section", { class: "card", "aria-labelledby": "levels-title", "data-card": "levels" },
         h("h2", { id: "levels-title" }, t("progress.levels")),
         h("dl", { class: "dimension-list" }, lp.dimensions.map((d) => h("div", { class: `dimension ${d.status}`, "data-dimension": d.id },
-          h("dt", {}, d.name_de), h("dd", {}, h("span", { class: "level-badge level-sm" }, d.text), h("span", { class: "muted small" }, ` ${d.detail}`))))),
+          h("dt", {}, d.name_de), h("dd", {}, h("span", { class: "level-badge level-sm" }, d.text), d.short ? h("span", { class: "muted small" }, ` ${d.short}`) : null)))),
         lp.history.length
           ? h("div", {}, h("h3", { class: "h3" }, t("progress.history")),
             h("ol", { class: "plain profile-history" }, lp.history.map((e) => h("li", {}, h("span", { class: "muted" }, `${dateOf(e.at)}: `), h("strong", {}, e.text)))))
@@ -43,13 +43,7 @@ export async function progressView(ctx) {
           `${t("progress.not_heard")}${listening.known_not_verified.slice(0, 4).join(" · ")}${listening.known_not_verified.length > 4 ? " …" : ""}`) : null,
         listening.avoidance ? h("p", { class: "muted small" }, listening.avoidance) : null,
         h("p", { class: "muted small" }, listening.note)),
-      h("section", { class: "card", "aria-labelledby": "areas-title" },
-        h("h2", { id: "areas-title" }, t("progress.competence")),
-        h("ul", { class: "meters" }, [...p.areas, ...p.production].map((a) => h("li", { "data-area": a.key },
-          h("div", { class: "meter-head" }, h("span", {}, a.label), h("span", { class: "muted small" }, `${Math.round(a.value * 100)} %`)),
-          meter(a.value, a.label),
-          h("p", { class: "muted small" }, a.detail)))),
-        p.production.length ? null : h("p", { class: "muted small" }, t("progress.production_empty"))),
+      levelCard(p),
       h("section", { class: "card", "aria-labelledby": "patterns-title" },
         h("h2", { id: "patterns-title" }, t("progress.patterns")),
         p.patterns.length
@@ -80,8 +74,34 @@ export async function progressView(ctx) {
           stat(t("progress.sessions"), p.activity.sessions_completed),
           stat(t("progress.streak"), t("progress.streak_value", p.activity.streak, p.activity.longest_streak)),
           stat(t("progress.due"), p.reviews.due),
-          stat(t("progress.mastered"), p.reviews.mastered)),
-        h("ul", { class: "levels" }, p.mastery.map((m) => h("li", {}, h("span", {}, m.label), h("strong", {}, String(m.count))))))));
+          stat(t("progress.mastered"), p.reviews.mastered)))));
+}
+
+/**
+ * P25.4: Stufe und Weg zur nächsten: je Bereich, was von der aktuellen Stufe schon sicher sitzt (nie Prozent über
+ * den ganzen Katalog); darunter freies und spontanes Anwenden. Ohne Gesamtschätzung: sicher/insgesamt je Bereich.
+ */
+function levelCard(p) {
+  const lv = p.level;
+  const rows = lv ? lv.areas : p.areas.filter((a) => a.total).map((a) => ({ ...a, value: a.total ? a.secure / a.total : 0,
+    text: t("lvl.secure", a.secure, a.total), detail: t("lvl.detail", a.secure, a.started) }));
+  const production = p.production.map((a) => ({ ...a, text: a.detail, detail: null }));
+  return h("section", { class: "card level-card", "aria-labelledby": "areas-title", "data-card": "level-progress" },
+    h("div", { class: "card-head" },
+      h("h2", { id: "areas-title" }, lv ? t("lvl.title", lv.label) : t("progress.competence"))),
+    lv ? h("p", { class: "level-next" }, lv.next
+      ? [h("strong", {}, t("lvl.next", lv.label, lv.next)), lv.next_total ? h("span", { class: "muted small" }, ` · ${t("lvl.next_areas", lv.next_reached, lv.next_total, lv.next)}`) : null]
+      : h("strong", {}, t("lvl.top"))) : null,
+    lv && rows.length ? h("p", { class: "muted small" }, t("lvl.intro", lv.level)) : null,
+    h("ul", { class: "meters" }, rows.map((a) => h("li", { "data-area": a.key },
+      h("div", { class: "meter-head" }, h("span", {}, lv ? `${a.label} ${lv.level}` : a.label), h("strong", { class: "small" }, a.text)),
+      meter(a.value, a.label),
+      h("p", { class: "muted small" }, a.detail)))),
+    production.length ? h("div", {}, h("h3", { class: "h3" }, t("lvl.use")),
+      h("ul", { class: "meters" }, production.map((a) => h("li", { "data-area": a.key },
+        h("div", { class: "meter-head" }, h("span", {}, a.label)),
+        meter(a.value, a.label),
+        h("p", { class: "muted small" }, a.text))))) : h("p", { class: "muted small" }, t("progress.production_empty")));
 }
 
 function stat(label, value) {

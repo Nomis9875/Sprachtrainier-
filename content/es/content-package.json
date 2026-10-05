@@ -3,7 +3,7 @@
  "format_version": 1,
  "pattern_syntax": 1,
  "target": "production",
- "content_version": "3583aba93261fe88",
+ "content_version": "7efe788485c1bb93",
  "language": {
   "id": "es",
   "germanism_explanation_de": "Deutsche Wörter im spanischen Text: {words}. Formuliere diese Stelle auf Spanisch.",
@@ -4718,6 +4718,594 @@
   }
  ],
  "lexical_items": [
+  {
+   "id": "a1_barato",
+   "kind": "word",
+   "text_es": "barato / caro",
+   "meaning_de": "billig / teuer",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.shopping",
+   "detector": {
+    "patterns": [
+     "\\bbarat[oa]s?\\b",
+     "\\bcar[oa]s\\b",
+     "\\bes car[oa]\\b",
+     "\\bmuy car[oa]\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Este móvil es muy barato.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "compras",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_cerca_de",
+   "kind": "expression",
+   "text_es": "cerca de / lejos de",
+   "meaning_de": "in der Nähe von / weit weg von",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.housing",
+   "detector": {
+    "patterns": [
+     "\\bcerca de(?:l)?\\b",
+     "\\blejos de(?:l)?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Vivo cerca de la playa.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "lugar",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_el_desayuno",
+   "kind": "word",
+   "text_es": "el desayuno",
+   "meaning_de": "das Frühstück",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bel desayuno\\b",
+     "\\bdesayunos\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "El desayuno está en la mesa.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "comida",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_el_dinero",
+   "kind": "word",
+   "text_es": "el dinero",
+   "meaning_de": "das Geld",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.shopping",
+   "detector": {
+    "patterns": [
+     "\\bdinero\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "No tengo dinero en efectivo.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "compras",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_el_hijo",
+   "kind": "word",
+   "text_es": "el hijo / la hija",
+   "meaning_de": "der Sohn / die Tochter; los hijos: die Kinder (eigene)",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.family",
+   "detector": {
+    "patterns": [
+     "\\bhij[oa]s?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Mi hija tiene cinco años.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "familia",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_el_medico",
+   "kind": "word",
+   "text_es": "el médico / la médica",
+   "meaning_de": "der Arzt / die Ärztin",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.society.health",
+   "detector": {
+    "patterns": [
+     "\\bm[eé]dic[oa]s?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Tengo cita con el médico.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "salud",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_el_trabajo",
+   "kind": "word",
+   "text_es": "el trabajo",
+   "meaning_de": "die Arbeit; der Arbeitsplatz",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.study_work",
+   "detector": {
+    "patterns": [
+     "\\b(?:el|al|del|mi|tu|su|un|nuevo) trabajo\\b",
+     "\\btrabajos\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Mi trabajo es interesante.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "trabajo",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_fin_de_semana",
+   "kind": "expression",
+   "text_es": "el fin de semana",
+   "meaning_de": "das Wochenende",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bfin(?:es)? de semana\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "El fin de semana voy a la playa.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "tiempo",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_hace_calor",
+   "kind": "expression",
+   "text_es": "hace calor / hace frío",
+   "meaning_de": "es ist warm / es ist kalt (Wetter)",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bhace (?:mucho |un poco de )?(?:calor|fr[ií]o)\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "En agosto hace mucho calor.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "tiempo atmosférico",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_la_calle",
+   "kind": "word",
+   "text_es": "la calle",
+   "meaning_de": "die Straße",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.housing",
+   "detector": {
+    "patterns": [
+     "\\bcalles?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Mi calle es muy tranquila.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "ciudad",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_la_cena",
+   "kind": "word",
+   "text_es": "la cena",
+   "meaning_de": "das Abendessen",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bla cena\\b",
+     "\\bcenas\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "La cena es a las nueve.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "comida",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_la_cocina",
+   "kind": "word",
+   "text_es": "la cocina",
+   "meaning_de": "die Küche",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.housing",
+   "detector": {
+    "patterns": [
+     "\\b(?:la|una|mi|tu|su|nuestra) cocina\\b",
+     "\\bcocinas\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "La cocina tiene una ventana grande.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "casa",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_la_estacion",
+   "kind": "word",
+   "text_es": "la estación",
+   "meaning_de": "der Bahnhof; die Jahreszeit",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.travel",
+   "detector": {
+    "patterns": [
+     "\\bestaci[oó]n(?:es)?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "La estación está cerca del centro.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "viajes",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_la_habitacion",
+   "kind": "word",
+   "text_es": "la habitación",
+   "meaning_de": "das Zimmer",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.housing",
+   "detector": {
+    "patterns": [
+     "\\bhabitaci[oó]n(?:es)?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Mi habitación es pequeña.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "casa",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_la_ropa",
+   "kind": "word",
+   "text_es": "la ropa",
+   "meaning_de": "die Kleidung",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.shopping",
+   "detector": {
+    "patterns": [
+     "\\bropa\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Compro ropa en las rebajas.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "compras",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_la_semana",
+   "kind": "word",
+   "text_es": "la semana",
+   "meaning_de": "die Woche",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\bsemanas?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Trabajo cinco días a la semana.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "tiempo",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_la_tienda",
+   "kind": "word",
+   "text_es": "la tienda",
+   "meaning_de": "der Laden, das Geschäft",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.shopping",
+   "detector": {
+    "patterns": [
+     "\\btiendas?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "La tienda abre a las diez.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "compras",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_los_abuelos",
+   "kind": "word",
+   "text_es": "el abuelo / la abuela",
+   "meaning_de": "der Großvater / die Großmutter; los abuelos: die Großeltern",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday.family",
+   "detector": {
+    "patterns": [
+     "\\babuel[oa]s?\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Mis abuelos viven en el campo.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "familia",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_temprano",
+   "kind": "word",
+   "text_es": "temprano",
+   "meaning_de": "früh",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\btemprano\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "Me levanto temprano.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "tiempo",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
+  {
+   "id": "a1_tiempo_libre",
+   "kind": "expression",
+   "text_es": "el tiempo libre",
+   "meaning_de": "die Freizeit",
+   "register": "neutral",
+   "level": "A1",
+   "topic_id": "vocabulary.everyday",
+   "detector": {
+    "patterns": [
+     "\\btiempo libre\\b"
+    ],
+    "unless": [],
+    "reliability": "high"
+   },
+   "example_es": "En mi tiempo libre leo novelas.",
+   "simpler": [],
+   "simpler_min_count": 1,
+   "note_de": "",
+   "frequency": "high",
+   "semantic_field": "ocio",
+   "word_family": [],
+   "regime": "",
+   "false_friend_de": "",
+   "knowledge": "productive",
+   "revision": 1,
+   "status": "draft",
+   "source": "manual"
+  },
   {
    "id": "a_largo_plazo",
    "kind": "collocation",
@@ -12938,6 +13526,6556 @@
    "difficulty_source": "derived",
    "sublevel": "B2.1",
    "category": "gap_fill"
+  },
+  {
+   "id": "beg-a1-articulo-dia",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.nouns"
+   ],
+   "prompt_de": "Wähle den passenden Artikel.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hoy es ___ día muy especial.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "articles_gender",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "irregular_gender"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "un",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "una",
+     "feedback_de": "día endet auf -a, ist aber maskulin: un día.",
+     "error_id": null
+    },
+    {
+     "text": "uno",
+     "feedback_de": "Vor einem Nomen: un (nicht uno).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "un",
+    "una",
+    "uno"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-articulo-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.nouns"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Describes una casa.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "articles_gender",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "La casa es grande.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "El casa es grande.",
+     "feedback_de": "casa ist feminin: la casa.",
+     "error_id": null
+    },
+    {
+     "text": "La casa es grando.",
+     "feedback_de": "grande hat für beide Geschlechter dieselbe Form.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "La casa es grande.",
+    "El casa es grande.",
+    "La casa es grando."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-estar-cansado",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hoy no quiero salir, ___ muy cansada.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_location_state",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "estoy",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "soy",
+     "feedback_de": "Ein Zustand im Moment: estar. Estoy cansada.",
+     "error_id": null
+    },
+    {
+     "text": "tengo",
+     "feedback_de": "Müde sein: estar cansado/cansada.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "estoy",
+    "soy",
+    "tengo"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-estar-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Perdona, ¿dónde está la estación?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_location_state",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Está en esta calle, al final.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Es muy bonita.",
+     "feedback_de": "Gefragt ist, wo der Bahnhof ist, nicht wie er ist.",
+     "error_id": null
+    },
+    {
+     "text": "Hay a la derecha.",
+     "feedback_de": "Für den Ort von etwas Bestimmtem: está (Está a la derecha).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Está en esta calle, al final.",
+    "Es muy bonita.",
+    "Hay a la derecha."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-estar-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Es geht dir gut, danke.",
+   "estimated_seconds": 30,
+   "prompt_es": "",
+   "source_text_es": "¡Hola! ¿Cómo estás?",
+   "instruction_de": "Befinden mit estar: Estoy …",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_location_state",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Estoy bien, gracias.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Bien, gracias.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Estoy muy bien, gracias.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Muy bien, gracias.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Soy bien, gracias.",
+     "feedback_de": "Befinden mit estar: Estoy bien.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-estar-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Dónde está el banco?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_location_state",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "El banco está en la plaza.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "El banco es en la plaza.",
+     "feedback_de": "Wo etwas ist: estar. El banco está en la plaza.",
+     "error_id": null
+    },
+    {
+     "text": "El banco hay en la plaza.",
+     "feedback_de": "Bei einem bestimmten Ort (el banco): estar, nicht hay.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "El banco está en la plaza.",
+    "El banco es en la plaza.",
+    "El banco hay en la plaza."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-gustar-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.gustar"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Te gusta el café?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "gustar_structure",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, me gusta mucho.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, me gustan mucho.",
+     "feedback_de": "Der Kaffee ist eins: me gusta.",
+     "error_id": null
+    },
+    {
+     "text": "Sí, te gusta mucho.",
+     "feedback_de": "Du antwortest über dich: me gusta (te = dir).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Sí, me gusta mucho.",
+    "Sí, me gustan mucho.",
+    "Sí, te gusta mucho."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-gustar-plural",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.gustar"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de animales.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "gustar_structure",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "gustar_agreement"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Me gustan los perros.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Me gusta los perros.",
+     "feedback_de": "Mehrere Dinge (los perros): gustan.",
+     "error_id": null
+    },
+    {
+     "text": "Yo gusto los perros.",
+     "feedback_de": "Ich mag … = me gusta / me gustan (es gefällt mir).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Me gustan los perros.",
+    "Me gusta los perros.",
+    "Yo gusto los perros."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-gustar-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.gustar"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du magst Bücher sehr gern.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Qué te gusta hacer?",
+   "instruction_de": "Mehrere Dinge: me gustan …",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "gustar_structure",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [
+    "gustar_agreement",
+    "yo_gusto"
+   ],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Me gustan mucho los libros.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Me gustan mucho los libros, me gusta leer.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Me gusta mucho leer.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Me gustan los libros.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Me gusta mucho los libros.",
+     "feedback_de": "Mehrere Dinge (los libros): gustan.",
+     "error_id": null
+    },
+    {
+     "text": "Yo gusto los libros.",
+     "feedback_de": "Ich mag … = me gustan …",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-hay-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar",
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Hay un supermercado por aquí?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "hay_existence",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, hay un supermercado muy cerca.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, está un supermercado muy cerca.",
+     "feedback_de": "Ob es etwas gibt: hay un supermercado.",
+     "error_id": null
+    },
+    {
+     "text": "Sí, es un supermercado muy cerca.",
+     "feedback_de": "Ob es etwas gibt: hay un supermercado.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Sí, hay un supermercado muy cerca.",
+    "Sí, está un supermercado muy cerca.",
+    "Sí, es un supermercado muy cerca."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-hay-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.ser_estar",
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: In deiner Wohnung gibt es zwei Zimmer.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Cómo es tu piso?",
+   "instruction_de": "Es gibt …: hay + Zahl/un/una.",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "hay_existence",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "En mi piso hay dos habitaciones.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Hay dos habitaciones.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Mi piso tiene dos habitaciones.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "En mi piso hay dos cuartos.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Hay dos cuartos.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "En mi piso están dos habitaciones.",
+     "feedback_de": "Es gibt …: hay. En mi piso hay dos habitaciones.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-hay-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar",
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de tu calle.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "hay_existence",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "En mi calle hay una farmacia.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "En mi calle está una farmacia.",
+     "feedback_de": "Dass es etwas gibt: hay + un/una. En mi calle hay una farmacia.",
+     "error_id": null
+    },
+    {
+     "text": "En mi calle hay la farmacia.",
+     "feedback_de": "Nach hay kein bestimmter Artikel: hay una farmacia.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "En mi calle hay una farmacia.",
+    "En mi calle está una farmacia.",
+    "En mi calle hay la farmacia."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-ir-a-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.periphrasis"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué vas a hacer el fin de semana?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ir_a_infinitive",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Voy a visitar a mis amigos.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Vamos visitar a mis amigos.",
+     "feedback_de": "ir a + Infinitiv: voy a visitar (nicht ohne a).",
+     "error_id": null
+    },
+    {
+     "text": "Voy a visito a mis amigos.",
+     "feedback_de": "Nach voy a steht der Infinitiv: visitar.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Voy a visitar a mis amigos.",
+    "Vamos visitar a mis amigos.",
+    "Voy a visito a mis amigos."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-ir-a-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.periphrasis",
+    "vocabulary.everyday.travel"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du wirst nach Madrid reisen.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Qué planes tienes para el verano?",
+   "instruction_de": "nahe Zukunft: voy a + Infinitiv",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ir_a_infinitive",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Voy a viajar a Madrid.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Este verano voy a viajar a Madrid.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Voy a ir a Madrid.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Voy a hacer un viaje a Madrid.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Voy viajar a Madrid.",
+     "feedback_de": "ir a + Infinitiv: voy a viajar.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-ir-a-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.periphrasis"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de tus planes para la cena.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ir_a_infinitive",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Esta noche voy a cocinar pasta.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Esta noche voy cocinar pasta.",
+     "feedback_de": "Nahe Zukunft: ir a + Infinitiv. Voy a cocinar.",
+     "error_id": null
+    },
+    {
+     "text": "Esta noche voy a cocino pasta.",
+     "feedback_de": "Nach voy a steht der Infinitiv: cocinar.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Esta noche voy a cocinar pasta.",
+    "Esta noche voy cocinar pasta.",
+    "Esta noche voy a cocino pasta."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-irregular-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.present"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Vienes a la fiesta el sábado?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_irregular",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, vengo con mi novia.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, veno con mi novia.",
+     "feedback_de": "venir ist unregelmäßig: yo vengo.",
+     "error_id": null
+    },
+    {
+     "text": "Sí, viene con mi novia.",
+     "feedback_de": "Über dich (yo): vengo.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Sí, vengo con mi novia.",
+    "Sí, veno con mi novia.",
+    "Sí, viene con mi novia."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-irregular-hacer",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.present"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de tu tiempo libre.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_irregular",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Los domingos hago deporte.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Los domingos haco deporte.",
+     "feedback_de": "hacer ist unregelmäßig: yo hago.",
+     "error_id": null
+    },
+    {
+     "text": "Los domingos hace deporte yo.",
+     "feedback_de": "Zu yo gehört hago (hace = er/sie macht).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Los domingos hago deporte.",
+    "Los domingos haco deporte.",
+    "Los domingos hace deporte yo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-irregular-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.present",
+    "vocabulary.everyday.family"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du hast eine Schwester.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Tienes hermanos?",
+   "instruction_de": "tener, Form für yo: tengo",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_irregular",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, tengo una hermana.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Tengo una hermana.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Sí, tengo una hermana, ¿y tú?",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, teno una hermana.",
+     "feedback_de": "tener ist unregelmäßig: tengo.",
+     "error_id": null
+    },
+    {
+     "text": "Sí, tiene una hermana.",
+     "feedback_de": "Über dich (yo): tengo.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-irregular-tener",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.present"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Yo ___ dos hermanos.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_irregular",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "tengo",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "teno",
+     "feedback_de": "tener ist unregelmäßig: yo tengo.",
+     "error_id": null
+    },
+    {
+     "text": "tiene",
+     "feedback_de": "tiene gehört zu él/ella. Zu yo: tengo.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "tengo",
+    "teno",
+    "tiene"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-objeto-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.pronouns.object",
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Compras tú el pan?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "direct_object_pronouns",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, lo compro yo.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, la compro yo.",
+     "feedback_de": "el pan ist maskulin: lo compro.",
+     "error_id": null
+    },
+    {
+     "text": "Sí, compro lo yo.",
+     "feedback_de": "Das Pronomen steht vor dem konjugierten Verb: lo compro.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Sí, lo compro yo.",
+    "Sí, la compro yo.",
+    "Sí, compro lo yo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-objeto-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.pronouns.object"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿La película? Ya ___ he visto.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "direct_object_pronouns",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "la",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "lo",
+     "feedback_de": "la película ist feminin: la he visto.",
+     "error_id": null
+    },
+    {
+     "text": "le",
+     "feedback_de": "Direktes Objekt (die Sache selbst): la.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "la",
+    "lo",
+    "le"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-pasado-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.preterite"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué tal el fin de semana?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterite_basic",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Muy bien, estuve en la playa.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Muy bien, estoy en la playa ayer.",
+     "feedback_de": "Über Vergangenes: estuve (nicht estoy).",
+     "error_id": null
+    },
+    {
+     "text": "Muy bien, estuvo en la playa yo.",
+     "feedback_de": "Zu yo gehört estuve.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Muy bien, estuve en la playa.",
+    "Muy bien, estoy en la playa ayer.",
+    "Muy bien, estuvo en la playa yo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-pasado-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.tenses.preterite"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Gestern warst du zu Hause.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Dónde estuviste ayer?",
+   "instruction_de": "estar in der Vergangenheit (yo): estuve",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterite_basic",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ayer estuve en casa.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Estuve en casa.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Ayer estuve en mi casa.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ayer estoy en casa.",
+     "feedback_de": "Über gestern: estuve.",
+     "error_id": null
+    },
+    {
+     "text": "Ayer estuvo en casa.",
+     "feedback_de": "Zu yo gehört estuve.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-pasado-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.preterite"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de ayer.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterite_basic",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ayer fui al médico.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ayer voy al médico.",
+     "feedback_de": "Ayer (gestern) verlangt die Vergangenheit: fui.",
+     "error_id": null
+    },
+    {
+     "text": "Ayer fue al médico yo.",
+     "feedback_de": "Zu yo gehört fui (fue = er/sie ging).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Ayer fui al médico.",
+    "Ayer voy al médico.",
+    "Ayer fue al médico yo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-plural-ciudad",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.nouns"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Conozco muchas ___ de España.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "noun_plural",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "ciudades",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "ciudads",
+     "feedback_de": "Endet ein Wort auf Konsonant, kommt -es dazu: ciudades.",
+     "error_id": null
+    },
+    {
+     "text": "ciudad",
+     "feedback_de": "Nach muchas steht der Plural: ciudades.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "ciudades",
+    "ciudads",
+    "ciudad"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-plural-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.nouns"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de tus animales.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "noun_plural",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Tengo dos gatos negros.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Tengo dos gatos negro.",
+     "feedback_de": "Auch das Adjektiv steht im Plural: negros.",
+     "error_id": null
+    },
+    {
+     "text": "Tengo dos gato negros.",
+     "feedback_de": "Nach dos steht das Nomen im Plural: gatos.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Tengo dos gatos negros.",
+    "Tengo dos gatos negro.",
+    "Tengo dos gato negros."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-posesivo-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.family"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Cómo se llama tu hermano?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "possessives",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mi hermano se llama Jonas.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Tu hermano se llama Jonas.",
+     "feedback_de": "Es ist dein eigener Bruder: mi hermano.",
+     "error_id": null
+    },
+    {
+     "text": "Su hermano me llamo Jonas.",
+     "feedback_de": "Über deinen Bruder: Mi hermano se llama …",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Mi hermano se llama Jonas.",
+    "Tu hermano se llama Jonas.",
+    "Su hermano me llamo Jonas."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-posesivo-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "vocabulary.everyday.family"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Deine Mutter heißt Petra.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Cómo se llama tu madre?",
+   "instruction_de": "mein/meine = mi",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "possessives",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mi madre se llama Petra.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Se llama Petra.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Mi mamá se llama Petra.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Tu madre se llama Petra.",
+     "feedback_de": "Es ist deine eigene Mutter: mi madre.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-posesivo-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.family"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de tu familia.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "possessives",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mis padres viven en Múnich.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Mi padres viven en Múnich.",
+     "feedback_de": "Vor einem Nomen im Plural: mis.",
+     "error_id": null
+    },
+    {
+     "text": "Mios padres viven en Múnich.",
+     "feedback_de": "Vor dem Nomen: mis padres.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Mis padres viven en Múnich.",
+    "Mi padres viven en Múnich.",
+    "Mios padres viven en Múnich."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-prep-con",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.prepositions.basics"
+   ],
+   "prompt_de": "Wähle die passende Präposition.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Los sábados como ___ mis abuelos.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "prepositions_basic",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "con",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "de",
+     "feedback_de": "Mit jemandem: con. Como con mis abuelos.",
+     "error_id": null
+    },
+    {
+     "text": "en",
+     "feedback_de": "Mit jemandem: con. Como con mis abuelos.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "con",
+    "de",
+    "en"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-prep-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.prepositions.basics",
+    "vocabulary.everyday.travel"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Cómo vas a la universidad?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "prepositions_basic",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Voy en autobús.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Voy con autobús.",
+     "feedback_de": "Verkehrsmittel: en autobús, en tren, en coche.",
+     "error_id": null
+    },
+    {
+     "text": "Voy de autobús.",
+     "feedback_de": "Verkehrsmittel: en autobús.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Voy en autobús.",
+    "Voy con autobús.",
+    "Voy de autobús."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-prep-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.prepositions.basics"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Cómo vas al trabajo?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "prepositions_basic",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Voy al trabajo en bici.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Voy en el trabajo en bici.",
+     "feedback_de": "Richtung (wohin?): a. a + el = al trabajo.",
+     "error_id": null
+    },
+    {
+     "text": "Voy a el trabajo con bici.",
+     "feedback_de": "a + el wird zu al; Verkehrsmittel mit en: en bici.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Voy al trabajo en bici.",
+    "Voy en el trabajo en bici.",
+    "Voy a el trabajo con bici."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-presente-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.present"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Dónde vives?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_regular",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Vivo en Colonia.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Vive en Colonia.",
+     "feedback_de": "Du sprichst über dich (yo): vivo.",
+     "error_id": null
+    },
+    {
+     "text": "Vivimos en Colonia, yo.",
+     "feedback_de": "vivimos heißt 'wir wohnen'. Über dich: vivo.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Vivo en Colonia.",
+    "Vive en Colonia.",
+    "Vivimos en Colonia, yo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-presente-hablar",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.present"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Yo ___ alemán e inglés.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_regular",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "hablo",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "habla",
+     "feedback_de": "Zu yo gehört die Endung -o: hablo.",
+     "error_id": null
+    },
+    {
+     "text": "hablas",
+     "feedback_de": "hablas ist die Form für tú. Zu yo: hablo.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "hablo",
+    "habla",
+    "hablas"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-presente-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.present",
+    "vocabulary.everyday.study_work"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du arbeitest in einem Büro.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Dónde trabajas?",
+   "instruction_de": "trabajar, Form für yo: trabajo",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_regular",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Trabajo en una oficina.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Yo trabajo en una oficina.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Trabajo en una oficina, ¿y tú?",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Trabaja en una oficina.",
+     "feedback_de": "Über dich (yo): trabajo.",
+     "error_id": null
+    },
+    {
+     "text": "Trabajar en una oficina.",
+     "feedback_de": "Hier braucht es die konjugierte Form: trabajo.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-presente-trabajar",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.present",
+    "vocabulary.everyday.study_work"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Mis padres ___ en un hospital.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "present_regular",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "trabajan",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "trabajamos",
+     "feedback_de": "trabajamos gehört zu nosotros. Mis padres = ellos: trabajan.",
+     "error_id": null
+    },
+    {
+     "text": "trabaja",
+     "feedback_de": "Mehrere Personen (mis padres): trabajan.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "trabajan",
+    "trabajamos",
+    "trabaja"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-ser-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿De dónde eres?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ser_identity",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Soy de Austria.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Tengo veinte años.",
+     "feedback_de": "Gefragt ist die Herkunft (¿De dónde …?), nicht das Alter.",
+     "error_id": null
+    },
+    {
+     "text": "Estoy bien, gracias.",
+     "feedback_de": "Das antwortet auf ¿Qué tal? (Wie geht's?), nicht auf die Herkunft.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Soy de Austria.",
+    "Tengo veinte años.",
+    "Estoy bien, gracias."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-ser-profesion",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Mi hermana ___ profesora.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ser_identity",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "es",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "está",
+     "feedback_de": "Beruf: ser. Mi hermana es profesora.",
+     "error_id": null
+    },
+    {
+     "text": "tiene",
+     "feedback_de": "Beruf: ser. Mi hermana es profesora.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "es",
+    "está",
+    "tiene"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a1-ser-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du bist Ingenieur bzw. Ingenieurin.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Y tú? ¿Qué haces?",
+   "instruction_de": "Beruf mit ser: Soy …",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ser_identity",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Soy ingeniero.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Soy ingeniera.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Yo soy ingeniero.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Yo soy ingeniera.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Estoy ingeniero.",
+     "feedback_de": "Beruf mit ser: Soy ingeniero.",
+     "error_id": null
+    },
+    {
+     "text": "Soy un ingeniero.",
+     "feedback_de": "Beim Beruf ohne Artikel: Soy ingeniero.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-ser-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Te presentas en un curso.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ser_identity",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Soy de Alemania.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Estoy de Alemania.",
+     "feedback_de": "Herkunft drückt man mit ser aus: Soy de Alemania.",
+     "error_id": null
+    },
+    {
+     "text": "Tengo de Alemania.",
+     "feedback_de": "Herkunft: ser de … (Soy de Alemania).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Soy de Alemania.",
+    "Estoy de Alemania.",
+    "Tengo de Alemania."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-tener-que-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.periphrasis"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Vamos al cine esta tarde?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "tener_que",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Lo siento, tengo que estudiar.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Lo siento, tengo estudiar.",
+     "feedback_de": "tener que + Infinitiv: tengo que estudiar.",
+     "error_id": null
+    },
+    {
+     "text": "Lo siento, tengo que estudio.",
+     "feedback_de": "Nach tener que steht der Infinitiv: estudiar.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Lo siento, tengo que estudiar.",
+    "Lo siento, tengo estudiar.",
+    "Lo siento, tengo que estudio."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a1-tener-que-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A1",
+   "stage": 2,
+   "topics": [
+    "grammar.periphrasis"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du kannst nicht, du musst arbeiten.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Quedamos mañana por la mañana?",
+   "instruction_de": "müssen: tener que + Infinitiv",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "tener_que",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "No puedo, tengo que trabajar.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Lo siento, no puedo. Tengo que trabajar.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "No puedo porque tengo que trabajar.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Lo siento, tengo que trabajar.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "No puedo, tengo trabajar.",
+     "feedback_de": "tener que + Infinitiv: tengo que trabajar.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a1-tener-que-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "grammar.periphrasis"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "No puedes ir a la fiesta.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "tener_que",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mañana tengo que trabajar.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Mañana tengo trabajar.",
+     "feedback_de": "Müssen: tener que + Infinitiv. Tengo que trabajar.",
+     "error_id": null
+    },
+    {
+     "text": "Mañana tengo de trabajar.",
+     "feedback_de": "Müssen: tener que (nicht de) + Infinitiv.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "Mañana tengo que trabajar.",
+    "Mañana tengo trabajar.",
+    "Mañana tengo de trabajar."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-comparativo-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.comparison"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué prefieres, el tren o el autobús?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "comparatives",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "El tren, es más rápido que el autobús.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "El tren, es más rápido como el autobús.",
+     "feedback_de": "más … que.",
+     "error_id": null
+    },
+    {
+     "text": "El tren, es más bueno que el autobús.",
+     "feedback_de": "Statt más bueno sagt man mejor.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "El tren, es más rápido que el autobús.",
+    "El tren, es más rápido como el autobús.",
+    "El tren, es más bueno que el autobús."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-comparativo-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.comparison"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Dein Bruder ist älter als du.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Quién es mayor, tú o tu hermano?",
+   "instruction_de": "älter: mayor que",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "comparatives",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Mi hermano es mayor que yo.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Mi hermano. Es mayor que yo.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Mi hermano es más mayor que yo.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Mi hermano es mayor como yo.",
+     "feedback_de": "Vergleich: mayor que.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-comparativo-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.comparison"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Comparas dos ciudades.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "comparatives",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Madrid es más grande que Toledo.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Madrid es más grande como Toledo.",
+     "feedback_de": "Vergleich mit más: más … que.",
+     "error_id": null
+    },
+    {
+     "text": "Madrid es más grande de Toledo.",
+     "feedback_de": "Vergleich mit más: más … que.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Madrid es más grande que Toledo.",
+    "Madrid es más grande como Toledo.",
+    "Madrid es más grande de Toledo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-contraste-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.past_narration"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 25,
+   "prompt_es": "",
+   "source_text_es": "¿Por qué no viniste a la fiesta?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "past_contrast_basic",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Porque estaba enferma.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Porque estoy enferma ayer.",
+     "feedback_de": "Zustand in der Vergangenheit als Grund: estaba.",
+     "error_id": null
+    },
+    {
+     "text": "Porque estuve enferma mientras.",
+     "feedback_de": "Ein Zustand als Hintergrund: estaba enferma.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Porque estaba enferma.",
+    "Porque estoy enferma ayer.",
+    "Porque estuve enferma mientras."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-contraste-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.past_narration"
+   ],
+   "prompt_de": "Wähle die passende Zeit.",
+   "estimated_seconds": 25,
+   "prompt_es": "",
+   "source_text_es": "Mientras ___ la cena, sonó el teléfono.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "past_contrast_basic",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "preparaba",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "preparé",
+     "feedback_de": "Laufende Handlung im Hintergrund (mientras): Imperfecto, preparaba.",
+     "error_id": null
+    },
+    {
+     "text": "preparo",
+     "feedback_de": "Es ist Vergangenheit (sonó): preparaba.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "preparaba",
+    "preparé",
+    "preparo"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-deseos-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.subjunctive.influence"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Mañana tengo el examen de conducir.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "subjunctive_wishes",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "¡Espero que tengas suerte!",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "¡Espero que tienes suerte!",
+     "feedback_de": "Nach espero que: Subjuntivo, tengas.",
+     "error_id": null
+    },
+    {
+     "text": "¡Espero que tener suerte!",
+     "feedback_de": "Nach espero que folgt eine konjugierte Form: tengas.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "¡Espero que tengas suerte!",
+    "¡Espero que tienes suerte!",
+    "¡Espero que tener suerte!"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-deseos-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.subjunctive.influence"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du hoffst, dass sie bald wieder gesund ist.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Estoy en casa, estoy enferma.",
+   "instruction_de": "espero que + Subjuntivo",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "subjunctive_wishes",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Espero que te mejores pronto.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "¡Que te mejores pronto!",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Espero que estés mejor pronto.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Vaya, espero que te mejores pronto.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Espero que estás mejor pronto.",
+     "feedback_de": "Nach espero que: Subjuntivo (estés).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-deseos-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.subjunctive.influence"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Espero que ___ un buen viaje.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "subjunctive_wishes",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "tengas",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "tienes",
+     "feedback_de": "Nach espero que folgt der Subjuntivo: tengas.",
+     "error_id": null
+    },
+    {
+     "text": "tener",
+     "feedback_de": "Nach espero que folgt eine konjugierte Form im Subjuntivo: tengas.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "tengas",
+    "tienes",
+    "tener"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-futuro-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.future"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Crees que lloverá mañana?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "future_simple",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "No, mañana hará sol.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "No, mañana hizo sol.",
+     "feedback_de": "Morgen: Futur, hará.",
+     "error_id": null
+    },
+    {
+     "text": "No, mañana hacía sol.",
+     "feedback_de": "Morgen: Futur, hará.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "No, mañana hará sol.",
+    "No, mañana hizo sol.",
+    "No, mañana hacía sol."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-futuro-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.tenses.future"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du wirst ihn morgen anrufen.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Has llamado a Pedro?",
+   "instruction_de": "Futur: llamaré",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "future_simple",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "No, lo llamaré mañana.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Todavía no, lo llamaré mañana.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Lo llamaré mañana.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "No, le llamaré mañana.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "No, lo llamé mañana.",
+     "feedback_de": "Morgen: llamaré (Futur).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-futuro-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.future"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "El año que viene ___ en Madrid.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "future_simple",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "viviré",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "viví",
+     "feedback_de": "El año que viene (nächstes Jahr): Futur, viviré.",
+     "error_id": null
+    },
+    {
+     "text": "vivía",
+     "feedback_de": "Zukunft: viviré.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "viviré",
+    "viví",
+    "vivía"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-gerundio-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.periphrasis"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué estás haciendo?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_gerundio",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Estoy leyendo un libro.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Estoy leer un libro.",
+     "feedback_de": "estar + Gerundium: estoy leyendo.",
+     "error_id": null
+    },
+    {
+     "text": "Soy leyendo un libro.",
+     "feedback_de": "Gerade tun: estar (nicht ser) + Gerundium.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Estoy leyendo un libro.",
+    "Estoy leer un libro.",
+    "Soy leyendo un libro."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-gerundio-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.periphrasis"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du kochst gerade.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Puedes venir un momento?",
+   "instruction_de": "gerade tun: estar + Gerundium",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_gerundio",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Ahora no, estoy cocinando.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Un momento, estoy cocinando.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "No puedo, estoy cocinando.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Estoy cocinando.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ahora no, estoy cocinar.",
+     "feedback_de": "estar + Gerundium: estoy cocinando.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-gerundio-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.periphrasis"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "No puedo hablar ahora, estoy ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "estar_gerundio",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "comiendo",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "comer",
+     "feedback_de": "Gerade tun: estar + Gerundium (comiendo).",
+     "error_id": null
+    },
+    {
+     "text": "como",
+     "feedback_de": "Nach estoy steht das Gerundium: comiendo.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "comiendo",
+    "comer",
+    "como"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-imperativo-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.imperative"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Estoy muy cansado y mañana trabajo temprano.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "imperative_affirmative",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Pues vete a la cama pronto.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Pues vas a la cama pronto ayer.",
+     "feedback_de": "Ein Rat als Aufforderung: Imperativ (vete).",
+     "error_id": null
+    },
+    {
+     "text": "Pues ir a la cama pronto.",
+     "feedback_de": "Aufforderung: Imperativ (vete).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Pues vete a la cama pronto.",
+    "Pues vas a la cama pronto ayer.",
+    "Pues ir a la cama pronto."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-imperativo-neg-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.imperative"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¡No ___ tan rápido, por favor!",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "imperative_negative",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "hables",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "habla",
+     "feedback_de": "Verneint: no + Subjuntivo-Form, no hables.",
+     "error_id": null
+    },
+    {
+     "text": "hablas",
+     "feedback_de": "Verneinte Aufforderung: no hables.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "hables",
+    "habla",
+    "hablas"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-imperativo-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.imperative"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Er soll das Fenster aufmachen.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "Hace mucho calor aquí, ¿no?",
+   "instruction_de": "Aufforderung an tú: abre",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "imperative_affirmative",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, abre la ventana.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Sí, abre la ventana, por favor.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Abre la ventana, por favor.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Pues abre la ventana.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, abres la ventana.",
+     "feedback_de": "Aufforderung an tú: abre (ohne -s).",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-imperativo-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.imperative"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Si tienes frío, ___ la ventana.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "imperative_affirmative",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "cierra",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "cierras",
+     "feedback_de": "Aufforderung an tú: cierra (ohne -s).",
+     "error_id": null
+    },
+    {
+     "text": "cerrar",
+     "feedback_de": "Aufforderung: Imperativ, cierra.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "cierra",
+    "cierras",
+    "cerrar"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-imperfecto-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.imperfect"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Dónde vivías de pequeña?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_imperfecto",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Vivía en un pueblo cerca de Bilbao.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Viví en un pueblo de pequeña ahora.",
+     "feedback_de": "Kindheit beschreiben: Imperfecto, vivía.",
+     "error_id": null
+    },
+    {
+     "text": "Vivo en un pueblo cerca de Bilbao de pequeña.",
+     "feedback_de": "Über die Kindheit: vivía.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Vivía en un pueblo cerca de Bilbao.",
+    "Viví en un pueblo de pequeña ahora.",
+    "Vivo en un pueblo cerca de Bilbao de pequeña."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-imperfecto-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.tenses.imperfect"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Als Kind hattest du einen Hund.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Tenías animales de pequeño?",
+   "instruction_de": "Kindheit: Imperfecto (tenía)",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_imperfecto",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, tenía un perro.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "De pequeño tenía un perro.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "De pequeña tenía un perro.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Sí, de niño tenía un perro.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Sí, de niña tenía un perro.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, tengo un perro de pequeño.",
+     "feedback_de": "Über die Kindheit: tenía.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-imperfecto-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.imperfect"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Cuando era niño, ___ al fútbol todos los días.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_imperfecto",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "jugaba",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "jugué",
+     "feedback_de": "Gewohnheit in der Vergangenheit (todos los días): Imperfecto, jugaba.",
+     "error_id": null
+    },
+    {
+     "text": "juego",
+     "feedback_de": "Es geht um die Kindheit: jugaba.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "jugaba",
+    "jugué",
+    "juego"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-indefinido-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.preterite"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué hizo tu hermano ayer por la tarde?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_indefinido",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Vio una película en casa.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ve una película en casa.",
+     "feedback_de": "Gestern: Vergangenheit, vio.",
+     "error_id": null
+    },
+    {
+     "text": "Ha visto una película ayer.",
+     "feedback_de": "Mit ayer (abgeschlossen): Indefinido, vio.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Vio una película en casa.",
+    "Ve una película en casa.",
+    "Ha visto una película ayer."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-indefinido-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.tenses.preterite"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du warst letzten Sommer in Valencia.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Conoces Valencia?",
+   "instruction_de": "abgeschlossene Zeit: Indefinido (estuve)",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_indefinido",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Sí, estuve en Valencia el verano pasado.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Sí, el verano pasado estuve en Valencia.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Estuve en Valencia el verano pasado.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Sí, estuve allí el verano pasado.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Sí, estoy en Valencia el verano pasado.",
+     "feedback_de": "Vergangen und abgeschlossen: estuve.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-indefinido-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.preterite"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas del año pasado.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_indefinido",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "El año pasado mi hermana viajó a Perú.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "El año pasado mi hermana ha viajado a Perú.",
+     "feedback_de": "Abgeschlossener Zeitraum (el año pasado): Indefinido, viajó.",
+     "error_id": null
+    },
+    {
+     "text": "El año pasado mi hermana viaja a Perú.",
+     "feedback_de": "Vergangenheit: viajó.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "El año pasado mi hermana viajó a Perú.",
+    "El año pasado mi hermana ha viajado a Perú.",
+    "El año pasado mi hermana viaja a Perú."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-indirecto-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.pronouns.object"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué les regalas a tus padres?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "indirect_object_pronouns",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Les regalo un viaje.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Los regalo un viaje.",
+     "feedback_de": "Wem? (den Eltern): les.",
+     "error_id": null
+    },
+    {
+     "text": "Le regalo un viaje a ellos dos.",
+     "feedback_de": "Mehrere Personen: les.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Les regalo un viaje.",
+    "Los regalo un viaje.",
+    "Le regalo un viaje a ellos dos."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-indirecto-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.pronouns.object"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Es el cumpleaños de mi madre y ___ compro flores.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "indirect_object_pronouns",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "le",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "la",
+     "feedback_de": "Wem? (meiner Mutter): indirektes Objekt, le.",
+     "error_id": null
+    },
+    {
+     "text": "lo",
+     "feedback_de": "Wem? (meiner Mutter): le.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "le",
+    "la",
+    "lo"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-para-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.prepositions.por_para"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du lernst Spanisch, um in Mexiko zu arbeiten.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Por qué aprendes español?",
+   "instruction_de": "um … zu: para + Infinitiv",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "para_purpose",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Aprendo español para trabajar en México.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Para trabajar en México.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Lo aprendo para trabajar en México.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Estudio español para trabajar en México.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Aprendo español por trabajar en México.",
+     "feedback_de": "Zweck: para + Infinitiv.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-para-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.prepositions.por_para"
+   ],
+   "prompt_de": "Wähle die passende Präposition.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Estudio español ___ hablar con mis amigos de Chile.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "para_purpose",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "para",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "por",
+     "feedback_de": "Zweck (um … zu): para + Infinitiv.",
+     "error_id": null
+    },
+    {
+     "text": "de",
+     "feedback_de": "Zweck: para hablar.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "para",
+    "por",
+    "de"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-perfecto-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.perfect"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Has estado alguna vez en México?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_perfecto",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "No, nunca he estado allí.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "No, nunca estoy allí.",
+     "feedback_de": "Erfahrung bis jetzt: he estado.",
+     "error_id": null
+    },
+    {
+     "text": "No, nunca he estar allí.",
+     "feedback_de": "Nach he steht das Partizip: estado.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "No, nunca he estado allí.",
+    "No, nunca estoy allí.",
+    "No, nunca he estar allí."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-perfecto-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.tenses.perfect"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Heute hast du viel gearbeitet.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Qué tal el día?",
+   "instruction_de": "heute: Pretérito perfecto (he + Partizip)",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_perfecto",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Hoy he trabajado mucho.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "He trabajado mucho hoy.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Bien, pero hoy he trabajado mucho.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Hoy he trabajado muchísimo.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Hoy trabajé mucho ayer.",
+     "feedback_de": "Mit hoy: he trabajado.",
+     "error_id": null
+    },
+    {
+     "text": "Hoy ha trabajado mucho.",
+     "feedback_de": "Über dich (yo): he trabajado.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-perfecto-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.tenses.perfect"
+   ],
+   "prompt_de": "Welcher Satz ist richtig?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Hablas de hoy.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "preterito_perfecto",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Hoy he comido en casa.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Hoy he comido en casa ayer.",
+     "feedback_de": "hoy und ayer widersprechen sich; mit hoy: he comido.",
+     "error_id": null
+    },
+    {
+     "text": "Hoy ha comido en casa yo.",
+     "feedback_de": "Zu yo gehört he: he comido.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Hoy he comido en casa.",
+    "Hoy he comido en casa ayer.",
+    "Hoy ha comido en casa yo."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-reflexivo-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.reflexive"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿A qué hora te acuestas normalmente?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "reflexive_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Me acuesto a las once.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Acuesto a las once.",
+     "feedback_de": "acostarse ist reflexiv: me acuesto.",
+     "error_id": null
+    },
+    {
+     "text": "Te acuestas a las once.",
+     "feedback_de": "Über dich: me acuesto.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Me acuesto a las once.",
+    "Acuesto a las once.",
+    "Te acuestas a las once."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-reflexivo-responder",
+   "type": "translation",
+   "mode": "training",
+   "evaluation_mode": "semi_open",
+   "level": "A2",
+   "stage": 2,
+   "topics": [
+    "grammar.reflexive"
+   ],
+   "prompt_de": "Antworte kurz auf Spanisch: Du duschst morgens.",
+   "estimated_seconds": 40,
+   "prompt_es": "",
+   "source_text_es": "¿Te duchas por la mañana o por la noche?",
+   "instruction_de": "ducharse: me ducho",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "reflexive_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Me ducho por la mañana.",
+     "is_model_answer": true,
+     "note_de": ""
+    },
+    {
+     "text": "Por la mañana. Me ducho antes del desayuno.",
+     "is_model_answer": false,
+     "note_de": ""
+    },
+    {
+     "text": "Normalmente me ducho por la mañana.",
+     "is_model_answer": false,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Ducho por la mañana.",
+     "feedback_de": "ducharse ist reflexiv: me ducho.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.35,
+   "options": [],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.2",
+   "category": "translation"
+  },
+  {
+   "id": "beg-a2-reflexivo-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.reflexive"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Todos los días ___ a las siete.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "reflexive_verbs",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "me levanto",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "levanto",
+     "feedback_de": "levantarse ist reflexiv: me levanto.",
+     "error_id": null
+    },
+    {
+     "text": "se levanto",
+     "feedback_de": "Zu yo gehört me: me levanto.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "me levanto",
+    "levanto",
+    "se levanto"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-relativo-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.pronouns.relative"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Cuál es tu restaurante favorito?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "relative_que",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "El restaurante que está en la plaza.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "El restaurante quien está en la plaza.",
+     "feedback_de": "quien nur für Personen (und nach Präposition); hier: que.",
+     "error_id": null
+    },
+    {
+     "text": "El restaurante está que en la plaza.",
+     "feedback_de": "que steht direkt nach dem Nomen: el restaurante que está …",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "El restaurante que está en la plaza.",
+    "El restaurante quien está en la plaza.",
+    "El restaurante está que en la plaza."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-relativo-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.pronouns.relative"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "El chico ___ vive al lado es mi primo.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "relative_que",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "que",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "quien que",
+     "feedback_de": "Einfacher Relativsatz: que.",
+     "error_id": null
+    },
+    {
+     "text": "donde",
+     "feedback_de": "donde steht für einen Ort; hier geht es um eine Person: que.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "que",
+    "quien que",
+    "donde"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-a2-ser-estar-dialogo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Welche Antwort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "¿Qué tal tu hermana?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ser_estar_adjectives",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "Está muy cansada, trabaja mucho.",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "Es muy cansada hoy, trabaja mucho.",
+     "feedback_de": "Ein Zustand im Moment: estar. Está muy cansada.",
+     "error_id": null
+    },
+    {
+     "text": "Hay muy cansada, trabaja mucho.",
+     "feedback_de": "Zustand: estar. Está muy cansada.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "Está muy cansada, trabaja mucho.",
+    "Es muy cansada hoy, trabaja mucho.",
+    "Hay muy cansada, trabaja mucho."
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "recognition"
+  },
+  {
+   "id": "beg-a2-ser-estar-satz",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A2",
+   "stage": 1,
+   "topics": [
+    "grammar.ser_estar"
+   ],
+   "prompt_de": "Wähle die passende Form.",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "La sopa ___ fría, ¿la caliento?",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [
+    {
+     "rule_id": "ser_estar_adjectives",
+     "is_target": true
+    }
+   ],
+   "target_items": [],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "está",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "es",
+     "feedback_de": "Zustand im Moment (die Suppe ist kalt geworden): está.",
+     "error_id": null
+    },
+    {
+     "text": "hay",
+     "feedback_de": "Ein Zustand: estar. La sopa está fría.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 2.05,
+   "options": [
+    "está",
+    "es",
+    "hay"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A2.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_barato",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Solo cuesta dos euros. ¡Es muy ___!",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_barato"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "barato",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "caro",
+     "feedback_de": "caro = teuer. Zwei Euro sind wenig: barato.",
+     "error_id": null
+    },
+    {
+     "text": "grande",
+     "feedback_de": "grande = groß.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "barato",
+    "caro",
+    "grande"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_cerca_de",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "El supermercado está muy ___ de mi casa: a dos minutos a pie.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_cerca_de"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "cerca",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "lejos",
+     "feedback_de": "lejos = weit weg. Zwei Minuten zu Fuß sind nah: cerca.",
+     "error_id": null
+    },
+    {
+     "text": "caro",
+     "feedback_de": "caro = teuer.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "cerca",
+    "lejos",
+    "caro"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_el_desayuno",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Por la mañana tomo café y tostadas con el ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_el_desayuno"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "desayuno",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "abrigo",
+     "feedback_de": "el abrigo = der Mantel.",
+     "error_id": null
+    },
+    {
+     "text": "vecino",
+     "feedback_de": "el vecino = der Nachbar.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "desayuno",
+    "abrigo",
+    "vecino"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_el_dinero",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Pago con el ___ que tengo en la cartera.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_el_dinero"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "dinero",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "desayuno",
+     "feedback_de": "el desayuno = das Frühstück.",
+     "error_id": null
+    },
+    {
+     "text": "médico",
+     "feedback_de": "el médico = der Arzt.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "dinero",
+    "desayuno",
+    "médico"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_el_hijo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.family"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Ana y Luis tienen dos ___: un niño y una niña.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_el_hijo"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "hijos",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "padres",
+     "feedback_de": "los padres = die Eltern.",
+     "error_id": null
+    },
+    {
+     "text": "abuelos",
+     "feedback_de": "los abuelos = die Großeltern.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "hijos",
+    "padres",
+    "abuelos"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_el_medico",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.society.health"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Me duele la cabeza, voy al ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_el_medico"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "médico",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "mercado",
+     "feedback_de": "el mercado = der Markt.",
+     "error_id": null
+    },
+    {
+     "text": "cine",
+     "feedback_de": "el cine = das Kino.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "médico",
+    "mercado",
+    "cine"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_el_trabajo",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.study_work"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Voy al ___ en metro todos los días.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_el_trabajo"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "trabajo",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "desayuno",
+     "feedback_de": "el desayuno = das Frühstück.",
+     "error_id": null
+    },
+    {
+     "text": "vecino",
+     "feedback_de": "el vecino = der Nachbar.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "trabajo",
+    "desayuno",
+    "vecino"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_fin_de_semana",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "El sábado y el domingo son el ___ de semana.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_fin_de_semana"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "fin",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "día",
+     "feedback_de": "Wochenende = el fin de semana.",
+     "error_id": null
+    },
+    {
+     "text": "mes",
+     "feedback_de": "el mes = der Monat.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "fin",
+    "día",
+    "mes"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_hace_calor",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "En invierno ___ mucho frío.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_hace_calor"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "hace",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "es",
+     "feedback_de": "Wetter: hace frío / hace calor.",
+     "error_id": null
+    },
+    {
+     "text": "está",
+     "feedback_de": "Wetter: hace frío / hace calor.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "hace",
+    "es",
+    "está"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_la_calle",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Vivo en una ___ muy tranquila del centro.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_la_calle"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "calle",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "cena",
+     "feedback_de": "la cena = das Abendessen.",
+     "error_id": null
+    },
+    {
+     "text": "semana",
+     "feedback_de": "la semana = die Woche.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "calle",
+    "cena",
+    "semana"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_la_cena",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Esta noche preparo la ___ para mis amigos.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_la_cena"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "cena",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "cama",
+     "feedback_de": "la cama = das Bett.",
+     "error_id": null
+    },
+    {
+     "text": "calle",
+     "feedback_de": "la calle = die Straße.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "cena",
+    "cama",
+    "calle"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_la_cocina",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Preparo la comida en la ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_la_cocina"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "cocina",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "calle",
+     "feedback_de": "la calle = die Straße.",
+     "error_id": null
+    },
+    {
+     "text": "semana",
+     "feedback_de": "la semana = die Woche.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "cocina",
+    "calle",
+    "semana"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_la_estacion",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.travel"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "El tren sale de la ___ a las ocho.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_la_estacion"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "estación",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "escuela",
+     "feedback_de": "la escuela = die Schule. Züge fahren vom Bahnhof ab: la estación.",
+     "error_id": null
+    },
+    {
+     "text": "cocina",
+     "feedback_de": "la cocina = die Küche.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "estación",
+    "escuela",
+    "cocina"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_la_habitacion",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.housing"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Por la noche duermo en mi ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_la_habitacion"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "habitación",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "estación",
+     "feedback_de": "la estación = der Bahnhof.",
+     "error_id": null
+    },
+    {
+     "text": "tienda",
+     "feedback_de": "la tienda = der Laden.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "habitación",
+    "estación",
+    "tienda"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_la_ropa",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Las camisetas y los pantalones son ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_la_ropa"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "ropa",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "comida",
+     "feedback_de": "la comida = das Essen.",
+     "error_id": null
+    },
+    {
+     "text": "dinero",
+     "feedback_de": "el dinero = das Geld.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "ropa",
+    "comida",
+    "dinero"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_la_semana",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Trabajo de lunes a viernes, cinco días a la ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_la_semana"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "semana",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "casa",
+     "feedback_de": "la casa = das Haus.",
+     "error_id": null
+    },
+    {
+     "text": "cena",
+     "feedback_de": "la cena = das Abendessen.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "semana",
+    "casa",
+    "cena"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_la_tienda",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.shopping"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Compro el pan en la ___ de la esquina.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_la_tienda"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "tienda",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "cama",
+     "feedback_de": "la cama = das Bett.",
+     "error_id": null
+    },
+    {
+     "text": "estación",
+     "feedback_de": "la estación = der Bahnhof.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "tienda",
+    "cama",
+    "estación"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_los_abuelos",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday.family"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Los padres de mi madre son mis ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_los_abuelos"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "abuelos",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "hermanos",
+     "feedback_de": "los hermanos = die Geschwister.",
+     "error_id": null
+    },
+    {
+     "text": "hijos",
+     "feedback_de": "los hijos = die (eigenen) Kinder.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "abuelos",
+    "hermanos",
+    "hijos"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_temprano",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "Me levanto a las seis, muy ___.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_temprano"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "temprano",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "caro",
+     "feedback_de": "caro = teuer.",
+     "error_id": null
+    },
+    {
+     "text": "lejos",
+     "feedback_de": "lejos = weit weg.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "temprano",
+    "caro",
+    "lejos"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
+  },
+  {
+   "id": "beg-voc-a1_tiempo_libre",
+   "type": "multiple_choice",
+   "mode": "training",
+   "evaluation_mode": "closed",
+   "level": "A1",
+   "stage": 1,
+   "topics": [
+    "vocabulary.everyday"
+   ],
+   "prompt_de": "Welches Wort passt?",
+   "estimated_seconds": 20,
+   "prompt_es": "",
+   "source_text_es": "En mi tiempo ___ leo y hago deporte.",
+   "instruction_de": "",
+   "communication_goal_de": "",
+   "learning_goal_de": "",
+   "explanation_de": "",
+   "register": "neutral",
+   "min_words": 0,
+   "structures": [],
+   "target_items": [
+    "a1_tiempo_libre"
+   ],
+   "common_errors": [],
+   "good_phrases": [],
+   "accepted_answers": [
+    {
+     "text": "libre",
+     "is_model_answer": true,
+     "note_de": ""
+    }
+   ],
+   "wrong_answers": [
+    {
+     "text": "caro",
+     "feedback_de": "caro = teuer.",
+     "error_id": null
+    },
+    {
+     "text": "lleno",
+     "feedback_de": "lleno = voll.",
+     "error_id": null
+    }
+   ],
+   "conversation": null,
+   "difficulty": 1.05,
+   "options": [
+    "libre",
+    "caro",
+    "lleno"
+   ],
+   "text_id": "",
+   "listening": null,
+   "revision": 1,
+   "status": "draft",
+   "source": "manual",
+   "difficulty_source": "derived",
+   "sublevel": "A1.1",
+   "category": "multiple_choice"
   },
   {
    "id": "c1-cabe-senalar",
@@ -509083,6 +516221,166 @@
    "label": "Nuancen der Zeiten (Erzählperspektive, Höflichkeit)"
   },
   {
+   "id": "lexical_item:a1_barato",
+   "type": "lexical_item",
+   "ref_id": "a1_barato",
+   "topic_id": "vocabulary.everyday.shopping",
+   "level": "A1",
+   "label": "barato / caro"
+  },
+  {
+   "id": "lexical_item:a1_cerca_de",
+   "type": "lexical_item",
+   "ref_id": "a1_cerca_de",
+   "topic_id": "vocabulary.everyday.housing",
+   "level": "A1",
+   "label": "cerca de / lejos de"
+  },
+  {
+   "id": "lexical_item:a1_el_desayuno",
+   "type": "lexical_item",
+   "ref_id": "a1_el_desayuno",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "el desayuno"
+  },
+  {
+   "id": "lexical_item:a1_el_dinero",
+   "type": "lexical_item",
+   "ref_id": "a1_el_dinero",
+   "topic_id": "vocabulary.everyday.shopping",
+   "level": "A1",
+   "label": "el dinero"
+  },
+  {
+   "id": "lexical_item:a1_el_hijo",
+   "type": "lexical_item",
+   "ref_id": "a1_el_hijo",
+   "topic_id": "vocabulary.everyday.family",
+   "level": "A1",
+   "label": "el hijo / la hija"
+  },
+  {
+   "id": "lexical_item:a1_el_medico",
+   "type": "lexical_item",
+   "ref_id": "a1_el_medico",
+   "topic_id": "vocabulary.society.health",
+   "level": "A1",
+   "label": "el médico / la médica"
+  },
+  {
+   "id": "lexical_item:a1_el_trabajo",
+   "type": "lexical_item",
+   "ref_id": "a1_el_trabajo",
+   "topic_id": "vocabulary.everyday.study_work",
+   "level": "A1",
+   "label": "el trabajo"
+  },
+  {
+   "id": "lexical_item:a1_fin_de_semana",
+   "type": "lexical_item",
+   "ref_id": "a1_fin_de_semana",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "el fin de semana"
+  },
+  {
+   "id": "lexical_item:a1_hace_calor",
+   "type": "lexical_item",
+   "ref_id": "a1_hace_calor",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "hace calor / hace frío"
+  },
+  {
+   "id": "lexical_item:a1_la_calle",
+   "type": "lexical_item",
+   "ref_id": "a1_la_calle",
+   "topic_id": "vocabulary.everyday.housing",
+   "level": "A1",
+   "label": "la calle"
+  },
+  {
+   "id": "lexical_item:a1_la_cena",
+   "type": "lexical_item",
+   "ref_id": "a1_la_cena",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "la cena"
+  },
+  {
+   "id": "lexical_item:a1_la_cocina",
+   "type": "lexical_item",
+   "ref_id": "a1_la_cocina",
+   "topic_id": "vocabulary.everyday.housing",
+   "level": "A1",
+   "label": "la cocina"
+  },
+  {
+   "id": "lexical_item:a1_la_estacion",
+   "type": "lexical_item",
+   "ref_id": "a1_la_estacion",
+   "topic_id": "vocabulary.everyday.travel",
+   "level": "A1",
+   "label": "la estación"
+  },
+  {
+   "id": "lexical_item:a1_la_habitacion",
+   "type": "lexical_item",
+   "ref_id": "a1_la_habitacion",
+   "topic_id": "vocabulary.everyday.housing",
+   "level": "A1",
+   "label": "la habitación"
+  },
+  {
+   "id": "lexical_item:a1_la_ropa",
+   "type": "lexical_item",
+   "ref_id": "a1_la_ropa",
+   "topic_id": "vocabulary.everyday.shopping",
+   "level": "A1",
+   "label": "la ropa"
+  },
+  {
+   "id": "lexical_item:a1_la_semana",
+   "type": "lexical_item",
+   "ref_id": "a1_la_semana",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "la semana"
+  },
+  {
+   "id": "lexical_item:a1_la_tienda",
+   "type": "lexical_item",
+   "ref_id": "a1_la_tienda",
+   "topic_id": "vocabulary.everyday.shopping",
+   "level": "A1",
+   "label": "la tienda"
+  },
+  {
+   "id": "lexical_item:a1_los_abuelos",
+   "type": "lexical_item",
+   "ref_id": "a1_los_abuelos",
+   "topic_id": "vocabulary.everyday.family",
+   "level": "A1",
+   "label": "el abuelo / la abuela"
+  },
+  {
+   "id": "lexical_item:a1_temprano",
+   "type": "lexical_item",
+   "ref_id": "a1_temprano",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "temprano"
+  },
+  {
+   "id": "lexical_item:a1_tiempo_libre",
+   "type": "lexical_item",
+   "ref_id": "a1_tiempo_libre",
+   "topic_id": "vocabulary.everyday",
+   "level": "A1",
+   "label": "el tiempo libre"
+  },
+  {
    "id": "lexical_item:a_largo_plazo",
    "type": "lexical_item",
    "ref_id": "a_largo_plazo",
@@ -510385,6 +517683,8 @@
    ],
    "common_error:gustar_agreement": [
     "a1-gustar-videojuegos",
+    "beg-a1-gustar-plural",
+    "beg-a1-gustar-responder",
     "ec-gustar-plural",
     "guided-gustar-tiempo-libre",
     "prod-a1-presentarse"
@@ -510444,6 +517744,7 @@
    ],
    "common_error:irregular_gender": [
     "a1-articulo-mano",
+    "beg-a1-articulo-dia",
     "ec-la-dia",
     "guided-genero-articulos"
    ],
@@ -510552,6 +517853,7 @@
    ],
    "common_error:yo_gusto": [
     "a1-gustar-yo",
+    "beg-a1-gustar-responder",
     "ec-yo-gusto",
     "guided-gustar-tiempo-libre",
     "prod-a1-presentarse"
@@ -510559,6 +517861,8 @@
    "grammar_structure:articles_gender": [
     "a1-articulo-mano",
     "a1-articulo-problema",
+    "beg-a1-articulo-dia",
+    "beg-a1-articulo-satz",
     "ec-la-dia",
     "guided-genero-articulos"
    ],
@@ -510727,6 +518031,9 @@
    "grammar_structure:comparatives": [
     "a2-comparativo-mas",
     "a2-comparativo-mejor",
+    "beg-a2-comparativo-dialogo",
+    "beg-a2-comparativo-responder",
+    "beg-a2-comparativo-satz",
     "guided-comparativos-ciudades",
     "prod-b1-comparar-trabajos",
     "prod-b2-comparar-estudiar",
@@ -510878,7 +518185,9 @@
     "prod-c2-jovenes-vivienda"
    ],
    "grammar_structure:direct_object_pronouns": [
-    "a1-objeto-libro"
+    "a1-objeto-libro",
+    "beg-a1-objeto-dialogo",
+    "beg-a1-objeto-satz"
    ],
    "grammar_structure:duration_desde_hace": [
     "text/slr-arf_01208_00886929470/dictado",
@@ -510898,6 +518207,9 @@
    ],
    "grammar_structure:estar_gerundio": [
     "a2-estar-gerundio",
+    "beg-a2-gerundio-dialogo",
+    "beg-a2-gerundio-responder",
+    "beg-a2-gerundio-satz",
     "prod-b1-mensaje-retraso",
     "text/gen-blasco-canas-barro-blascoibanez-13849/dictado-1",
     "text/gen-clarin-regenta-1-vol125clarin-14979/forma-1",
@@ -511094,6 +518406,10 @@
    "grammar_structure:estar_location_state": [
     "a1-estar-cansada",
     "a1-estar-llaves",
+    "beg-a1-estar-cansado",
+    "beg-a1-estar-dialogo",
+    "beg-a1-estar-responder",
+    "beg-a1-estar-satz",
     "ec-ser-location",
     "ec-ser-state",
     "guided-estar-hay-piso",
@@ -511209,6 +518525,9 @@
    ],
    "grammar_structure:future_simple": [
     "a2-futuro-viviremos",
+    "beg-a2-futuro-dialogo",
+    "beg-a2-futuro-responder",
+    "beg-a2-futuro-satz",
     "prod-a2-planes-verano",
     "prod-c1-incertidumbre-trabajo",
     "text/ctx-edad-promesa/futuro"
@@ -511216,6 +518535,9 @@
    "grammar_structure:gustar_structure": [
     "a1-gustar-videojuegos",
     "a1-gustar-yo",
+    "beg-a1-gustar-dialogo",
+    "beg-a1-gustar-plural",
+    "beg-a1-gustar-responder",
     "ec-gustar-plural",
     "ec-yo-gusto",
     "guided-gustar-tiempo-libre",
@@ -511381,6 +518703,9 @@
    ],
    "grammar_structure:hay_existence": [
     "a1-hay-farmacia",
+    "beg-a1-hay-dialogo",
+    "beg-a1-hay-responder",
+    "beg-a1-hay-satz",
     "ec-hay-el",
     "guided-estar-hay-piso",
     "prod-a1-mi-barrio",
@@ -511538,10 +518863,14 @@
     "c2-gato-por-liebre"
    ],
    "grammar_structure:imperative_affirmative": [
-    "a2-imperativo-ven"
+    "a2-imperativo-ven",
+    "beg-a2-imperativo-dialogo",
+    "beg-a2-imperativo-responder",
+    "beg-a2-imperativo-satz"
    ],
    "grammar_structure:imperative_negative": [
-    "a2-imperativo-no-hables"
+    "a2-imperativo-no-hables",
+    "beg-a2-imperativo-neg-satz"
    ],
    "grammar_structure:implicit_meaning": [
     "c2-no-ha-estado-mal"
@@ -511551,7 +518880,9 @@
     "b2-ind-subj-creo"
    ],
    "grammar_structure:indirect_object_pronouns": [
-    "a2-le-regalas"
+    "a2-le-regalas",
+    "beg-a2-indirecto-dialogo",
+    "beg-a2-indirecto-satz"
    ],
    "grammar_structure:informal_address": [
     "chal-excursion-sin-tiempo",
@@ -511560,6 +518891,9 @@
    ],
    "grammar_structure:ir_a_infinitive": [
     "a1-ir-a-cenar",
+    "beg-a1-ir-a-dialogo",
+    "beg-a1-ir-a-responder",
+    "beg-a1-ir-a-satz",
     "prod-a2-planes-verano",
     "text/ctx-edad-promesa/futuro",
     "text/gen-clarin-regenta-2-tavol205alas-09343/dictado-1",
@@ -511860,7 +519194,9 @@
     "prod-c1-academico-redes"
    ],
    "grammar_structure:noun_plural": [
-    "a1-plural-luces"
+    "a1-plural-luces",
+    "beg-a1-plural-ciudad",
+    "beg-a1-plural-satz"
    ],
    "grammar_structure:opinion_markers_c1": [
     "chal-reaccion-viajar",
@@ -511871,6 +519207,8 @@
    ],
    "grammar_structure:para_purpose": [
     "a2-para-comprar",
+    "beg-a2-para-responder",
+    "beg-a2-para-satz",
     "guided-para-finalidad",
     "text/escucha-cuchillo-asado/para-que",
     "text/gen-blasco-canas-barro-blascoibanez-04635/forma-1",
@@ -512136,7 +519474,9 @@
     "text/slr-arf_09334_00686512124/dictado"
    ],
    "grammar_structure:past_contrast_basic": [
-    "a2-contraste-vivia"
+    "a2-contraste-vivia",
+    "beg-a2-contraste-dialogo",
+    "beg-a2-contraste-satz"
    ],
    "grammar_structure:past_narration": [
     "b2-narracion-hacia-sol",
@@ -512335,7 +519675,10 @@
     "train-registro-cancelar"
    ],
    "grammar_structure:possessives": [
-    "a1-posesivo-mis"
+    "a1-posesivo-mis",
+    "beg-a1-posesivo-dialogo",
+    "beg-a1-posesivo-responder",
+    "beg-a1-posesivo-satz"
    ],
    "grammar_structure:preposition_infinitive": [
     "b2-antes-de-salir",
@@ -512346,11 +519689,18 @@
    "grammar_structure:prepositions_basic": [
     "a1-prep-a-madrid",
     "a1-prep-del-trabajo",
+    "beg-a1-prep-con",
+    "beg-a1-prep-dialogo",
+    "beg-a1-prep-satz",
     "ec-a-el"
    ],
    "grammar_structure:present_irregular": [
     "a1-presente-hacer",
     "a1-presente-tener",
+    "beg-a1-irregular-dialogo",
+    "beg-a1-irregular-hacer",
+    "beg-a1-irregular-responder",
+    "beg-a1-irregular-tener",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-08528/dictado-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-11914/forma-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-15835/dictado-2",
@@ -512887,10 +520237,17 @@
     "text/slr-vem_09697_01485518161/dictado"
    ],
    "grammar_structure:present_regular": [
-    "a1-presente-vivir"
+    "a1-presente-vivir",
+    "beg-a1-presente-dialogo",
+    "beg-a1-presente-hablar",
+    "beg-a1-presente-responder",
+    "beg-a1-presente-trabajar"
    ],
    "grammar_structure:preterite_basic": [
     "a1-pasado-estuve",
+    "beg-a1-pasado-dialogo",
+    "beg-a1-pasado-responder",
+    "beg-a1-pasado-satz",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-08949/forma-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-14630/dictado-2",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-30277/forma-1",
@@ -512950,6 +520307,9 @@
    ],
    "grammar_structure:preterito_imperfecto": [
     "a2-imperfecto-jugaba",
+    "beg-a2-imperfecto-dialogo",
+    "beg-a2-imperfecto-responder",
+    "beg-a2-imperfecto-satz",
     "text/ctx-edad-menique/pedro",
     "text/gen-blasco-canas-barro-blascoibanez-01273/forma-1",
     "text/gen-blasco-canas-barro-blascoibanez-02360/forma-2",
@@ -513192,6 +520552,9 @@
    "grammar_structure:preterito_indefinido": [
     "a2-indefinido-fui",
     "a2-indefinido-hizo",
+    "beg-a2-indefinido-dialogo",
+    "beg-a2-indefinido-responder",
+    "beg-a2-indefinido-satz",
     "ec-tenio",
     "guided-indefinido-viaje",
     "text/ctx-edad-mozart/primero",
@@ -513467,6 +520830,9 @@
    "grammar_structure:preterito_perfecto": [
     "a2-perfecto-he-estado",
     "a2-perfecto-hecho",
+    "beg-a2-perfecto-dialogo",
+    "beg-a2-perfecto-responder",
+    "beg-a2-perfecto-satz",
     "ec-he-escribido",
     "guided-perfecto-hoy",
     "prod-a2-fin-de-semana",
@@ -513697,6 +521063,9 @@
    ],
    "grammar_structure:reflexive_verbs": [
     "a2-reflexivo-me-levanto",
+    "beg-a2-reflexivo-dialogo",
+    "beg-a2-reflexivo-responder",
+    "beg-a2-reflexivo-satz",
     "text/gen-blasco-canas-barro-blascoibanez-13849/forma-2",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-11040/forma-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-23411/forma-1",
@@ -513801,6 +521170,8 @@
    ],
    "grammar_structure:relative_que": [
     "a2-relativo-que",
+    "beg-a2-relativo-dialogo",
+    "beg-a2-relativo-satz",
     "text/ctx-edad-libertad/honrado"
    ],
    "grammar_structure:reported_speech_backshift": [
@@ -513844,6 +521215,8 @@
    ],
    "grammar_structure:ser_estar_adjectives": [
     "a2-ser-estar-listo",
+    "beg-a2-ser-estar-dialogo",
+    "beg-a2-ser-estar-satz",
     "text/gen-blasco-canas-barro-blascoibanez-04424/forma-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-13975/dictado-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-16470/forma-1",
@@ -513890,6 +521263,10 @@
    ],
    "grammar_structure:ser_identity": [
     "a1-ser-profesion",
+    "beg-a1-ser-dialogo",
+    "beg-a1-ser-profesion",
+    "beg-a1-ser-responder",
+    "beg-a1-ser-satz",
     "prod-a1-presentarse"
    ],
    "grammar_structure:si_imperfect_subjunctive": [
@@ -514059,6 +521436,9 @@
    ],
    "grammar_structure:subjunctive_wishes": [
     "a2-subj-deseo",
+    "beg-a2-deseos-dialogo",
+    "beg-a2-deseos-responder",
+    "beg-a2-deseos-satz",
     "prod-a2-consejo-resfriado",
     "text/gen-unamuno-niebla-bla00unamuno-04740/forma-1",
     "text/slr-arf_00295_00291970405/dictado",
@@ -514094,6 +521474,9 @@
    ],
    "grammar_structure:tener_que": [
     "a1-tener-que",
+    "beg-a1-tener-que-dialogo",
+    "beg-a1-tener-que-responder",
+    "beg-a1-tener-que-satz",
     "prod-a2-consejo-resfriado",
     "text/gen-blasco-canas-barro-blascoibanez-02360/forma-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-11297/dictado-2",
@@ -514194,6 +521577,66 @@
    ],
    "grammar_structure:tense_nuance": [
     "c1-queria-pedirte"
+   ],
+   "lexical_item:a1_barato": [
+    "beg-voc-a1_barato"
+   ],
+   "lexical_item:a1_cerca_de": [
+    "beg-voc-a1_cerca_de"
+   ],
+   "lexical_item:a1_el_desayuno": [
+    "beg-voc-a1_el_desayuno"
+   ],
+   "lexical_item:a1_el_dinero": [
+    "beg-voc-a1_el_dinero"
+   ],
+   "lexical_item:a1_el_hijo": [
+    "beg-voc-a1_el_hijo"
+   ],
+   "lexical_item:a1_el_medico": [
+    "beg-voc-a1_el_medico"
+   ],
+   "lexical_item:a1_el_trabajo": [
+    "beg-voc-a1_el_trabajo"
+   ],
+   "lexical_item:a1_fin_de_semana": [
+    "beg-voc-a1_fin_de_semana"
+   ],
+   "lexical_item:a1_hace_calor": [
+    "beg-voc-a1_hace_calor"
+   ],
+   "lexical_item:a1_la_calle": [
+    "beg-voc-a1_la_calle"
+   ],
+   "lexical_item:a1_la_cena": [
+    "beg-voc-a1_la_cena"
+   ],
+   "lexical_item:a1_la_cocina": [
+    "beg-voc-a1_la_cocina"
+   ],
+   "lexical_item:a1_la_estacion": [
+    "beg-voc-a1_la_estacion"
+   ],
+   "lexical_item:a1_la_habitacion": [
+    "beg-voc-a1_la_habitacion"
+   ],
+   "lexical_item:a1_la_ropa": [
+    "beg-voc-a1_la_ropa"
+   ],
+   "lexical_item:a1_la_semana": [
+    "beg-voc-a1_la_semana"
+   ],
+   "lexical_item:a1_la_tienda": [
+    "beg-voc-a1_la_tienda"
+   ],
+   "lexical_item:a1_los_abuelos": [
+    "beg-voc-a1_los_abuelos"
+   ],
+   "lexical_item:a1_temprano": [
+    "beg-voc-a1_temprano"
+   ],
+   "lexical_item:a1_tiempo_libre": [
+    "beg-voc-a1_tiempo_libre"
    ],
    "lexical_item:a_largo_plazo": [
     "chal-turismo-canarias",
@@ -517529,6 +524972,9 @@
    "grammar.comparison": [
     "a2-comparativo-mas",
     "a2-comparativo-mejor",
+    "beg-a2-comparativo-dialogo",
+    "beg-a2-comparativo-responder",
+    "beg-a2-comparativo-satz",
     "guided-comparativos-ciudades",
     "prod-b1-comparar-trabajos",
     "text/oir-avion-barco/rapido"
@@ -517543,6 +524989,9 @@
    "grammar.gustar": [
     "a1-gustar-videojuegos",
     "a1-gustar-yo",
+    "beg-a1-gustar-dialogo",
+    "beg-a1-gustar-plural",
+    "beg-a1-gustar-responder",
     "ec-gustar-plural",
     "ec-yo-gusto",
     "guided-gustar-tiempo-libre",
@@ -517722,7 +525171,11 @@
    ],
    "grammar.imperative": [
     "a2-imperativo-no-hables",
-    "a2-imperativo-ven"
+    "a2-imperativo-ven",
+    "beg-a2-imperativo-dialogo",
+    "beg-a2-imperativo-neg-satz",
+    "beg-a2-imperativo-responder",
+    "beg-a2-imperativo-satz"
    ],
    "grammar.nominal_style": [
     "c1-nominal-aprobacion"
@@ -517731,6 +525184,10 @@
     "a1-articulo-mano",
     "a1-articulo-problema",
     "a1-plural-luces",
+    "beg-a1-articulo-dia",
+    "beg-a1-articulo-satz",
+    "beg-a1-plural-ciudad",
+    "beg-a1-plural-satz",
     "ec-la-dia",
     "guided-genero-articulos"
    ],
@@ -517751,6 +525208,15 @@
     "a1-tener-que",
     "b1-acabo-de",
     "b1-vuelvo-a",
+    "beg-a1-ir-a-dialogo",
+    "beg-a1-ir-a-responder",
+    "beg-a1-ir-a-satz",
+    "beg-a1-tener-que-dialogo",
+    "beg-a1-tener-que-responder",
+    "beg-a1-tener-que-satz",
+    "beg-a2-gerundio-dialogo",
+    "beg-a2-gerundio-responder",
+    "beg-a2-gerundio-satz",
     "prod-a2-consejo-resfriado",
     "text/gen-blasco-canas-barro-blascoibanez-02360/forma-1",
     "text/gen-blasco-canas-barro-blascoibanez-02360/forma-2",
@@ -518209,6 +525675,9 @@
    "grammar.prepositions.basics": [
     "a1-prep-a-madrid",
     "a1-prep-del-trabajo",
+    "beg-a1-prep-con",
+    "beg-a1-prep-dialogo",
+    "beg-a1-prep-satz",
     "ec-a-el",
     "ec-importante-de"
    ],
@@ -518355,6 +525824,8 @@
    ],
    "grammar.prepositions.por_para": [
     "a2-para-comprar",
+    "beg-a2-para-responder",
+    "beg-a2-para-satz",
     "ec-gracias-para",
     "gap-por-para-objetivo",
     "text/gen-blasco-canas-barro-blascoibanez-04635/forma-1",
@@ -518974,6 +526445,14 @@
     "a1-presente-hacer",
     "a1-presente-tener",
     "a1-presente-vivir",
+    "beg-a1-irregular-dialogo",
+    "beg-a1-irregular-hacer",
+    "beg-a1-irregular-responder",
+    "beg-a1-irregular-tener",
+    "beg-a1-presente-dialogo",
+    "beg-a1-presente-hablar",
+    "beg-a1-presente-responder",
+    "beg-a1-presente-trabajar",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-08528/dictado-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-08528/dictado-2",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-08528/forma-1",
@@ -520092,6 +527571,10 @@
     "a1-objeto-libro",
     "a2-le-regalas",
     "b1-se-lo-di",
+    "beg-a1-objeto-dialogo",
+    "beg-a1-objeto-satz",
+    "beg-a2-indirecto-dialogo",
+    "beg-a2-indirecto-satz",
     "text/gen-blasco-canas-barro-blascoibanez-21140/dictado-2",
     "text/gen-blasco-canas-barro-blascoibanez-21140/forma-1",
     "text/gen-blasco-canas-barro-blascoibanez-21140/forma-2",
@@ -520200,6 +527683,8 @@
     "a2-relativo-que",
     "b1-lo-que",
     "b2-en-la-que",
+    "beg-a2-relativo-dialogo",
+    "beg-a2-relativo-satz",
     "text/gen-blasco-canas-barro-blascoibanez-01273/dictado-1",
     "text/gen-blasco-canas-barro-blascoibanez-01273/forma-1",
     "text/gen-blasco-canas-barro-blascoibanez-01273/palabra",
@@ -520494,6 +527979,9 @@
    ],
    "grammar.reflexive": [
     "a2-reflexivo-me-levanto",
+    "beg-a2-reflexivo-dialogo",
+    "beg-a2-reflexivo-responder",
+    "beg-a2-reflexivo-satz",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-11040/dictado-1",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-11040/expresion",
     "text/gen-blasco-cuatro-jinetes-blascoibanez-11040/forma-1",
@@ -520631,6 +528119,19 @@
     "a1-ser-profesion",
     "a2-estar-gerundio",
     "a2-ser-estar-listo",
+    "beg-a1-estar-cansado",
+    "beg-a1-estar-dialogo",
+    "beg-a1-estar-responder",
+    "beg-a1-estar-satz",
+    "beg-a1-hay-dialogo",
+    "beg-a1-hay-responder",
+    "beg-a1-hay-satz",
+    "beg-a1-ser-dialogo",
+    "beg-a1-ser-profesion",
+    "beg-a1-ser-responder",
+    "beg-a1-ser-satz",
+    "beg-a2-ser-estar-dialogo",
+    "beg-a2-ser-estar-satz",
     "ec-hay-el",
     "ec-ser-de-acuerdo",
     "ec-ser-location",
@@ -521120,6 +528621,9 @@
    ],
    "grammar.subjunctive.influence": [
     "a2-subj-deseo",
+    "beg-a2-deseos-dialogo",
+    "beg-a2-deseos-responder",
+    "beg-a2-deseos-satz",
     "chal-convencer-salir-antes",
     "chal-reaccion-viajar",
     "gap-subj-importante",
@@ -521371,6 +528875,9 @@
    "grammar.tenses.future": [
     "a1-ir-a-cenar",
     "a2-futuro-viviremos",
+    "beg-a2-futuro-dialogo",
+    "beg-a2-futuro-responder",
+    "beg-a2-futuro-satz",
     "c1-seran-las-diez",
     "prod-a2-planes-verano",
     "text/ctx-edad-promesa/futuro",
@@ -521603,6 +529110,9 @@
    ],
    "grammar.tenses.imperfect": [
     "a2-imperfecto-jugaba",
+    "beg-a2-imperfecto-dialogo",
+    "beg-a2-imperfecto-responder",
+    "beg-a2-imperfecto-satz",
     "text/ctx-edad-menique/centavo",
     "text/ctx-edad-menique/nombre",
     "text/ctx-edad-menique/pedro",
@@ -522220,6 +529730,8 @@
     "a2-contraste-vivia",
     "b2-narracion-hacia-sol",
     "b2-narracion-sono",
+    "beg-a2-contraste-dialogo",
+    "beg-a2-contraste-satz",
     "c1-queria-pedirte",
     "chal-historia-contratiempo",
     "text/ctx-edad-sanmartin/dias",
@@ -522230,6 +529742,9 @@
    "grammar.tenses.perfect": [
     "a2-perfecto-he-estado",
     "a2-perfecto-hecho",
+    "beg-a2-perfecto-dialogo",
+    "beg-a2-perfecto-responder",
+    "beg-a2-perfecto-satz",
     "ec-he-escribido",
     "guided-perfecto-hoy",
     "prod-a2-fin-de-semana",
@@ -522545,6 +530060,12 @@
     "a1-pasado-estuve",
     "a2-indefinido-fui",
     "a2-indefinido-hizo",
+    "beg-a1-pasado-dialogo",
+    "beg-a1-pasado-responder",
+    "beg-a1-pasado-satz",
+    "beg-a2-indefinido-dialogo",
+    "beg-a2-indefinido-responder",
+    "beg-a2-indefinido-satz",
     "ec-tenio",
     "text/ctx-edad-mozart/nino",
     "text/ctx-edad-mozart/noches",
@@ -522829,6 +530350,13 @@
     "voc-mc-tomar-una-decision"
    ],
    "vocabulary.everyday": [
+    "beg-voc-a1_el_desayuno",
+    "beg-voc-a1_fin_de_semana",
+    "beg-voc-a1_hace_calor",
+    "beg-voc-a1_la_cena",
+    "beg-voc-a1_la_semana",
+    "beg-voc-a1_temprano",
+    "beg-voc-a1_tiempo_libre",
     "prod-a2-fin-de-semana",
     "prod-b1-fin-de-semana-tiempo",
     "prod-b1-mensaje-retraso",
@@ -522959,6 +530487,12 @@
     "voc-mc-pedir-perdon"
    ],
    "vocabulary.everyday.family": [
+    "beg-a1-irregular-responder",
+    "beg-a1-posesivo-dialogo",
+    "beg-a1-posesivo-responder",
+    "beg-a1-posesivo-satz",
+    "beg-voc-a1_el_hijo",
+    "beg-voc-a1_los_abuelos",
     "prod-a1-presentarse",
     "text/correo-cumple/cumplir",
     "text/correo-cumple/motivo",
@@ -522966,6 +530500,12 @@
     "voc-mc-cumplir-anos"
    ],
    "vocabulary.everyday.housing": [
+    "beg-a1-hay-responder",
+    "beg-a1-hay-satz",
+    "beg-voc-a1_cerca_de",
+    "beg-voc-a1_la_calle",
+    "beg-voc-a1_la_cocina",
+    "beg-voc-a1_la_habitacion",
     "guided-estar-hay-piso",
     "prod-a1-mi-barrio",
     "prod-b1-recado-casero",
@@ -522976,6 +530516,12 @@
     "voc-topic-mc-la-calefaccion"
    ],
    "vocabulary.everyday.shopping": [
+    "beg-a1-hay-dialogo",
+    "beg-a1-objeto-dialogo",
+    "beg-voc-a1_barato",
+    "beg-voc-a1_el_dinero",
+    "beg-voc-a1_la_ropa",
+    "beg-voc-a1_la_tienda",
     "text/oir-jabon-relajarme/para-que",
     "text/oir-supermercado-semana/frecuencia",
     "voc-gap-hacer-la-compra",
@@ -522984,6 +530530,9 @@
     "voc-topic-mc-la-cuenta"
    ],
    "vocabulary.everyday.study_work": [
+    "beg-a1-presente-responder",
+    "beg-a1-presente-trabajar",
+    "beg-voc-a1_el_trabajo",
     "chal-regimen-trabajo",
     "prod-b1-comparar-trabajos",
     "voc-mc-tener-exito",
@@ -522991,6 +530540,9 @@
     "voc-topic-mc-el-sueldo"
    ],
    "vocabulary.everyday.travel": [
+    "beg-a1-ir-a-responder",
+    "beg-a1-prep-dialogo",
+    "beg-voc-a1_la_estacion",
     "prod-a2-planes-verano",
     "text/audio-estacion/retraso",
     "text/noticia-bicis/compensar",
@@ -523100,6 +530652,7 @@
     "voc-topic-mc-la-sostenibilidad"
    ],
    "vocabulary.society.health": [
+    "beg-voc-a1_el_medico",
     "prod-a2-consejo-resfriado",
     "text/divulgacion-sueno/de-ahi-que",
     "text/divulgacion-sueno/fin-de-semana",

@@ -34,7 +34,11 @@ export const MODULE_RULES = Object.freeze({
 });
 export const SD_STOP = 0.5;
 const LEVEL_OFFSET = 0.3;
+// Start ohne Selbsteinschätzung bei B1/B2. P25.5 geprüft: ein Start bei A2/B1 verbraucht für C1/C2 so viele Aufgaben
+// beim Aufstieg, dass die Einstufung dort ungenauer wird (C1 → B2); Anfänger schützt stattdessen FLOOR_STOP.
 const START_THETA = 3.5;
+/** P25.5: so viele verfehlte (oder mit "weiß nicht" übersprungene) Aufgaben auf der untersten Stufe beenden ein Modul. */
+export const FLOOR_STOP = 2;
 const FINAL = new Set(["completed", "abandoned"]);
 
 /** Ergebnis einer Aufgabe für die Schätzung innerhalb der Einstufung. */
@@ -112,7 +116,8 @@ export function replayAssessment(events, assessmentId, library) {
     let moduleStatus;
     if (!p.modules.includes(dimension) || !items.length) moduleStatus = "unavailable";
     else if (skippedModules.has(dimension)) moduleStatus = "skipped";
-    else if (own.length >= rules.max || own.length >= items.length || (own.length >= rules.min && estimate.sd < SD_STOP)) moduleStatus = "done";
+    else if (own.length >= rules.max || own.length >= items.length || (own.length >= rules.min && estimate.sd < SD_STOP)
+      || floorReached(own, items, library)) moduleStatus = "done";
     else moduleStatus = own.length ? "in_progress" : "pending";
     const entry = {
       dimension, status: moduleStatus, answered: own.length, correct: own.filter((a) => a.score >= 0.5).length,
@@ -147,6 +152,17 @@ export function replayAssessment(events, assessmentId, library) {
     confidence: theta === null ? "none" : measured.length < 2 ? "low" : confidenceLabel(band),
     anomalies,
   };
+}
+
+/**
+ * P25.5: Einstieg erreicht: Auf der untersten Stufe dieses Moduls ist FLOOR_STOP-mal nichts gelungen. Weitere Aufgaben
+ * würden nur Misserfolg ohne neue Information erzeugen; die Schätzung bleibt, was die Antworten zeigen.
+ */
+function floorReached(own, items, library) {
+  if (own.length < FLOOR_STOP) return false;
+  const lowest = Math.min(...items.map((i) => levelValue(i.level)));
+  const failed = own.filter((a) => a.score < 0.5 && levelValue(library.assessmentItem(a.item_id)?.level) === lowest);
+  return failed.length >= FLOOR_STOP;
 }
 
 /** Nächste Aufgabe (adaptiv) oder null, wenn das Modul bzw. die Einstufung fertig ist. */

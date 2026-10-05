@@ -7,10 +7,13 @@ import { languageName, t } from "../../model/i18n.js";
 import { h, icon, meter } from "../dom.js";
 import { learningOutlook } from "../../model/language.js";
 import { startSessionAction } from "./learn.js";
+import { tomorrowBlock } from "./session.js";
 
 export async function homeView(ctx) {
   if (ctx.app.library.empty) return emptyLanguageHome(ctx);
   const [d, conversation, languageProfile] = await Promise.all([ctx.app.dashboard(), ctx.app.openConversation(), ctx.app.languageProfile()]);
+  // P25.4: Tagesziel erreicht → was morgen wartet (konkret, aus Wiederholungsplanung und nächstem Plan)
+  const tomorrow = d.today.reached && !d.open_session ? await ctx.app.tomorrow() : null;
   ctx.setTitle(t("nav.home"));
   return h("div", { class: "page home" },
     h("header", { class: "page-head" },
@@ -20,6 +23,7 @@ export async function homeView(ctx) {
     h("div", { class: "grid" },
       d.open_session ? openSessionCard(d.open_session) : nextSessionCard(ctx, d, languageProfile),
       conversation ? openConversationCard(conversation) : null,
+      tomorrow ? h("section", { class: "card tomorrow-card", "data-card": "tomorrow" }, tomorrowBlock(tomorrow)) : null,
       d.has_history ? rhythmCard(d) : null,
       d.needs.length ? needsCard(d) : null,
       languageCard(ctx, languageProfile),
@@ -56,10 +60,10 @@ function languageCard(ctx, p) {
       h("a", { class: "btn btn-link", href: "#/sprachprofil" }, t("home.profile"))),
     h("div", { class: "level-display" },
       h("span", { class: "level-badge" }, p.overall.text),
-      h("span", { class: "muted small" }, p.overall.detail)),
+      p.overall.status === "estimated" && p.overall.confidence === "low" ? h("span", { class: "muted small" }, t("claim.provisional")) : null),
     p.overall.status !== "estimated" ? h("p", { class: "muted small" }, t("home.not_enough")) : null,
-    // P22: Was folgt aus dem Profil? (schwacher Bereich; ungemessen ist ausdrücklich keine Schwäche)
-    assessed ? learningOutlook(p, ctx.app.explanationLanguage).lines.map((line) => h("p", { class: "small outlook" }, line)) : null,
+    // P22/P25.4: Was folgt aus dem Profil? Nur die erste, wichtigste Aussage (Details im Sprachprofil)
+    assessed ? learningOutlook(p, ctx.app.explanationLanguage).lines.slice(0, 1).map((line) => h("p", { class: "small outlook" }, line)) : null,
     action);
 }
 

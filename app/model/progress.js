@@ -16,6 +16,7 @@
 import { t, uiLanguage } from "./i18n.js";
 import { localizedSkillLabel } from "./explain.js";
 import { MASTERY_ORDER, masteryLabel, memoryStatusLabel, memoryTypeLabel, skillTitle, strengthLabel } from "./labels.js";
+import { baseLevel } from "./milestones.js";
 
 const AREAS = Object.freeze([
   { key: "grammar", label: "Grammatik", type: "grammar_structure" },
@@ -34,7 +35,7 @@ export const MIN_DAYS_FOR_STRENGTHS = 2;
 /**
  * @param {{snapshot: object, coaching: object, memories: object[], reviews: object, activity: object, library: object}} input
  */
-export function buildProgress({ snapshot, coaching, memories, reviews, activity, library, language = "de" }) {
+export function buildProgress({ snapshot, coaching, memories, reviews, activity, library, language = "de", profile = null }) {
   const skills = snapshot.skills;
   const observed = skills.filter((s) => s.mastery !== "unknown");
   const hasHistory = observed.length > 0;
@@ -106,6 +107,7 @@ export function buildProgress({ snapshot, coaching, memories, reviews, activity,
   return {
     has_history: hasHistory,
     headline: learnerHeadline(coaching.overall_assessment),
+    level: buildLevelProgress({ snapshot, library, profile }),
     areas,
     production,
     mastery: MASTERY_ORDER.slice(1).map((level) => ({
@@ -133,6 +135,31 @@ export function buildProgress({ snapshot, coaching, memories, reviews, activity,
       longest_streak: activity.streak.longest,
     },
   };
+}
+
+const CEFR = ["A1", "A2", "B1", "B2", "C1", "C2"];
+
+/**
+ * P25.4: Fortschritt innerhalb der aktuellen Stufe statt über den ganzen Katalog: je Bereich die Skills der Stufe
+ * (Stufe aus dem Inhalt) und wie viele davon sicher sitzen (stable/mastered); dazu das nächste Ziel und wie viele
+ * geschätzte Bereiche es schon erreichen. null ohne Gesamtschätzung.
+ */
+export function buildLevelProgress({ snapshot, library, profile }) {
+  const overall = profile?.overall;
+  const level = overall?.status === "estimated" ? baseLevel(overall.level_label) : null;
+  if (!level) return null;
+  const next = CEFR[CEFR.indexOf(level) + 1] ?? null;
+  const areas = AREAS.map((area) => {
+    const own = snapshot.skills.filter((s) => s.type === area.type && library.skill(s.skill_id)?.level === level);
+    if (!own.length) return null;
+    const secure = own.filter((s) => s.mastery === "stable" || s.mastery === "mastered").length;
+    const working = own.filter((s) => s.mastery === "introduced" || s.mastery === "practicing").length;
+    return { key: area.key, label: t(`area.${area.key}`), total: own.length, secure, working, value: round(secure / own.length),
+      text: t("lvl.secure", secure, own.length), detail: t("lvl.detail", secure, working) };
+  }).filter(Boolean);
+  const estimated = Object.values(profile.dimensions ?? {}).filter((d) => d.status === "estimated");
+  const atNext = next ? estimated.filter((d) => CEFR.indexOf(baseLevel(d.level_label)) >= CEFR.indexOf(next)).length : 0;
+  return { level, label: overall.level_label, next, areas, next_reached: atNext, next_total: estimated.length };
 }
 
 function round(value) {

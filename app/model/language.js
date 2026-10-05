@@ -10,6 +10,7 @@ import { presentExercise } from "./exercise.js";
 import { presentPlacementListening } from "./listening.js";
 import { explain } from "./explain.js";
 import { t } from "./i18n.js";
+import { localizedInstruction } from "./instructions.js";
 
 export const DIMENSION_NAMES = Object.freeze({
   grammar: "Grammatik",
@@ -61,6 +62,8 @@ export function presentLanguageProfile({ profile, history = [], openAssessment =
       return {
         id, name_de: dimensionName(id), status: x.status, confidence: x.confidence, text: claim.text,
         detail: gaps.has(id) && x.status === "unknown" ? t("claim.no_tasks") : claim.detail,
+        // P25.4: ruhige Kurzform für Übersichten (nur bei Bedarf: vorläufig bzw. noch offen)
+        short: x.status === "estimated" ? (x.confidence === "low" ? t("claim.provisional") : "") : gaps.has(id) ? "" : t("claim.open"),
         measurements: x.measurements ?? 0,
         from_assessment: x.sources?.assessment ?? 0,
         from_practice: x.sources?.practice ?? 0,
@@ -104,7 +107,7 @@ export function learningOutlook(p, language = "de") {
 }
 
 /** Einstufung: Module, aktuelle Aufgabe (ohne Lösung), am Ende das Ergebnis dieser Einstufung. */
-export function presentAssessment({ state, current, library }) {
+export function presentAssessment({ state, current, library, language = "de" }) {
   const modules = state.modules.map((m) => ({
     id: m.dimension, name_de: dimensionName(m.dimension), status: m.status, status_text: t(`module.${m.status}`),
     answered: m.answered,
@@ -120,7 +123,7 @@ export function presentAssessment({ state, current, library }) {
     self_assessment: state.self_assessment,
     modules,
     progress: { done: counted.filter((m) => ["done", "skipped"].includes(m.status)).length, total: counted.length },
-    current: !finished && current ? presentItem(current, library) : null,
+    current: !finished && current ? presentItem(current, library, language) : null,
     result: finished ? {
       estimated: levelClaim({ status: state.estimated_level ? "estimated" : "unknown", level_label: state.estimated_level, confidence: state.confidence }),
       modules: Object.entries(state.results).map(([id, r]) => ({ id, name_de: dimensionName(id), ...levelClaim({ status: "estimated", ...r }) })),
@@ -128,13 +131,13 @@ export function presentAssessment({ state, current, library }) {
   };
 }
 
-function presentItem({ item, exercise }, library) {
+function presentItem({ item, exercise }, library, language = "de") {
   return {
     item_id: item.id,
     dimension: item.dimension,
     dimension_name: dimensionName(item.dimension),
     format: item.format,
-    prompt_de: item.prompt_de,
+    prompt_de: localizedInstruction(item.prompt_de, language),
     stimulus_es: item.stimulus_es,
     passage_es: item.passage_es,
     // Reihenfolge der Optionen: fest je Aufgabe, aber unabhängig von der Reihenfolge im Inhalt
@@ -142,7 +145,7 @@ function presentItem({ item, exercise }, library) {
     partner_role_de: item.partner_role_de,
     listening: item.audio ? presentPlacementListening(library?.audio(item.audio)) : null,
     min_words: item.min_words,
-    exercise: item.format === "open" ? presentExercise(exercise) : null,
+    exercise: item.format === "open" ? presentExercise(exercise, { language }) : null,
   };
 }
 

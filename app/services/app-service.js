@@ -27,7 +27,8 @@ import { evaluateAnswer } from "../../core/evaluation/evaluate.js";
 import { INPUT_MODES } from "../../core/evaluation/result.js";
 import { mergeSupplemental, supplementalRequest } from "../../core/evaluation/supplemental.js";
 import { secureLevel } from "../../core/learning/competence/production.js";
-import { levelValue } from "../../core/learning/profile/scale.js";
+import { CEFR_LEVELS, levelValue } from "../../core/learning/profile/scale.js";
+import { localDateOf } from "../../core/util/time.js";
 import { skillsOf } from "../../core/learning/listening/evidence.js";
 import { SUPPORT_LEVELS } from "../../core/learning/listening/model.js";
 import { readEvaluation } from "../../core/evaluation/result.js";
@@ -38,7 +39,7 @@ import { BUDGET_MINUTES } from "../../core/conversation/policy.js";
 import { buildConversationResult } from "../../core/learning/conversation/result.js";
 import { ConversationError, ConversationRuntime, RULE_REASONS } from "../../core/learning/conversation/runtime.js";
 import { AssessmentError, AssessmentRuntime } from "../../core/learning/assessment/runtime.js";
-import { presentAssessment, presentLanguageProfile } from "../model/language.js";
+import { dimensionName, presentAssessment, presentLanguageProfile } from "../model/language.js";
 import { LearningEngine } from "../../core/learning/engine.js";
 import { SESSION_LENGTHS, learnerItem, learnerTitle, learnerView } from "../../core/learning/planning/planner.js";
 import { SessionError, SessionRuntime } from "../../core/learning/session/runtime.js";
@@ -49,9 +50,35 @@ import { buildDashboard, describePreview } from "../model/dashboard.js";
 import { exerciseCard, presentExercise } from "../model/exercise.js";
 import { skillTitle } from "../model/labels.js";
 import { t, uiLanguage } from "../model/i18n.js";
+
+/** P25.4: Stufe einer Schätzung nur bei mindestens mittlerer Sicherheit (sonst null). */
+function reliableLevel(estimate) {
+  return estimate?.status === "estimated" && ["medium", "high"].includes(estimate.confidence) ? baseLevel(estimate.level_label) : null;
+}
+
+function levelIndex(level) {
+  return level ? CEFR_LEVELS.indexOf(level) : -1;
+}
+
+/** Ende eines Kalendertags (Gerätezeit) als UTC-Zeitpunkt. */
+function endOfDay(day) {
+  const [y, m, d] = day.split("-").map(Number);
+  return new Date(y, m - 1, d, 23, 59, 59, 999).toISOString();
+}
+
+function minIso(a, b) {
+  return a < b ? a : b;
+}
+
+/** P25.4a: Titel der Session (learnerTitle, Deutsch aus dem Kern) in der Sprache der App. */
+function localizedPlanTitle(plan, title) {
+  if (uiLanguage() === "de") return title;
+  return (title === "Training" ? t("objective.training") : t(`objective.${plan.objective.id}`)) ?? title;
+}
 import { explanationLanguageOf, localizedListeningFeedback } from "../model/explain.js";
 import { presentFeedback } from "../model/feedback.js";
 import { buildProgress } from "../model/progress.js";
+import { baseLevel, computeMilestones, describeMilestone, milestonesBetween } from "../model/milestones.js";
 
 export const DEFAULT_PROFILE = Object.freeze({ daily_minutes: DEFAULT_PREFERENCES.daily_minutes, ai_analysis: DEFAULT_PREFERENCES.ai_analysis,
   explanation_language: DEFAULT_PREFERENCES.explanation_language });
@@ -170,7 +197,7 @@ export class LearnerApp {
     const plan = await this._plan(minutes);
     return describePreview({
       minutes,
-      view: learnerView(plan),
+      view: (() => { const view = learnerView(plan); return { ...view, title: localizedPlanTitle(plan, view.title) }; })(),
       byPurpose: plan.metadata.mix.by_purpose,
       challengeCount: plan.exercises.filter((e) => e.mode === "challenge").length,
     });
@@ -184,7 +211,8 @@ export class LearnerApp {
       this.engine.reviewSnapshot({ library: this.library }),
       this.engine.activitySummary({ days: 14 }),
     ]);
-    return buildProgress({ snapshot, coaching, memories, reviews, activity, library: this.library, language: this.explanationLanguage });
+    const profile = await this.assessments.profile({ asOf: this.clock() });
+    return buildProgress({ snapshot, coaching, memories, reviews, activity, library: this.library, language: this.explanationLanguage, profile });
   }
 
   /** Erinnerungen aus den Ereignissen ableiten und in den MemoryStore übernehmen (alle Status). */
@@ -288,7 +316,115 @@ export class LearnerApp {
       improved: practiced
         .filter((s) => s.failures === 0 && s.mastery_after !== s.mastery_before)
         .map((s) => ({ title: label(s.skill_id), before: s.mastery_before, after: s.mastery_after })),
+      ...(await this._summaryHighlights(summary, practiced, label)),
     };
+  }
+
+  /**
+   * P25.4: das Positive der Session (nur gemessene Daten): ohne Fehler geübt (Aufstiege zuerst), in dieser Session
+   * überwundene typische Fehler, neu erreichte Meilensteine und was als Nächstes ansteht.
+   */
+  async _summaryHighlights(summary, practiced, label) {
+    const from = summary.started_at;
+    const to = summary.ended_at ?? this.clock();
+    const wentWell = practiced.filter((s) => s.successes > 0 && s.failures === 0)
+      .map((s) => ({ skill_id: s.skill_id, title: label(s.skill_id), before: s.mastery_before, after: s.mastery_after,
+        improved: s.mastery_after !== s.mastery_before, successes: s.successes }))
+      .sort((a, b) => Number(b.improved) - Number(a.improved) || b.successes - a.successes || (a.skill_id < b.skill_id ? -1 : 1));
+    const memories = await this.memories();
+    const resolved = memories.filter((m) => m.memory_type === "recurring_error" && m.status === "resolved"
+      && m.updated_at >= from && m.updated_at <= to).map((m) => label(m.skill_id));
+    let fresh = milestonesBetween(await this.milestones(), from, to);
+    if (fresh.some((m) => m.kind === "level_up")) {
+      // eine Stufe, die schon vor der Session erreicht war, ist in dieser Session nicht neu
+      const before = await this.assessments.profile({ asOf: from });
+      fresh = fresh.filter((m) => m.kind !== "level_up" || levelIndex(reliableLevel(before.dimensions[m.dimension])) < levelIndex(m.level));
+    }
+    return { went_well: wentWell, resolved, milestones: fresh.map((m) => this._describe(m)), tomorrow: await this.tomorrow() };
+  }
+
+  /**
+   * P25.4 "Morgen wartet": bis morgen fällige Wiederholungen und die nächste neue Struktur der nächsten Session
+   * (aus Wiederholungsplanung und Sessionplan, wie sie jetzt stehen).
+   */
+  async tomorrow() {
+    const [reviews, profile] = await Promise.all([this.engine.reviewSnapshot({ library: this.library }), this.profile()]);
+    const label = (id) => skillTitle(this.library.skill(id), id, { language: this.explanationLanguage, library: this.library });
+    const end = endOfDay(localDateOf(new Date(Date.parse(this.clock()) + 86_400_000)));
+    const due = reviews.items.filter((i) => i.phase !== "new" && i.due_at && i.due_at <= end)
+      .sort((a, b) => (a.due_at < b.due_at ? -1 : a.due_at > b.due_at ? 1 : a.skill_id < b.skill_id ? -1 : 1));
+    let next = null;
+    try {
+      const plan = await this._plan(SESSION_MINUTES.includes(profile.daily_minutes) ? profile.daily_minutes : 10);
+      next = plan.exercises.find((e) => e.purpose === "new" && e.mode === "training") ?? null;
+    } catch {
+      next = null;
+    }
+    return {
+      reviews: due.length,
+      review_titles: due.slice(0, 2).map((i) => label(i.skill_id)),
+      new_skill: next ? label(next.skill_id) : null,
+    };
+  }
+
+  /** P25.4: Meilensteine mit Titel und Satz, neuester zuerst (Profil). */
+  async milestoneList() {
+    return [...(await this.milestones())].reverse().map((m) => this._describe(m));
+  }
+
+  _describe(m) {
+    const label = (id) => skillTitle(this.library.skill(id), id, { language: this.explanationLanguage, library: this.library });
+    return { ...m, ...describeMilestone(m, { label, dimension: dimensionName }) };
+  }
+
+  /** P25.4: Meilensteine dieser Lernsprache, ältester zuerst (zwischengespeichert, solange keine Ereignisse dazukommen). */
+  async milestones() {
+    const events = await this.engine.history();
+    const key = `${events.length}:${events.reduce((max, e) => (e.created_at > max ? e.created_at : max), "")}`;
+    if (this._milestones?.key === key) return this._milestones.value;
+    const value = computeMilestones({ events, memories: await this.memories(), levelUps: await this._levelUps(events) });
+    this._milestones = { key, value };
+    return value;
+  }
+
+  /**
+   * Stufenaufstiege je Bereich gegenüber der ersten Einstufung (nur Schätzungen mit mindestens mittlerer Sicherheit).
+   * Datum: erster Lerntag, an dessen Ende das Profil die Stufe zeigt (binäre Suche über die Lerntage).
+   */
+  async _levelUps(events) {
+    const records = await this.assessments.history();
+    if (!records.length) return [];
+    const now = this.clock();
+    const current = await this.assessments.profile({ asOf: now });
+    const firstDay = localDateOf(new Date(records[0].at));
+    const days = [...new Set(events.filter((e) => (e.event_type === "attempt" || e.event_type === "assessment_response")
+      && e.local_date && e.local_date >= firstDay).map((e) => e.local_date))].sort();
+    const profiles = new Map();
+    const profileAt = async (day) => {
+      if (!profiles.has(day)) profiles.set(day, await this.assessments.profile({ asOf: minIso(endOfDay(day), now) }));
+      return profiles.get(day);
+    };
+    const ups = [];
+    for (const [dimension, estimate] of Object.entries(current.dimensions)) {
+      const from = levelIndex(baseLevel(records[0].dimensions?.[dimension]?.level_label));
+      const to = levelIndex(reliableLevel(estimate));
+      if (from < 0 || to <= from) continue;
+      for (let target = from + 1; target <= to; target += 1) {
+        let lo = 0;
+        let hi = days.length - 1;
+        let found = null;
+        while (lo <= hi) {
+          const mid = (lo + hi) >> 1;
+          if (levelIndex(reliableLevel((await profileAt(days[mid])).dimensions[dimension])) >= target) {
+            found = days[mid];
+            hi = mid - 1;
+          } else lo = mid + 1;
+        }
+        const day = found ?? localDateOf(new Date(now));
+        ups.push({ dimension, level: CEFR_LEVELS[target], day, at: minIso(endOfDay(day), now) });
+      }
+    }
+    return ups;
   }
 
   /**
@@ -311,10 +447,10 @@ export class LearnerApp {
       session_id: state.session_id,
       status: state.status,
       minutes: state.plan.minutes,
-      title: learnerTitle({
+      title: localizedPlanTitle(state.plan, learnerTitle({
         objective: state.plan.objective,
         exercises: state.plan.exercises.map((e) => ({ mode: this.library.exercise(e.exercise_id)?.mode ?? "training" })),
-      }),
+      })),
       position: Math.min(state.progress.completed + 1, state.progress.total),
       total: state.progress.total,
       completed: state.progress.completed,
@@ -375,7 +511,7 @@ export class LearnerApp {
     const topic = this.library.topic(topicId);
     if (!topic) throw new AppError("Dieses Thema gibt es nicht (mehr).", { code: "unknown_topic" });
     const cards = this.library.exercisesForTopic(topicId)
-      .map(exerciseCard)
+      .map((exercise) => exerciseCard(exercise, this.explanationLanguage))
       .sort((a, b) => (a.mode === b.mode ? 0 : a.mode === "training" ? -1 : 1) || a.estimated_seconds - b.estimated_seconds
         || (a.id < b.id ? -1 : 1));
     return { topic: { id: topic.id, name: topic.name_de }, exercises: cards };
@@ -668,7 +804,7 @@ export class LearnerApp {
   }
 
   _assessmentView(state) {
-    return presentAssessment({ state, current: this.assessments.current(state), library: this.library });
+    return presentAssessment({ state, current: this.assessments.current(state), library: this.library, language: this.explanationLanguage });
   }
 
   async _assessmentStep(step) {
